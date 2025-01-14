@@ -63,6 +63,8 @@
             this.menuOptions_TabSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_CommaSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_RetryMode = new System.Windows.Forms.MenuItem();
+            this.menuTools = new System.Windows.Forms.MenuItem();
+            this.menuTools_HistoryInfo = new System.Windows.Forms.MenuItem();
             this.menuItemHelp = new System.Windows.Forms.MenuItem();
             this.menuHelp_About = new System.Windows.Forms.MenuItem();
             this.menuHelp_WhyTakingLong = new System.Windows.Forms.MenuItem();
@@ -103,8 +105,7 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
-            this.menuTools = new System.Windows.Forms.MenuItem();
-            this.menuTools_HistoryInfo = new System.Windows.Forms.MenuItem();
+            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -143,7 +144,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
@@ -459,6 +460,19 @@
             this.menuOptions_RetryMode.Text = "Enable Retrying Failed Value Fetches";
             this.menuOptions_RetryMode.Click += new System.EventHandler(this.menuOptions_RetryMode_Click);
             // 
+            // menuTools
+            // 
+            this.menuTools.Index = 3;
+            this.menuTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuTools_HistoryInfo});
+            this.menuTools.Text = "Tools";
+            // 
+            // menuTools_HistoryInfo
+            // 
+            this.menuTools_HistoryInfo.Index = 0;
+            this.menuTools_HistoryInfo.Text = "Clipboard History Info";
+            this.menuTools_HistoryInfo.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            // 
             // menuItemHelp
             // 
             this.menuItemHelp.Index = 4;
@@ -533,10 +547,11 @@
             this.toolStripButtonDelete,
             this.toolStripButtonAddFormat,
             this.toolStripButtonSaveEdited,
-            this.toolStripButtonExportSelected});
+            this.toolStripButtonExportSelected,
+            this.toolStripButtonShowHistoryForm});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(12, 0, 3, 0);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(12, 0, 20, 0);
             this.toolStrip1.Size = new System.Drawing.Size(1574, 51);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
@@ -635,7 +650,7 @@
             // splitContainerMain
             // 
             this.splitContainerMain.Location = new System.Drawing.Point(12, 51);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -672,7 +687,7 @@
             this.labelLoading.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelLoading.Location = new System.Drawing.Point(412, 165);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.labelLoading.Padding = new System.Windows.Forms.Padding(15);
             this.labelLoading.Size = new System.Drawing.Size(721, 88);
             this.labelLoading.TabIndex = 14;
             this.labelLoading.Text = "Loading Data From Clipboard\r\nSometimes this can take a while (See \"Help\" dropdown" +
@@ -697,7 +712,7 @@
             this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApplyEdit.Enabled = false;
             this.buttonApplyEdit.Location = new System.Drawing.Point(1150, 2);
-            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
             this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
             this.buttonApplyEdit.TabIndex = 10;
@@ -711,7 +726,7 @@
             this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetEdit.Enabled = false;
             this.buttonResetEdit.Location = new System.Drawing.Point(1270, 2);
-            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonResetEdit.Name = "buttonResetEdit";
             this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
             this.buttonResetEdit.TabIndex = 11;
@@ -776,7 +791,7 @@
             // 
             this.splitterContainer_InnerTextBoxes.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 47);
-            this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(4);
             this.splitterContainer_InnerTextBoxes.Name = "splitterContainer_InnerTextBoxes";
             // 
             // splitterContainer_InnerTextBoxes.Panel1
@@ -802,7 +817,7 @@
             this.richTextBoxContents.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxContents.HideSelection = false;
             this.richTextBoxContents.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.richTextBoxContents.Size = new System.Drawing.Size(968, 418);
@@ -816,8 +831,8 @@
             // 
             this.checkBoxPlainTextEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(56, 384);
-            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(50, 384);
+            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
             this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
             this.checkBoxPlainTextEditing.TabIndex = 3;
@@ -839,8 +854,8 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(312, 376);
-            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(306, 376);
+            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
             this.dropdownHexToTextEncoding.TabIndex = 2;
@@ -850,7 +865,7 @@
             // 
             this.labelHexToPlaintextEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(226, 382);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(220, 382);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
             this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
@@ -863,7 +878,7 @@
             this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_HexPlaintext.HideSelection = false;
             this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(570, 367);
@@ -910,7 +925,7 @@
             "Hex (Editable)",
             "Object / Struct Details"});
             this.dropdownContentsViewMode.Location = new System.Drawing.Point(124, 2);
-            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
             this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
             this.dropdownContentsViewMode.TabIndex = 7;
@@ -924,7 +939,7 @@
             this.labelPendingChanges.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelPendingChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPendingChanges.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelPendingChanges.Location = new System.Drawing.Point(932, 15);
+            this.labelPendingChanges.Location = new System.Drawing.Point(872, 15);
             this.labelPendingChanges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPendingChanges.Name = "labelPendingChanges";
             this.labelPendingChanges.Size = new System.Drawing.Size(465, 22);
@@ -940,7 +955,7 @@
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelVersion.Location = new System.Drawing.Point(1454, 18);
+            this.labelVersion.Location = new System.Drawing.Point(1372, 17);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(67, 20);
             this.labelVersion.TabIndex = 13;
@@ -967,18 +982,16 @@
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
             // 
-            // menuTools
+            // toolStripButtonShowHistoryForm
             // 
-            this.menuTools.Index = 3;
-            this.menuTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuTools_HistoryInfo});
-            this.menuTools.Text = "Tools";
-            // 
-            // menuTools_HistoryInfo
-            // 
-            this.menuTools_HistoryInfo.Index = 0;
-            this.menuTools_HistoryInfo.Text = "Clipboard History Info";
-            this.menuTools_HistoryInfo.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonShowHistoryForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonShowHistoryForm.Image")));
+            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
+            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
+            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
+            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
             // 
             // MainForm
             // 
@@ -992,7 +1005,7 @@
             this.Controls.Add(this.labelPendingChanges);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Text = "Edit Clipboard Contents";
@@ -1105,5 +1118,6 @@
         private System.Windows.Forms.MenuItem menuDebug_CopyRTFStructInfo;
         private System.Windows.Forms.MenuItem menuTools;
         private System.Windows.Forms.MenuItem menuTools_HistoryInfo;
+        private System.Windows.Forms.ToolStripButton toolStripButtonShowHistoryForm;
     }
 }
