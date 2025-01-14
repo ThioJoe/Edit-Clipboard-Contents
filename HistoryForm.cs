@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
-using System.Windows.Forms;
 using System.IO;
 
 #nullable enable
@@ -100,9 +99,9 @@ public partial class HistoryForm : Form
         {
             // Get the data and check its type
             var data = dataObj.GetData("ClipboardHistoryItemId");
-            if ( data is string )
+            if ( data is string idString )
             {
-                guid = (string)data;
+                guid = idString;
             }
             else if ( data is MemoryStream memoryStream )
             {
@@ -123,7 +122,7 @@ public partial class HistoryForm : Form
     {
         dataGridViewHistory.AutoGenerateColumns = false;
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.OriginalIndex), Name = colName.Index, HeaderText = "", Width = dpi(25) });
-        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = MyStrings.Check, Width = dpi(25)});
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = "Active", Width = dpi(40)});
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.FormatCount), Name = colName.FormatCount, HeaderText = "# Formats", Width = dpi(50) });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.Id), Name = colName.UniqueID, HeaderText = "ID", Visible = false });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.TextContent), Name = colName.TextPreview, HeaderText = "Text Preview" });
@@ -131,7 +130,6 @@ public partial class HistoryForm : Form
         // Datagridview options
         dataGridViewHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewHistory.RowHeadersVisible = false;
-        dataGridViewHistory.ShowCellToolTips = true;
         //dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.WrapMode = DataGridViewTriState.False;
 
         // Alignment - Headers
@@ -150,7 +148,6 @@ public partial class HistoryForm : Form
 
         // Add event handlers
         dataGridViewHistory.SelectionChanged += OnGridSelectionChange;
-        dataGridViewHistory.CellToolTipTextNeeded += DataGridViewHistory_CellToolTipTextNeeded; // For adding tooltips to cells, not just columns
 
         // Do not do this here, wait until we have the data, otherwise it will show hidden columns despite Visible = false
         //dataGridViewHistory.DataSource = HistoryItems; 
@@ -166,7 +163,6 @@ public partial class HistoryForm : Form
             DataGridViewRow selectedRow = dataGridViewHistory.SelectedRows[0];
             HistoryItemInfo item = (HistoryItemInfo)selectedRow.DataBoundItem;
             labelIndex.Text = item.OriginalIndex.ToString();
-            //labelAvailableFormats.Text = string.Join("\n", item.AvailableFormats);
             labelHistoryGUID.Text = item.Id;
             textBoxHistoryContents.Text = item.TextContent;
 
@@ -190,22 +186,6 @@ public partial class HistoryForm : Form
 
             buttonDeleteHistoryItem.Enabled = false;
             buttonSetActiveHistoryItem.Enabled = false;
-        }
-    }
-
-    private void DataGridViewHistory_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
-    {
-        if ( e.ColumnIndex == dataGridViewHistory.Columns[colName.Active].Index )
-        {
-            // If the cell contains a check, use a different tooltip
-            if ( dataGridViewHistory.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() == MyStrings.Check )
-            {
-                e.ToolTipText = "This item is currently on the clipboard.";
-            }
-            else
-            {
-                e.ToolTipText = "Whether a history item is the current active clipboard item.";
-            }
         }
     }
 
