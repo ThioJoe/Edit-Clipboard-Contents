@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using System.IO;
+using Windows.Storage.Streams;
+using System.Threading;
 
 #nullable enable
 
@@ -39,7 +41,6 @@ public partial class HistoryForm : Form
         InitializeDataGridView();
 
         Windows.ApplicationModel.DataTransfer.Clipboard.HistoryEnabledChanged += OnHistoryEnabledChanged;
-        listViewAvailableFormats.SelectedIndexChanged += OnFormatsListViewSelectionChanged;
 
         // Get initial status
         OnHistoryEnabledChanged(null, null);
@@ -139,14 +140,15 @@ public partial class HistoryForm : Form
         dataGridViewHistory.AutoGenerateColumns = false;
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.OriginalIndex), Name = colName.Index, HeaderText = "", Width = dpi(25) });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = "Active", Width = dpi(40)});
-        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.FormatCount), Name = colName.FormatCount, HeaderText = "# Formats", Width = dpi(50) });
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.FormatCount), Name = colName.FormatCount, HeaderText = "# Formats", Width = dpi(60) });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.Id), Name = colName.UniqueID, HeaderText = "ID", Visible = false });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.TextContent), Name = colName.TextPreview, HeaderText = "Text Preview" });
 
         // Datagridview options
         dataGridViewHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewHistory.RowHeadersVisible = false;
-        //dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.WrapMode = DataGridViewTriState.False;
+        dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.WrapMode = DataGridViewTriState.False;
+        //dataGridViewHistory.ShowCellToolTips = false;
 
         // Alignment - Headers
         dataGridViewHistory.Columns[colName.Active].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
@@ -154,8 +156,8 @@ public partial class HistoryForm : Form
         dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
         dataGridViewHistory.Columns[colName.TextPreview].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomLeft;
         // Alignment - Cells
-        dataGridViewHistory.Columns[colName.Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
-        dataGridViewHistory.Columns[colName.FormatCount].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+        dataGridViewHistory.Columns[colName.Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewHistory.Columns[colName.FormatCount].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         // Individual column settings
         dataGridViewHistory.Columns[colName.TextPreview].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -174,13 +176,16 @@ public partial class HistoryForm : Form
 
     private void OnGridSelectionChange(object? sender , EventArgs e)
     {
+        pictureBoxFormatContents.Visible = false;
+        textBoxHistoryContents.Visible = true;
+
         if ( dataGridViewHistory.SelectedRows.Count > 0 )
         {
             DataGridViewRow selectedRow = dataGridViewHistory.SelectedRows[0];
             HistoryItemInfo item = (HistoryItemInfo)selectedRow.DataBoundItem;
             labelIndex.Text = item.OriginalIndex.ToString();
             labelHistoryGUID.Text = item.Id;
-            textBoxHistoryContents.Text = item.TextContent;
+            //textBoxHistoryContents.Text = item.TextContent; // This will automatically be handled when we set the selection
 
             CurrentlyShownHistoryItem = item;
 
@@ -189,6 +194,13 @@ public partial class HistoryForm : Form
             foreach ( string format in item.AvailableFormats )
             {
                 listViewAvailableFormats.Items.Add(format);
+            }
+
+            // Select the first item in the list view
+            if ( item.AvailableFormats.Count > 0 )
+            {
+                listViewAvailableFormats.Items[0].Selected = true;
+                UpdateFormatContentDisplay();
             }
 
             buttonDeleteHistoryItem.Enabled = true;
@@ -287,6 +299,137 @@ public partial class HistoryForm : Form
         return itemList;
     }
 
+    private void UpdateFormatContentDisplay()
+    {
+        pictureBoxFormatContents.Visible = false;
+        textBoxHistoryContents.Visible = true;
+
+        if ( listViewAvailableFormats.SelectedItems.Count <= 0 )
+            return;
+
+        string selectedFormat = listViewAvailableFormats.SelectedItems[0].Text;
+        if ( selectedFormat == null || CurrentlyShownHistoryItem == null )
+            return;
+
+        ClipboardHistoryItem? historyObj = CurrentlyShownHistoryItem.OriginalObject;
+        if ( historyObj == null )
+            return;
+
+        if ( !historyObj.Content.Contains(selectedFormat) )
+            return;
+
+        // -------------------------- Get the data --------------------------
+
+        if ( selectedFormat == StandardDataFormats.Bitmap )
+        {
+            labelHeaderContents.Text = $"{selectedFormat} - Format Contents:";
+            textBoxHistoryContents.Text = "";
+
+            RandomAccessStreamReference bitmapData = ConvertToTask(historyObj.Content.GetBitmapAsync()).GetAwaiter().GetResult();
+
+            // Open the stream with proper WinRT async handling
+            var openOperation = bitmapData.OpenReadAsync();
+            ManualResetEvent waitHandle = new ManualResetEvent(false);
+            openOperation.Completed = (asyncInfo, asyncStatus) =>
+            {
+                waitHandle.Set();
+            };
+            waitHandle.WaitOne();
+
+            IRandomAccessStream stream = openOperation.GetResults();
+            var memStream = new MemoryStream();
+
+            IInputStream inputStream = stream.GetInputStreamAt(0);
+            DataReader reader = new DataReader(inputStream);
+
+            var loadOperation = reader.LoadAsync((uint)stream.Size);
+            waitHandle.Reset();  // Reuse the wait handle
+            loadOperation.Completed = (asyncInfo, asyncStatus) =>
+            {
+                waitHandle.Set();
+            };
+            waitHandle.WaitOne();
+
+            byte[] bytes = new byte[stream.Size];
+            reader.ReadBytes(bytes);
+            memStream.Write(bytes, 0, bytes.Length);
+            memStream.Position = 0;
+
+            pictureBoxFormatContents.Image = Image.FromStream(memStream);
+
+            pictureBoxFormatContents.Visible = true;
+            textBoxHistoryContents.Visible = false;
+        }
+        else
+        {
+            labelHeaderContents.Text = $"{selectedFormat} - Format Contents As Text:";
+
+            object data = ConvertToTask(historyObj.Content.GetDataAsync(selectedFormat)).GetAwaiter().GetResult();
+            if ( data != null )
+            {
+                if ( data is IRandomAccessStream streamContent )
+                {
+                    IInputStream inputStream = streamContent.GetInputStreamAt(0);
+                    DataReader reader = new DataReader(inputStream);
+
+                    // Create manual wait handle for the load operation
+                    DataReaderLoadOperation loadOperation = reader.LoadAsync((uint)streamContent.Size);
+                    ManualResetEvent waitHandle = new ManualResetEvent(false);
+                    loadOperation.Completed = (asyncInfo, asyncStatus) =>
+                    {
+                        waitHandle.Set();
+                    };
+                    waitHandle.WaitOne();
+
+                    byte[] bytes = new byte[streamContent.Size];
+                    reader.ReadBytes(bytes);
+
+                    string guidString = Encoding.Unicode.GetString(bytes);
+                    textBoxHistoryContents.Text = guidString;
+
+                    reader.Dispose();
+                    inputStream.Dispose();
+                }
+                else if ( data is RandomAccessStreamReference streamRef )
+                {
+                    var openOperation = streamRef.OpenReadAsync();
+                    ManualResetEvent waitHandle = new ManualResetEvent(false);
+                    openOperation.Completed = (asyncInfo, asyncStatus) =>
+                    {
+                        waitHandle.Set();
+                    };
+                    waitHandle.WaitOne();
+
+                    IRandomAccessStream stream = openOperation.GetResults();
+                    IInputStream inputStream = stream.GetInputStreamAt(0);
+                    DataReader reader = new DataReader(inputStream);
+
+                    var loadOperation = reader.LoadAsync((uint)stream.Size);
+                    waitHandle.Reset();
+                    loadOperation.Completed = (asyncInfo, asyncStatus) =>
+                    {
+                        waitHandle.Set();
+                    };
+                    waitHandle.WaitOne();
+
+                    byte[] bytes = new byte[stream.Size];
+                    reader.ReadBytes(bytes);
+
+                    string guidString = Encoding.Unicode.GetString(bytes);
+                    textBoxHistoryContents.Text = guidString;
+
+                    reader.Dispose();
+                    inputStream.Dispose();
+                    stream.Dispose();
+                }
+                else
+                {
+                    textBoxHistoryContents.Text = data.ToString();
+                }
+            }
+        }
+    }
+
     private static Task<T> ConvertToTask<T>(IAsyncOperation<T> operation)
     {
         var tcs = new TaskCompletionSource<T>();
@@ -306,6 +449,11 @@ public partial class HistoryForm : Form
             }
         };
         return tcs.Task;
+    }
+
+    private static class MyStrings
+    {
+        public const string Check = "✔";
     }
 
     public class HistoryItemInfo
@@ -335,31 +483,12 @@ public partial class HistoryForm : Form
         }
     }
 
-    private void OnFormatsListViewSelectionChanged(object? sender, EventArgs e)
+    private void OnFormatsListViewSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
     {
-        if ( listViewAvailableFormats.SelectedItems.Count > 0 )
-        {
-            string selectedFormat = listViewAvailableFormats.SelectedItems[0].Text;
-            if ( selectedFormat != null && CurrentlyShownHistoryItem != null)
-            {
-                ClipboardHistoryItem? historyObj = CurrentlyShownHistoryItem.OriginalObject;
-                if ( historyObj != null )
-                {
-                    DataPackageView content = historyObj.Content;
-                    if ( content.Contains(selectedFormat) )
-                    {
-                        object data = ConvertToTask(content.GetDataAsync(selectedFormat)).GetAwaiter().GetResult();
-                        if ( data != null )
-                        {
-                            textBoxHistoryContents.Text = data.ToString();
-                        }
-                    }
-                }
-            }
-        }
+        UpdateFormatContentDisplay();
     }
 
-    // -------------------------- GUI Event Handlers --------------------------
+    // -------------------------- GUI Button Event Handlers --------------------------
 
     private void buttonRefreshHistory_Click(object sender, EventArgs e)
     {
@@ -459,10 +588,4 @@ public partial class HistoryForm : Form
 
         dataGridViewHistory.ResumeLayout();
     }
-
-    private static class MyStrings
-    {
-        public const string Check = "✔";
-    }
-
 }
