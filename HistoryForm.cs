@@ -37,15 +37,14 @@ public partial class HistoryForm : Form
     {
         InitializeComponent();
         defaultCellForeColor = dataGridViewHistory.DefaultCellStyle.ForeColor;
-
         InitializeDataGridView();
+        InitializeListView();
 
+        // Event Handlers
         Windows.ApplicationModel.DataTransfer.Clipboard.HistoryEnabledChanged += OnHistoryEnabledChanged;
         dataGridViewHistory.MouseWheel += new MouseEventHandler(dataGridViewClipboard_MouseWheel);
 
-        // Get initial status
-        OnHistoryEnabledChanged(null, null);
-
+        OnHistoryEnabledChanged(null, null); // Get initial status
         RefreshClipboardHistory();
     }
 
@@ -136,6 +135,20 @@ public partial class HistoryForm : Form
         return guid;
     }
 
+    private void InitializeListView()
+    {
+        listViewAvailableFormats.Scrollable = true;
+        listViewAvailableFormats.View = View.Details;
+        listViewAvailableFormats.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        listViewAvailableFormats.HeaderStyle = ColumnHeaderStyle.None;
+
+        // Create dummy column so it all stays in one column
+        ColumnHeader header = new ColumnHeader();
+        header.Text = "";
+        header.Name = "col1";
+        listViewAvailableFormats.Columns.Add(header);
+    }
+
     private void InitializeDataGridView()
     {
         dataGridViewHistory.AutoGenerateColumns = false;
@@ -149,7 +162,7 @@ public partial class HistoryForm : Form
         dataGridViewHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewHistory.RowHeadersVisible = false;
         dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.WrapMode = DataGridViewTriState.False;
-        //dataGridViewHistory.ShowCellToolTips = false;
+        dataGridViewHistory.ShowCellToolTips = false;
 
         // Alignment - Headers
         dataGridViewHistory.Columns[colName.Active].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
@@ -179,6 +192,7 @@ public partial class HistoryForm : Form
     {
         pictureBoxFormatContents.Visible = false;
         textBoxHistoryContents.Visible = true;
+        listViewAvailableFormats.Columns[0].Width = listViewAvailableFormats.Width - dpi(25);
 
         if ( dataGridViewHistory.SelectedRows.Count > 0 )
         {
@@ -220,6 +234,9 @@ public partial class HistoryForm : Form
             buttonDeleteHistoryItem.Enabled = false;
             buttonSetActiveHistoryItem.Enabled = false;
         }
+
+        // Make the list view resize to fit the contents
+        listViewAvailableFormats.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
     }
 
     private void UpdateActiveHistoryItem()

@@ -183,7 +183,7 @@ partial class HistoryForm
             this.listViewAvailableFormats.Size = new System.Drawing.Size(661, 112);
             this.listViewAvailableFormats.TabIndex = 13;
             this.listViewAvailableFormats.UseCompatibleStateImageBehavior = false;
-            this.listViewAvailableFormats.View = System.Windows.Forms.View.List;
+            this.listViewAvailableFormats.View = System.Windows.Forms.View.Details;
             this.listViewAvailableFormats.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.OnFormatsListViewSelectionChanged);
             // 
             // pictureBoxFormatContents
