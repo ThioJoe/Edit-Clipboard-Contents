@@ -1397,19 +1397,51 @@ namespace EditClipboardContents
             Utils.ShowToolTip(sender, toolTip1);
         }
 
+        private void menuTools_HistoryInfo_click(object sender, EventArgs e)
+        {
+            // Open the history window form
+            HistoryForm historyForm = new HistoryForm();
+            // Setting owner allows the form to be minimized with the main form, and stay in front of it
+            historyForm.Owner = this; // 'this' refers to MainForm. 
+            historyForm.Show();
+            historyForm.Activate();
+        }
+
         // --------------------------------------------- DEBUG CONTROLS AND BUTTONS --------------------------------------------------------
 
         // Using for testing random things during development via a button
         private void menuDebug_TestButton_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(@"{\rtf1\utf8 "); // RTF header
-            sb.Append("Normal text ");
-            sb.Append(@"\b Bold text\b0 "); // Note space before \b0
-            sb.Append(@"\i Italic text\i0 "); // Note space before \i0
-            sb.Append(@"\ul Underlined text\ul0 "); // Note space before \ul0
-            sb.Append("}"); // RTF closing
-            richTextBoxContents.Rtf = sb.ToString();
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append(@"{\rtf1\utf8 "); // RTF header
+            //sb.Append("Normal text ");
+            //sb.Append(@"\b Bold text\b0 "); // Note space before \b0
+            //sb.Append(@"\i Italic text\i0 "); // Note space before \i0
+            //sb.Append(@"\ul Underlined text\ul0 "); // Note space before \ul0
+            //sb.Append("}"); // RTF closing
+            //richTextBoxContents.Rtf = sb.ToString();
+
+
+        }
+
+        private async void TestClipboardHistory()
+        {
+            //var result = await Clipboard.GetHistoryItemsAsync();
+            //var test = Windows.ApplicationModel.DataTransfer
+            //var items = result.Items;
+            //foreach ( var item in items )
+            //{
+            //    var content = item.Content;
+            //    if ( content.Contains(StandardDataFormats.Text) )
+            //    {
+            //        var text = await content.GetTextAsync();
+            //        System.Console.WriteLine($"{item.Id}: {text}");
+            //    }
+            //    else
+            //    {
+            //        System.Console.WriteLine($"{item.Id}: (no text content)");
+            //    }
+            //}
         }
 
         private void menuDebug_CopyRTFStructInfo_Click(object sender, EventArgs e)

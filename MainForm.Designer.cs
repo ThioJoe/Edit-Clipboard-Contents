@@ -103,6 +103,8 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
+            this.menuTools = new System.Windows.Forms.MenuItem();
+            this.menuTools_HistoryInfo = new System.Windows.Forms.MenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -141,10 +143,11 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
-            this.dataGridViewClipboard.Size = new System.Drawing.Size(1032, 272);
+            this.dataGridViewClipboard.Size = new System.Drawing.Size(1548, 408);
             this.dataGridViewClipboard.TabIndex = 0;
             this.dataGridViewClipboard.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewClipboard_CellBeginEdit);
             this.dataGridViewClipboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClipboard_CellClick);
@@ -168,13 +171,13 @@
             this.contextMenu_copyColumn,
             this.contextMenu_copyColumnNoHeader});
             this.contextMenuStrip_dataGridView.Name = "contextMenuStrip_dataGridView";
-            this.contextMenuStrip_dataGridView.Size = new System.Drawing.Size(250, 136);
+            this.contextMenuStrip_dataGridView.Size = new System.Drawing.Size(346, 196);
             this.contextMenuStrip_dataGridView.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_dataGridView_Opening);
             // 
             // contextMenu_copySingleCell
             // 
             this.contextMenu_copySingleCell.Name = "contextMenu_copySingleCell";
-            this.contextMenu_copySingleCell.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copySingleCell.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySingleCell.Text = "Copy Single Cell";
             this.contextMenu_copySingleCell.Visible = false;
             this.contextMenu_copySingleCell.Click += new System.EventHandler(this.copyCellToolStripMenuItem_Click);
@@ -182,7 +185,7 @@
             // contextMenu_copySelectedCurrentColumnOnly
             // 
             this.contextMenu_copySelectedCurrentColumnOnly.Name = "contextMenu_copySelectedCurrentColumnOnly";
-            this.contextMenu_copySelectedCurrentColumnOnly.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copySelectedCurrentColumnOnly.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySelectedCurrentColumnOnly.Text = "Copy Selected - Single Column";
             this.contextMenu_copySelectedCurrentColumnOnly.Visible = false;
             this.contextMenu_copySelectedCurrentColumnOnly.Click += new System.EventHandler(this.contextMenu_copySelectedCurrentColumnOnly_Click);
@@ -190,7 +193,7 @@
             // contextMenu_copySelectedRows
             // 
             this.contextMenu_copySelectedRows.Name = "contextMenu_copySelectedRows";
-            this.contextMenu_copySelectedRows.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copySelectedRows.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySelectedRows.Text = "Copy Selected Rows";
             this.contextMenu_copySelectedRows.Visible = false;
             this.contextMenu_copySelectedRows.Click += new System.EventHandler(this.copyRowDataToolStripMenuItem_Click);
@@ -198,7 +201,7 @@
             // contextMenu_copySelectedRowsNoHeader
             // 
             this.contextMenu_copySelectedRowsNoHeader.Name = "contextMenu_copySelectedRowsNoHeader";
-            this.contextMenu_copySelectedRowsNoHeader.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copySelectedRowsNoHeader.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySelectedRowsNoHeader.Text = "Copy Selected Rows (No Header)";
             this.contextMenu_copySelectedRowsNoHeader.Visible = false;
             this.contextMenu_copySelectedRowsNoHeader.Click += new System.EventHandler(this.copySelectedRowsNoHeaderToolStripMenuItem_Click);
@@ -206,7 +209,7 @@
             // contextMenu_copyColumn
             // 
             this.contextMenu_copyColumn.Name = "contextMenu_copyColumn";
-            this.contextMenu_copyColumn.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copyColumn.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copyColumn.Text = "Copy Entire Column";
             this.contextMenu_copyColumn.Visible = false;
             this.contextMenu_copyColumn.Click += new System.EventHandler(this.contextMenu_copyColumn_Click);
@@ -214,7 +217,7 @@
             // contextMenu_copyColumnNoHeader
             // 
             this.contextMenu_copyColumnNoHeader.Name = "contextMenu_copyColumnNoHeader";
-            this.contextMenu_copyColumnNoHeader.Size = new System.Drawing.Size(249, 22);
+            this.contextMenu_copyColumnNoHeader.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copyColumnNoHeader.Text = "Copy Entire Column (No Header)";
             this.contextMenu_copyColumnNoHeader.Visible = false;
             this.contextMenu_copyColumnNoHeader.Click += new System.EventHandler(this.contextMenu_copyColumnNoHeader_Click);
@@ -225,6 +228,7 @@
             this.menuMainFile,
             this.menuMainEdit,
             this.menuItemOptions,
+            this.menuTools,
             this.menuItemHelp,
             this.menuItemDebug});
             // 
@@ -457,7 +461,7 @@
             // 
             // menuItemHelp
             // 
-            this.menuItemHelp.Index = 3;
+            this.menuItemHelp.Index = 4;
             this.menuItemHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuHelp_About,
             this.menuHelp_WhyTakingLong,
@@ -484,7 +488,7 @@
             // 
             // menuItemDebug
             // 
-            this.menuItemDebug.Index = 4;
+            this.menuItemDebug.Index = 5;
             this.menuItemDebug.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuDebug_TestButton,
             this.menuDebug_MakeSig,
@@ -532,8 +536,8 @@
             this.toolStripButtonExportSelected});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(8, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1049, 34);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(12, 0, 3, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1574, 51);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -630,7 +634,8 @@
             // 
             // splitContainerMain
             // 
-            this.splitContainerMain.Location = new System.Drawing.Point(8, 34);
+            this.splitContainerMain.Location = new System.Drawing.Point(12, 51);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -652,9 +657,9 @@
             this.splitContainerMain.Panel2.Controls.Add(this.labelSynthesizedTypeWarn);
             this.splitContainerMain.Panel2.Controls.Add(this.labelViewMode);
             this.splitContainerMain.Panel2.Controls.Add(this.dropdownContentsViewMode);
-            this.splitContainerMain.Size = new System.Drawing.Size(1032, 586);
-            this.splitContainerMain.SplitterDistance = 269;
-            this.splitContainerMain.SplitterWidth = 6;
+            this.splitContainerMain.Size = new System.Drawing.Size(1548, 879);
+            this.splitContainerMain.SplitterDistance = 403;
+            this.splitContainerMain.SplitterWidth = 9;
             this.splitContainerMain.TabIndex = 6;
             this.splitContainerMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainerMain_SplitterMoved);
             this.splitContainerMain.DoubleClick += new System.EventHandler(this.splitContainerMain_DoubleClick);
@@ -665,11 +670,10 @@
             this.labelLoading.BackColor = System.Drawing.SystemColors.ControlLight;
             this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLoading.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelLoading.Location = new System.Drawing.Point(275, 110);
-            this.labelLoading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelLoading.Location = new System.Drawing.Point(412, 165);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Padding = new System.Windows.Forms.Padding(10);
-            this.labelLoading.Size = new System.Drawing.Size(475, 60);
+            this.labelLoading.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.labelLoading.Size = new System.Drawing.Size(721, 88);
             this.labelLoading.TabIndex = 14;
             this.labelLoading.Text = "Loading Data From Clipboard\r\nSometimes this can take a while (See \"Help\" dropdown" +
     " for why)";
@@ -678,10 +682,9 @@
             // buttonResetOrder
             // 
             this.buttonResetOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetOrder.Location = new System.Drawing.Point(1010, 1);
-            this.buttonResetOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonResetOrder.Location = new System.Drawing.Point(1515, 2);
             this.buttonResetOrder.Name = "buttonResetOrder";
-            this.buttonResetOrder.Size = new System.Drawing.Size(18, 23);
+            this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
             this.buttonResetOrder.TabIndex = 17;
             this.buttonResetOrder.Text = "R";
             this.toolTip1.SetToolTip(this.buttonResetOrder, "Reset ordering");
@@ -693,9 +696,10 @@
             // 
             this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApplyEdit.Enabled = false;
-            this.buttonApplyEdit.Location = new System.Drawing.Point(767, 1);
+            this.buttonApplyEdit.Location = new System.Drawing.Point(1150, 2);
+            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
-            this.buttonApplyEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
             this.buttonApplyEdit.TabIndex = 10;
             this.buttonApplyEdit.Text = "Apply Edit";
             this.buttonApplyEdit.UseVisualStyleBackColor = true;
@@ -706,9 +710,10 @@
             // 
             this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetEdit.Enabled = false;
-            this.buttonResetEdit.Location = new System.Drawing.Point(847, 1);
+            this.buttonResetEdit.Location = new System.Drawing.Point(1270, 2);
+            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonResetEdit.Name = "buttonResetEdit";
-            this.buttonResetEdit.Size = new System.Drawing.Size(83, 23);
+            this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
             this.buttonResetEdit.TabIndex = 11;
             this.buttonResetEdit.Text = "Reset Edit";
             this.buttonResetEdit.UseVisualStyleBackColor = true;
@@ -717,10 +722,9 @@
             // buttonIncreaseIndexNumber
             // 
             this.buttonIncreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(978, 1);
-            this.buttonIncreaseIndexNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1467, 2);
             this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
-            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(28, 23);
+            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonIncreaseIndexNumber.TabIndex = 16;
             this.buttonIncreaseIndexNumber.Text = "▼";
             this.toolTip1.SetToolTip(this.buttonIncreaseIndexNumber, "Increase order index (decrease priority)");
@@ -731,10 +735,9 @@
             // buttonDecreaseIndexNumber
             // 
             this.buttonDecreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(947, 1);
-            this.buttonDecreaseIndexNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1420, 2);
             this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
-            this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(28, 23);
+            this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonDecreaseIndexNumber.TabIndex = 16;
             this.buttonDecreaseIndexNumber.Text = "▲";
             this.toolTip1.SetToolTip(this.buttonDecreaseIndexNumber, "Decrease order index (increase priority)");
@@ -748,10 +751,9 @@
             this.labelCustomFormatNameID.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelCustomFormatNameID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomFormatNameID.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelCustomFormatNameID.Location = new System.Drawing.Point(317, 3);
-            this.labelCustomFormatNameID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCustomFormatNameID.Location = new System.Drawing.Point(476, 4);
             this.labelCustomFormatNameID.Name = "labelCustomFormatNameID";
-            this.labelCustomFormatNameID.Size = new System.Drawing.Size(434, 17);
+            this.labelCustomFormatNameID.Size = new System.Drawing.Size(593, 25);
             this.labelCustomFormatNameID.TabIndex = 15;
             this.labelCustomFormatNameID.Text = "⚠️ Note: You can specify a custom Format Name or ID, but not both";
             this.toolTip1.SetToolTip(this.labelCustomFormatNameID, resources.GetString("labelCustomFormatNameID.ToolTip"));
@@ -763,10 +765,9 @@
             this.checkBoxAutoViewMode.AutoSize = true;
             this.checkBoxAutoViewMode.Checked = true;
             this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(250, 5);
-            this.checkBoxAutoViewMode.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(375, 8);
             this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
-            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(48, 17);
+            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(69, 24);
             this.checkBoxAutoViewMode.TabIndex = 14;
             this.checkBoxAutoViewMode.Text = "Auto";
             this.checkBoxAutoViewMode.UseVisualStyleBackColor = true;
@@ -774,7 +775,8 @@
             // splitterContainer_InnerTextBoxes
             // 
             this.splitterContainer_InnerTextBoxes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 31);
+            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 47);
+            this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitterContainer_InnerTextBoxes.Name = "splitterContainer_InnerTextBoxes";
             // 
             // splitterContainer_InnerTextBoxes.Panel1
@@ -787,9 +789,9 @@
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.dropdownHexToTextEncoding);
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.labelHexToPlaintextEncoding);
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.richTextBox_HexPlaintext);
-            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1032, 280);
-            this.splitterContainer_InnerTextBoxes.SplitterDistance = 644;
-            this.splitterContainer_InnerTextBoxes.SplitterWidth = 7;
+            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1548, 420);
+            this.splitterContainer_InnerTextBoxes.SplitterDistance = 966;
+            this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
             this.splitterContainer_InnerTextBoxes.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitterContainer_InnerTextBoxes_SplitterMoved);
             // 
@@ -800,9 +802,10 @@
             this.richTextBoxContents.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxContents.HideSelection = false;
             this.richTextBoxContents.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(647, 280);
+            this.richTextBoxContents.Size = new System.Drawing.Size(968, 418);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
@@ -813,9 +816,10 @@
             // 
             this.checkBoxPlainTextEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(38, 255);
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(56, 384);
+            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
-            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(101, 17);
+            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
             this.checkBoxPlainTextEditing.TabIndex = 3;
             this.checkBoxPlainTextEditing.Text = "Plaintext Editing";
             this.toolTip1.SetToolTip(this.checkBoxPlainTextEditing, resources.GetString("checkBoxPlainTextEditing.ToolTip"));
@@ -835,9 +839,10 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(211, 251);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(312, 376);
+            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
-            this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(146, 21);
+            this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
             this.dropdownHexToTextEncoding.TabIndex = 2;
             this.dropdownHexToTextEncoding.SelectedIndexChanged += new System.EventHandler(this.dropdownHexToTextEncoding_SelectedIndexChanged);
             // 
@@ -845,9 +850,10 @@
             // 
             this.labelHexToPlaintextEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(154, 255);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(226, 382);
+            this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
-            this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(55, 13);
+            this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
             this.labelHexToPlaintextEncoding.TabIndex = 1;
             this.labelHexToPlaintextEncoding.Text = "Encoding:";
             // 
@@ -857,9 +863,10 @@
             this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_HexPlaintext.HideSelection = false;
             this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(381, 246);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(570, 367);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -870,9 +877,10 @@
             this.labelSynthesizedTypeWarn.AutoSize = true;
             this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(301, 6);
+            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(452, 9);
+            this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
-            this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(114, 13);
+            this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
             this.labelSynthesizedTypeWarn.TabIndex = 9;
             this.labelSynthesizedTypeWarn.Text = "⚠️ Synthesized Format";
             this.toolTip1.SetToolTip(this.labelSynthesizedTypeWarn, resources.GetString("labelSynthesizedTypeWarn.ToolTip"));
@@ -883,10 +891,10 @@
             // 
             this.labelViewMode.AutoSize = true;
             this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelViewMode.Location = new System.Drawing.Point(3, 3);
+            this.labelViewMode.Location = new System.Drawing.Point(4, 4);
             this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
             this.labelViewMode.Name = "labelViewMode";
-            this.labelViewMode.Size = new System.Drawing.Size(80, 17);
+            this.labelViewMode.Size = new System.Drawing.Size(116, 25);
             this.labelViewMode.TabIndex = 8;
             this.labelViewMode.Text = "View Mode:";
             // 
@@ -901,9 +909,10 @@
             "Hex",
             "Hex (Editable)",
             "Object / Struct Details"});
-            this.dropdownContentsViewMode.Location = new System.Drawing.Point(83, 1);
+            this.dropdownContentsViewMode.Location = new System.Drawing.Point(124, 2);
+            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
-            this.dropdownContentsViewMode.Size = new System.Drawing.Size(161, 23);
+            this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
             this.dropdownContentsViewMode.TabIndex = 7;
             this.dropdownContentsViewMode.SelectedIndexChanged += new System.EventHandler(this.dropdownContentsViewMode_SelectedIndexChanged);
             // 
@@ -915,9 +924,10 @@
             this.labelPendingChanges.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelPendingChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPendingChanges.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelPendingChanges.Location = new System.Drawing.Point(621, 10);
+            this.labelPendingChanges.Location = new System.Drawing.Point(932, 15);
+            this.labelPendingChanges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPendingChanges.Name = "labelPendingChanges";
-            this.labelPendingChanges.Size = new System.Drawing.Size(314, 15);
+            this.labelPendingChanges.Size = new System.Drawing.Size(465, 22);
             this.labelPendingChanges.TabIndex = 12;
             this.labelPendingChanges.Text = "*Pending Changes - Click Save Icon to apply to clipboard";
             this.toolTip1.SetToolTip(this.labelPendingChanges, resources.GetString("labelPendingChanges.ToolTip"));
@@ -930,20 +940,18 @@
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelVersion.Location = new System.Drawing.Point(969, 12);
-            this.labelVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVersion.Location = new System.Drawing.Point(1454, 18);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(45, 13);
+            this.labelVersion.Size = new System.Drawing.Size(67, 20);
             this.labelVersion.TabIndex = 13;
             this.labelVersion.Text = "Version:";
             // 
             // labelTestCount
             // 
             this.labelTestCount.AutoSize = true;
-            this.labelTestCount.Location = new System.Drawing.Point(382, 0);
-            this.labelTestCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTestCount.Location = new System.Drawing.Point(573, 0);
             this.labelTestCount.Name = "labelTestCount";
-            this.labelTestCount.Size = new System.Drawing.Size(59, 13);
+            this.labelTestCount.Size = new System.Drawing.Size(87, 20);
             this.labelTestCount.TabIndex = 16;
             this.labelTestCount.Text = "Test Count";
             this.labelTestCount.Visible = false;
@@ -951,18 +959,32 @@
             // labelTestMiscellaneous
             // 
             this.labelTestMiscellaneous.AutoSize = true;
-            this.labelTestMiscellaneous.Location = new System.Drawing.Point(385, 17);
+            this.labelTestMiscellaneous.Location = new System.Drawing.Point(578, 26);
+            this.labelTestMiscellaneous.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTestMiscellaneous.Name = "labelTestMiscellaneous";
-            this.labelTestMiscellaneous.Size = new System.Drawing.Size(117, 13);
+            this.labelTestMiscellaneous.Size = new System.Drawing.Size(173, 20);
             this.labelTestMiscellaneous.TabIndex = 17;
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
             // 
+            // menuTools
+            // 
+            this.menuTools.Index = 3;
+            this.menuTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuTools_HistoryInfo});
+            this.menuTools.Text = "Tools";
+            // 
+            // menuTools_HistoryInfo
+            // 
+            this.menuTools_HistoryInfo.Index = 0;
+            this.menuTools_HistoryInfo.Text = "Clipboard History Info";
+            this.menuTools_HistoryInfo.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1049, 624);
+            this.ClientSize = new System.Drawing.Size(1574, 936);
             this.Controls.Add(this.labelTestMiscellaneous);
             this.Controls.Add(this.labelTestCount);
             this.Controls.Add(this.labelVersion);
@@ -970,6 +992,7 @@
             this.Controls.Add(this.labelPendingChanges);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Text = "Edit Clipboard Contents";
@@ -1080,5 +1103,7 @@
         private System.Windows.Forms.MenuItem menuDebug_MakeSig;
         private System.Windows.Forms.MenuItem menuDebug_TooltipDimensionsMode;
         private System.Windows.Forms.MenuItem menuDebug_CopyRTFStructInfo;
+        private System.Windows.Forms.MenuItem menuTools;
+        private System.Windows.Forms.MenuItem menuTools_HistoryInfo;
     }
 }
