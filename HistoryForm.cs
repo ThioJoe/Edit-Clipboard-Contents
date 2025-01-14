@@ -48,8 +48,15 @@ public partial class HistoryForm : Form
 
     private async void RefreshClipboardHistory()
     {
+        // Gets the history items from the clipboard
         ClipboardHistoryItemsResult result = await ConvertToTask(Windows.ApplicationModel.DataTransfer.Clipboard.GetHistoryItemsAsync());
         IReadOnlyList<ClipboardHistoryItem> historyItemsRaw = result.Items;
+
+        // Take note of the current selected item so we can reselect it after refreshing
+        List<string> IdsToSelectAfter = GetSelectedHistoryItems().Select(x => x.Id).ToList();
+
+        // Suspends the layout logic for the control while we are updating the history list
+        dataGridViewHistory.SuspendLayout();
 
         HistoryItems.Clear();
         int count = 0;
@@ -63,6 +70,22 @@ public partial class HistoryForm : Form
         dataGridViewHistory.DataSource = HistoryItems;
 
         UpdateActiveHistoryItem();
+
+        // Reselect the last selected item
+        if ( IdsToSelectAfter.Count > 0 )
+        {
+            dataGridViewHistory.ClearSelection();
+            foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
+            {
+                HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
+                if ( IdsToSelectAfter.Contains(item.Id) )
+                {
+                    row.Selected = true;
+                }
+            }
+        }
+
+        dataGridViewHistory.ResumeLayout();
     }
 
     private string GetActiveHistoryItemGUID()
@@ -99,29 +122,53 @@ public partial class HistoryForm : Form
     private void InitializeDataGridView()
     {
         dataGridViewHistory.AutoGenerateColumns = false;
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = "Active", Width = dpi(40)});
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.Id), Name = colName.UniqueID, HeaderText = "ID", Visible = false });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.OriginalIndex), Name = colName.Index, HeaderText = "#", Width = dpi(25)});
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.TextContent), Name = colName.TextPreview, HeaderText = "Text Preview" });
 
         // Set options for the DataGridView
         dataGridViewHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        dataGridViewHistory.RowHeadersWidth = dpi(20);
+        dataGridViewHistory.RowHeadersVisible = false;
 
-        // Selection change event handler to update the details on the side for the selected history item
-        dataGridViewHistory.SelectionChanged += (sender, e) =>
+        // Set the alignment of the columns
+        dataGridViewHistory.Columns[colName.Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dataGridViewHistory.Columns[colName.Active].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        // Ensure TextPreview fills remaining space
+        dataGridViewHistory.Columns[colName.TextPreview].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+        // Add event handlers
+        dataGridViewHistory.SelectionChanged += OnGridSelectionChange;
+
+        // Add a tooltip to the Active column
+        dataGridViewHistory.Columns[colName.Active].ToolTipText = "Whether a history item is the current active clipboard item.";
+
+        
+
+        // Do not do this here, wait until we have the data, otherwise it will show hidden columns despite Visible = false
+        //dataGridViewHistory.DataSource = HistoryItems; 
+    }
+
+    private void OnGridSelectionChange(object? sender , EventArgs e)
+    {
+        if ( dataGridViewHistory.SelectedRows.Count > 0 )
         {
-            if ( dataGridViewHistory.SelectedRows.Count > 0 )
-            {
-                DataGridViewRow selectedRow = dataGridViewHistory.SelectedRows[0];
-                HistoryItemInfo item = (HistoryItemInfo)selectedRow.DataBoundItem;
-                labelIndex.Text = item.OriginalIndex.ToString();
-                labelAvailableFormats.Text = string.Join("\n", item.AvailableFormats);
-                labelHistoryGUID.Text = item.Id;
-                textBoxHistoryContents.Text = item.TextContent;
-            }
-        };
+            DataGridViewRow selectedRow = dataGridViewHistory.SelectedRows[0];
+            HistoryItemInfo item = (HistoryItemInfo)selectedRow.DataBoundItem;
+            labelIndex.Text = item.OriginalIndex.ToString();
+            labelAvailableFormats.Text = string.Join("\n", item.AvailableFormats);
+            labelHistoryGUID.Text = item.Id;
+            textBoxHistoryContents.Text = item.TextContent;
 
-        //dataGridViewHistory.DataSource = HistoryItems; // Do not do this here, wait until we have the data, otherwise it will show hidden columns despite Visible = false
+            buttonDeleteHistoryItem.Enabled = true;
+            buttonSetActiveHistoryItem.Enabled = true;
+        }
+        else
+        {
+            buttonDeleteHistoryItem.Enabled = false;
+            buttonSetActiveHistoryItem.Enabled = false;
+        }
     }
 
     private void UpdateActiveHistoryItem()
@@ -135,10 +182,14 @@ public partial class HistoryForm : Form
             if ( item.Id == activeHistoryId )
             {
                 row.DefaultCellStyle.ForeColor = Color.Green;
+                // Set the value of the Active column to a checkmark
+                row.Cells[colName.Active].Value = "✔";
             }
             else
             {
                 row.DefaultCellStyle.ForeColor = defaultCellForeColor;
+                // Clear the value of the Active column
+                row.Cells[colName.Active].Value = "";
             }
         }
     }
@@ -174,9 +225,30 @@ public partial class HistoryForm : Form
         return clipboardItem;
     }
 
-    private static HistoryItemInfo GetSelectedHistoryObject()
+    private List<HistoryItemInfo> GetSelectedHistoryItems()
     {
+        var itemList = new List<HistoryItemInfo>();
 
+        // Get the current selected item in the grid view
+        DataGridViewSelectedRowCollection selectedRows = dataGridViewHistory.SelectedRows;
+
+        if ( selectedRows == null || selectedRows.Count <= 0) {
+            return itemList;
+        }
+
+        foreach ( DataGridViewRow row in selectedRows )
+        {
+            HistoryItemInfo? selectedHistoryItemInfo = (HistoryItemInfo)row.DataBoundItem;
+            if ( selectedHistoryItemInfo != null )
+            {
+                itemList.Add(selectedHistoryItemInfo);
+            }
+        }
+
+        // Order by index
+        itemList = itemList.OrderBy(x => x.OriginalIndex).ToList();
+
+        return itemList;
     }
 
     private static Task<T> ConvertToTask<T>(IAsyncOperation<T> operation)
@@ -243,8 +315,20 @@ public partial class HistoryForm : Form
     private void buttonSetActiveHistoryItem_Click(object sender, EventArgs e)
     {
         // Get the current selected item in the grid view
-        var selectedRow = dataGridViewHistory.SelectedRows[0];
-        HistoryItemInfo? selectedHistoryItemInfo = (HistoryItemInfo)selectedRow.DataBoundItem;
+        List<HistoryItemInfo> historyList = GetSelectedHistoryItems();
+
+        if ( historyList.Count > 1 )
+        {
+            MessageBox.Show("You can only make a single history item the active clipboard item. Select only 1.", "Too Many Selections", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        else if ( historyList.Count == 0 ) // The button should be disabled if none selected, but put a return just in case
+        {
+            return;
+        }
+
+        // There should be exactly 1 item at this point
+        HistoryItemInfo selectedHistoryItemInfo = historyList[0];
 
         ClipboardHistoryItem? historyObj = null;
         if ( selectedHistoryItemInfo != null ) { 
@@ -258,10 +342,60 @@ public partial class HistoryForm : Form
 
         // Ensure the history item is set as the active item
         UpdateActiveHistoryItem();
+        RefreshClipboardHistory();
     }
 
     private void buttonDeleteHistoryItem_Click(object sender, EventArgs e)
     {
+        // Get the current selected item in the grid view
+        List<HistoryItemInfo> historyList = GetSelectedHistoryItems();
 
+        if ( historyList.Count == 0 )
+        {
+            return;
+        }
+
+        // Take note of the item after last selected item so we can set that as the new selected item after deletion
+        string IdToSelectAfter;
+        int indexAfterlastSelectedIndex = historyList.Last().OriginalIndex + 1;
+        HistoryItemInfo? selectedItem = HistoryItems.FirstOrDefault(x => x.OriginalIndex == indexAfterlastSelectedIndex);
+
+        if ( selectedItem == null )
+        {
+            IdToSelectAfter = "";
+        }
+        else
+        {
+            IdToSelectAfter = selectedItem.Id;
+        }
+
+        // Loops through the selected history items and deletes them all
+        foreach ( HistoryItemInfo historyItem in historyList )
+        {
+            if ( historyItem.OriginalObject != null )
+            {
+                Windows.ApplicationModel.DataTransfer.Clipboard.DeleteItemFromHistory(historyItem.OriginalObject);
+            }
+        }
+
+        // Disable GUI update of the history list while deleting to avoid flickering
+        dataGridViewHistory.SuspendLayout();
+
+        // Refresh the history list
+        RefreshClipboardHistory();
+
+        // Reselect the last selected item
+        foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
+        {
+            HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
+            if ( item.Id == IdToSelectAfter )
+            {
+                dataGridViewHistory.ClearSelection();
+                row.Selected = true;
+                break;
+            }
+        }
+
+        dataGridViewHistory.ResumeLayout();
     }
 }

@@ -3386,6 +3386,7 @@ namespace EditClipboardContents
         public const string DataSize = "DataSize";
         public const string DataInfo = "DataInfo";
         public const string TextPreview = "TextPreview";
+        public const string Active = "Active";
     }
 
     public static class MyStrings
