@@ -50,41 +50,55 @@ public partial class HistoryForm : Form
         // Gets the history items from the clipboard
         ClipboardHistoryItemsResult result = await ConvertToTask(Windows.ApplicationModel.DataTransfer.Clipboard.GetHistoryItemsAsync());
         IReadOnlyList<ClipboardHistoryItem> historyItemsRaw = result.Items;
-
         // Take note of the current selected item so we can reselect it after refreshing
         List<string> IdsToSelectAfter = GetSelectedHistoryItems().Select(x => x.Id).ToList();
 
-        // Suspends the layout logic for the control while we are updating the history list
-        dataGridViewHistory.SuspendLayout();
-
-        HistoryItems.Clear();
-        int count = 0;
-        foreach ( var item in historyItemsRaw )
+        try
         {
-            HistoryItems.Add(ConstructHistoryItem(item, count));
-            count++;
-        }
+            // Suspends the layout and painting of the control
+            dataGridViewHistory.SuspendLayout();
+            dataGridViewHistory.Visible = false;  // Hide the grid while updating
 
-        HistoryItemCount = count;
-        dataGridViewHistory.DataSource = HistoryItems;
-
-        UpdateActiveHistoryItem();
-
-        // Reselect the last selected item
-        if ( IdsToSelectAfter.Count > 0 )
-        {
-            dataGridViewHistory.ClearSelection();
-            foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
+            // Create a new list without clearing the old one first
+            var newHistoryItems = new SortableBindingList<HistoryItemInfo>();
+            int count = 0;
+            foreach ( var item in historyItemsRaw )
             {
-                HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
-                if ( IdsToSelectAfter.Contains(item.Id) )
+                newHistoryItems.Add(ConstructHistoryItem(item, count));
+                count++;
+            }
+            HistoryItemCount = count;
+
+            // Only update the DataSource if it's different
+            if ( dataGridViewHistory.DataSource == null || !HistoryItems.SequenceEqual(newHistoryItems) )
+            {
+                // Set the new binding list all at once
+                HistoryItems = newHistoryItems;
+                dataGridViewHistory.DataSource = HistoryItems;
+            }
+
+            UpdateActiveHistoryItem();
+
+            // Reselect the last selected item
+            if ( IdsToSelectAfter.Count > 0 )
+            {
+                dataGridViewHistory.ClearSelection();
+                foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
                 {
-                    row.Selected = true;
+                    HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
+                    if ( IdsToSelectAfter.Contains(item.Id) )
+                    {
+                        row.Selected = true;
+                    }
                 }
             }
         }
-
-        dataGridViewHistory.ResumeLayout();
+        finally
+        {
+            // Always ensure we resume the layout and show the grid
+            dataGridViewHistory.Visible = true;
+            dataGridViewHistory.ResumeLayout();
+        }
     }
 
     private string GetActiveHistoryItemGUID()
