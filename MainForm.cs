@@ -3386,7 +3386,9 @@ namespace EditClipboardContents
         public const string DataSize = "DataSize";
         public const string DataInfo = "DataInfo";
         public const string TextPreview = "TextPreview";
+        // For history grid
         public const string Active = "Active";
+        public const string FormatCount = "FormatCount";
     }
 
     public static class MyStrings

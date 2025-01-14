@@ -39,14 +39,14 @@ partial class HistoryForm
             this.labelHeaderContents = new System.Windows.Forms.Label();
             this.labelIndex = new System.Windows.Forms.Label();
             this.labelHistoryGUID = new System.Windows.Forms.Label();
-            this.labelAvailableFormats = new System.Windows.Forms.Label();
             this.labelHistoryStatus = new System.Windows.Forms.Label();
+            this.listViewAvailableFormats = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRefreshHistory
             // 
-            this.buttonRefreshHistory.Location = new System.Drawing.Point(874, 12);
+            this.buttonRefreshHistory.Location = new System.Drawing.Point(1000, 23);
             this.buttonRefreshHistory.Name = "buttonRefreshHistory";
             this.buttonRefreshHistory.Size = new System.Drawing.Size(142, 40);
             this.buttonRefreshHistory.TabIndex = 0;
@@ -66,7 +66,7 @@ partial class HistoryForm
             this.dataGridViewHistory.ReadOnly = true;
             this.dataGridViewHistory.RowHeadersWidth = 62;
             this.dataGridViewHistory.RowTemplate.Height = 28;
-            this.dataGridViewHistory.Size = new System.Drawing.Size(330, 522);
+            this.dataGridViewHistory.Size = new System.Drawing.Size(458, 522);
             this.dataGridViewHistory.TabIndex = 1;
             // 
             // buttonDeleteHistoryItem
@@ -82,7 +82,7 @@ partial class HistoryForm
             // labelHeaderAvailableFormats
             // 
             this.labelHeaderAvailableFormats.AutoSize = true;
-            this.labelHeaderAvailableFormats.Location = new System.Drawing.Point(364, 163);
+            this.labelHeaderAvailableFormats.Location = new System.Drawing.Point(481, 147);
             this.labelHeaderAvailableFormats.Name = "labelHeaderAvailableFormats";
             this.labelHeaderAvailableFormats.Size = new System.Drawing.Size(111, 20);
             this.labelHeaderAvailableFormats.TabIndex = 3;
@@ -101,7 +101,7 @@ partial class HistoryForm
             // labelHeaderHistoryGUID
             // 
             this.labelHeaderHistoryGUID.AutoSize = true;
-            this.labelHeaderHistoryGUID.Location = new System.Drawing.Point(364, 128);
+            this.labelHeaderHistoryGUID.Location = new System.Drawing.Point(481, 112);
             this.labelHeaderHistoryGUID.Name = "labelHeaderHistoryGUID";
             this.labelHeaderHistoryGUID.Size = new System.Drawing.Size(83, 20);
             this.labelHeaderHistoryGUID.TabIndex = 5;
@@ -110,7 +110,7 @@ partial class HistoryForm
             // labelHeaderIndex
             // 
             this.labelHeaderIndex.AutoSize = true;
-            this.labelHeaderIndex.Location = new System.Drawing.Point(364, 97);
+            this.labelHeaderIndex.Location = new System.Drawing.Point(481, 81);
             this.labelHeaderIndex.Name = "labelHeaderIndex";
             this.labelHeaderIndex.Size = new System.Drawing.Size(52, 20);
             this.labelHeaderIndex.TabIndex = 6;
@@ -118,7 +118,7 @@ partial class HistoryForm
             // 
             // textBoxHistoryContents
             // 
-            this.textBoxHistoryContents.Location = new System.Drawing.Point(354, 275);
+            this.textBoxHistoryContents.Location = new System.Drawing.Point(480, 276);
             this.textBoxHistoryContents.Name = "textBoxHistoryContents";
             this.textBoxHistoryContents.Size = new System.Drawing.Size(680, 326);
             this.textBoxHistoryContents.TabIndex = 7;
@@ -127,7 +127,7 @@ partial class HistoryForm
             // labelHeaderContents
             // 
             this.labelHeaderContents.AutoSize = true;
-            this.labelHeaderContents.Location = new System.Drawing.Point(350, 248);
+            this.labelHeaderContents.Location = new System.Drawing.Point(476, 249);
             this.labelHeaderContents.Name = "labelHeaderContents";
             this.labelHeaderContents.Size = new System.Drawing.Size(112, 20);
             this.labelHeaderContents.TabIndex = 8;
@@ -136,7 +136,7 @@ partial class HistoryForm
             // labelIndex
             // 
             this.labelIndex.AutoSize = true;
-            this.labelIndex.Location = new System.Drawing.Point(506, 97);
+            this.labelIndex.Location = new System.Drawing.Point(623, 81);
             this.labelIndex.Name = "labelIndex";
             this.labelIndex.Size = new System.Drawing.Size(56, 20);
             this.labelIndex.TabIndex = 11;
@@ -145,39 +145,42 @@ partial class HistoryForm
             // labelHistoryGUID
             // 
             this.labelHistoryGUID.AutoSize = true;
-            this.labelHistoryGUID.Location = new System.Drawing.Point(506, 128);
+            this.labelHistoryGUID.Location = new System.Drawing.Point(623, 112);
             this.labelHistoryGUID.Name = "labelHistoryGUID";
             this.labelHistoryGUID.Size = new System.Drawing.Size(87, 20);
             this.labelHistoryGUID.TabIndex = 10;
             this.labelHistoryGUID.Text = "[History ID]";
             // 
-            // labelAvailableFormats
-            // 
-            this.labelAvailableFormats.AutoSize = true;
-            this.labelAvailableFormats.Location = new System.Drawing.Point(506, 163);
-            this.labelAvailableFormats.Name = "labelAvailableFormats";
-            this.labelAvailableFormats.Size = new System.Drawing.Size(115, 20);
-            this.labelAvailableFormats.TabIndex = 9;
-            this.labelAvailableFormats.Text = "[Data Formats]";
-            // 
             // labelHistoryStatus
             // 
             this.labelHistoryStatus.AutoSize = true;
-            this.labelHistoryStatus.Location = new System.Drawing.Point(836, 65);
+            this.labelHistoryStatus.Location = new System.Drawing.Point(962, 66);
             this.labelHistoryStatus.Name = "labelHistoryStatus";
             this.labelHistoryStatus.Size = new System.Drawing.Size(180, 20);
             this.labelHistoryStatus.TabIndex = 12;
             this.labelHistoryStatus.Text = "Clipboard History Status";
             // 
+            // listViewAvailableFormats
+            // 
+            this.listViewAvailableFormats.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewAvailableFormats.HideSelection = false;
+            this.listViewAvailableFormats.Location = new System.Drawing.Point(627, 147);
+            this.listViewAvailableFormats.Name = "listViewAvailableFormats";
+            this.listViewAvailableFormats.ShowGroups = false;
+            this.listViewAvailableFormats.Size = new System.Drawing.Size(375, 113);
+            this.listViewAvailableFormats.TabIndex = 13;
+            this.listViewAvailableFormats.UseCompatibleStateImageBehavior = false;
+            this.listViewAvailableFormats.View = System.Windows.Forms.View.List;
+            // 
             // HistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 614);
+            this.ClientSize = new System.Drawing.Size(1172, 614);
+            this.Controls.Add(this.listViewAvailableFormats);
             this.Controls.Add(this.labelHistoryStatus);
             this.Controls.Add(this.labelIndex);
             this.Controls.Add(this.labelHistoryGUID);
-            this.Controls.Add(this.labelAvailableFormats);
             this.Controls.Add(this.labelHeaderContents);
             this.Controls.Add(this.textBoxHistoryContents);
             this.Controls.Add(this.labelHeaderIndex);
@@ -208,6 +211,6 @@ partial class HistoryForm
     private System.Windows.Forms.Label labelHeaderContents;
     private System.Windows.Forms.Label labelIndex;
     private System.Windows.Forms.Label labelHistoryGUID;
-    private System.Windows.Forms.Label labelAvailableFormats;
     private System.Windows.Forms.Label labelHistoryStatus;
+    private System.Windows.Forms.ListView listViewAvailableFormats;
 }

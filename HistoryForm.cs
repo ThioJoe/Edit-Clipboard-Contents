@@ -122,33 +122,42 @@ public partial class HistoryForm : Form
     private void InitializeDataGridView()
     {
         dataGridViewHistory.AutoGenerateColumns = false;
-        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = "Active", Width = dpi(40)});
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.OriginalIndex), Name = colName.Index, HeaderText = "", Width = dpi(25) });
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { Name = colName.Active, HeaderText = MyStrings.Check, Width = dpi(25)});
+        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.FormatCount), Name = colName.FormatCount, HeaderText = "# Formats", Width = dpi(50) });
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.Id), Name = colName.UniqueID, HeaderText = "ID", Visible = false });
-        dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.OriginalIndex), Name = colName.Index, HeaderText = "#", Width = dpi(25)});
         dataGridViewHistory.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = nameof(HistoryItemInfo.TextContent), Name = colName.TextPreview, HeaderText = "Text Preview" });
 
-        // Set options for the DataGridView
+        // Datagridview options
         dataGridViewHistory.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         dataGridViewHistory.RowHeadersVisible = false;
+        dataGridViewHistory.ShowCellToolTips = true;
+        //dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.WrapMode = DataGridViewTriState.False;
 
-        // Set the alignment of the columns
-        dataGridViewHistory.Columns[colName.Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        dataGridViewHistory.Columns[colName.Active].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        // Alignment - Headers
+        dataGridViewHistory.Columns[colName.Active].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+        dataGridViewHistory.Columns[colName.Index].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+        dataGridViewHistory.Columns[colName.FormatCount].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
+        dataGridViewHistory.Columns[colName.TextPreview].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomLeft;
+        // Alignment - Cells
+        dataGridViewHistory.Columns[colName.Active].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+        dataGridViewHistory.Columns[colName.FormatCount].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
 
-        // Ensure TextPreview fills remaining space
+        // Individual column settings
         dataGridViewHistory.Columns[colName.TextPreview].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        dataGridViewHistory.Columns[colName.Active].ToolTipText = "Whether a history item is the current active clipboard item.";
+        dataGridViewHistory.Columns[colName.FormatCount].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
         // Add event handlers
         dataGridViewHistory.SelectionChanged += OnGridSelectionChange;
-
-        // Add a tooltip to the Active column
-        dataGridViewHistory.Columns[colName.Active].ToolTipText = "Whether a history item is the current active clipboard item.";
-
-        
+        dataGridViewHistory.CellToolTipTextNeeded += DataGridViewHistory_CellToolTipTextNeeded; // For adding tooltips to cells, not just columns
 
         // Do not do this here, wait until we have the data, otherwise it will show hidden columns despite Visible = false
         //dataGridViewHistory.DataSource = HistoryItems; 
+
+        dataGridViewHistory.PerformLayout();
     }
+
 
     private void OnGridSelectionChange(object? sender , EventArgs e)
     {
@@ -157,17 +166,46 @@ public partial class HistoryForm : Form
             DataGridViewRow selectedRow = dataGridViewHistory.SelectedRows[0];
             HistoryItemInfo item = (HistoryItemInfo)selectedRow.DataBoundItem;
             labelIndex.Text = item.OriginalIndex.ToString();
-            labelAvailableFormats.Text = string.Join("\n", item.AvailableFormats);
+            //labelAvailableFormats.Text = string.Join("\n", item.AvailableFormats);
             labelHistoryGUID.Text = item.Id;
             textBoxHistoryContents.Text = item.TextContent;
+
+            // Populate the list view with available formats
+            listViewAvailableFormats.Items.Clear();
+            foreach ( string format in item.AvailableFormats )
+            {
+                listViewAvailableFormats.Items.Add(format);
+            }
 
             buttonDeleteHistoryItem.Enabled = true;
             buttonSetActiveHistoryItem.Enabled = true;
         }
         else
         {
+            labelIndex.Text = "";
+            //labelAvailableFormats.Text = "";
+            labelHistoryGUID.Text = "";
+            textBoxHistoryContents.Text = "";
+            listViewAvailableFormats.Items.Clear();
+
             buttonDeleteHistoryItem.Enabled = false;
             buttonSetActiveHistoryItem.Enabled = false;
+        }
+    }
+
+    private void DataGridViewHistory_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
+    {
+        if ( e.ColumnIndex == dataGridViewHistory.Columns[colName.Active].Index )
+        {
+            // If the cell contains a check, use a different tooltip
+            if ( dataGridViewHistory.Rows[e.RowIndex].Cells[e.ColumnIndex].Value?.ToString() == MyStrings.Check )
+            {
+                e.ToolTipText = "This item is currently on the clipboard.";
+            }
+            else
+            {
+                e.ToolTipText = "Whether a history item is the current active clipboard item.";
+            }
         }
     }
 
@@ -175,20 +213,18 @@ public partial class HistoryForm : Form
     {
         string activeHistoryId = GetActiveHistoryItemGUID();
 
-        // Set the color of the active history item to green, the rest default
+        // Set the color of the active history item to green and text to checkmark, the rest default
         foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
         {
             HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
             if ( item.Id == activeHistoryId )
             {
                 row.DefaultCellStyle.ForeColor = Color.Green;
-                // Set the value of the Active column to a checkmark
-                row.Cells[colName.Active].Value = "✔";
+                row.Cells[colName.Active].Value = MyStrings.Check;
             }
             else
             {
                 row.DefaultCellStyle.ForeColor = defaultCellForeColor;
-                // Clear the value of the Active column
                 row.Cells[colName.Active].Value = "";
             }
         }
@@ -280,6 +316,7 @@ public partial class HistoryForm : Form
         public string TextContent { get; set; } = "";
         public List<string> AvailableFormats { get; set; } = [];
         public ClipboardHistoryItem? OriginalObject { get; set; } = null;
+        public int FormatCount => AvailableFormats.Count;
     }
 
     // -------------------------- Event Handlers --------------------------
@@ -398,4 +435,10 @@ public partial class HistoryForm : Form
 
         dataGridViewHistory.ResumeLayout();
     }
+
+    private static class MyStrings
+    {
+        public const string Check = "✔";
+    }
+
 }
