@@ -46,10 +46,9 @@ partial class HistoryForm
             // 
             // buttonRefreshHistory
             // 
-            this.buttonRefreshHistory.Location = new System.Drawing.Point(8, 15);
-            this.buttonRefreshHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonRefreshHistory.Location = new System.Drawing.Point(874, 12);
             this.buttonRefreshHistory.Name = "buttonRefreshHistory";
-            this.buttonRefreshHistory.Size = new System.Drawing.Size(95, 26);
+            this.buttonRefreshHistory.Size = new System.Drawing.Size(142, 40);
             this.buttonRefreshHistory.TabIndex = 0;
             this.buttonRefreshHistory.Text = "Refresh History";
             this.buttonRefreshHistory.UseVisualStyleBackColor = true;
@@ -62,21 +61,19 @@ partial class HistoryForm
             this.dataGridViewHistory.AllowUserToResizeColumns = false;
             this.dataGridViewHistory.AllowUserToResizeRows = false;
             this.dataGridViewHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewHistory.Location = new System.Drawing.Point(8, 52);
-            this.dataGridViewHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewHistory.Location = new System.Drawing.Point(12, 80);
             this.dataGridViewHistory.Name = "dataGridViewHistory";
             this.dataGridViewHistory.ReadOnly = true;
             this.dataGridViewHistory.RowHeadersWidth = 62;
             this.dataGridViewHistory.RowTemplate.Height = 28;
-            this.dataGridViewHistory.Size = new System.Drawing.Size(220, 339);
+            this.dataGridViewHistory.Size = new System.Drawing.Size(330, 522);
             this.dataGridViewHistory.TabIndex = 1;
             // 
             // buttonDeleteHistoryItem
             // 
-            this.buttonDeleteHistoryItem.Location = new System.Drawing.Point(251, 15);
-            this.buttonDeleteHistoryItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDeleteHistoryItem.Location = new System.Drawing.Point(171, 23);
             this.buttonDeleteHistoryItem.Name = "buttonDeleteHistoryItem";
-            this.buttonDeleteHistoryItem.Size = new System.Drawing.Size(123, 26);
+            this.buttonDeleteHistoryItem.Size = new System.Drawing.Size(171, 40);
             this.buttonDeleteHistoryItem.TabIndex = 2;
             this.buttonDeleteHistoryItem.Text = "Delete From History";
             this.buttonDeleteHistoryItem.UseVisualStyleBackColor = true;
@@ -85,19 +82,17 @@ partial class HistoryForm
             // labelHeaderAvailableFormats
             // 
             this.labelHeaderAvailableFormats.AutoSize = true;
-            this.labelHeaderAvailableFormats.Location = new System.Drawing.Point(243, 106);
-            this.labelHeaderAvailableFormats.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHeaderAvailableFormats.Location = new System.Drawing.Point(364, 163);
             this.labelHeaderAvailableFormats.Name = "labelHeaderAvailableFormats";
-            this.labelHeaderAvailableFormats.Size = new System.Drawing.Size(73, 13);
+            this.labelHeaderAvailableFormats.Size = new System.Drawing.Size(111, 20);
             this.labelHeaderAvailableFormats.TabIndex = 3;
             this.labelHeaderAvailableFormats.Text = "Data Formats:";
             // 
             // buttonSetActiveHistoryItem
             // 
-            this.buttonSetActiveHistoryItem.Location = new System.Drawing.Point(137, 15);
-            this.buttonSetActiveHistoryItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSetActiveHistoryItem.Location = new System.Drawing.Point(12, 23);
             this.buttonSetActiveHistoryItem.Name = "buttonSetActiveHistoryItem";
-            this.buttonSetActiveHistoryItem.Size = new System.Drawing.Size(111, 26);
+            this.buttonSetActiveHistoryItem.Size = new System.Drawing.Size(154, 40);
             this.buttonSetActiveHistoryItem.TabIndex = 4;
             this.buttonSetActiveHistoryItem.Text = "Make Active Item";
             this.buttonSetActiveHistoryItem.UseVisualStyleBackColor = true;
@@ -106,87 +101,79 @@ partial class HistoryForm
             // labelHeaderHistoryGUID
             // 
             this.labelHeaderHistoryGUID.AutoSize = true;
-            this.labelHeaderHistoryGUID.Location = new System.Drawing.Point(243, 83);
-            this.labelHeaderHistoryGUID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHeaderHistoryGUID.Location = new System.Drawing.Point(364, 128);
             this.labelHeaderHistoryGUID.Name = "labelHeaderHistoryGUID";
-            this.labelHeaderHistoryGUID.Size = new System.Drawing.Size(56, 13);
+            this.labelHeaderHistoryGUID.Size = new System.Drawing.Size(83, 20);
             this.labelHeaderHistoryGUID.TabIndex = 5;
             this.labelHeaderHistoryGUID.Text = "History ID:";
             // 
             // labelHeaderIndex
             // 
             this.labelHeaderIndex.AutoSize = true;
-            this.labelHeaderIndex.Location = new System.Drawing.Point(243, 63);
-            this.labelHeaderIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHeaderIndex.Location = new System.Drawing.Point(364, 97);
             this.labelHeaderIndex.Name = "labelHeaderIndex";
-            this.labelHeaderIndex.Size = new System.Drawing.Size(36, 13);
+            this.labelHeaderIndex.Size = new System.Drawing.Size(52, 20);
             this.labelHeaderIndex.TabIndex = 6;
             this.labelHeaderIndex.Text = "Index:";
             // 
             // textBoxHistoryContents
             // 
-            this.textBoxHistoryContents.Location = new System.Drawing.Point(232, 179);
-            this.textBoxHistoryContents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxHistoryContents.Location = new System.Drawing.Point(354, 275);
             this.textBoxHistoryContents.Name = "textBoxHistoryContents";
-            this.textBoxHistoryContents.Size = new System.Drawing.Size(459, 213);
+            this.textBoxHistoryContents.Size = new System.Drawing.Size(680, 326);
             this.textBoxHistoryContents.TabIndex = 7;
             this.textBoxHistoryContents.Text = "";
             // 
             // labelHeaderContents
             // 
             this.labelHeaderContents.AutoSize = true;
-            this.labelHeaderContents.Location = new System.Drawing.Point(233, 161);
-            this.labelHeaderContents.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHeaderContents.Location = new System.Drawing.Point(350, 248);
             this.labelHeaderContents.Name = "labelHeaderContents";
-            this.labelHeaderContents.Size = new System.Drawing.Size(76, 13);
+            this.labelHeaderContents.Size = new System.Drawing.Size(112, 20);
             this.labelHeaderContents.TabIndex = 8;
             this.labelHeaderContents.Text = "Text Contents:";
             // 
             // labelIndex
             // 
             this.labelIndex.AutoSize = true;
-            this.labelIndex.Location = new System.Drawing.Point(337, 63);
-            this.labelIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelIndex.Location = new System.Drawing.Point(506, 97);
             this.labelIndex.Name = "labelIndex";
-            this.labelIndex.Size = new System.Drawing.Size(39, 13);
+            this.labelIndex.Size = new System.Drawing.Size(56, 20);
             this.labelIndex.TabIndex = 11;
             this.labelIndex.Text = "[Index]";
             // 
             // labelHistoryGUID
             // 
             this.labelHistoryGUID.AutoSize = true;
-            this.labelHistoryGUID.Location = new System.Drawing.Point(337, 83);
-            this.labelHistoryGUID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHistoryGUID.Location = new System.Drawing.Point(506, 128);
             this.labelHistoryGUID.Name = "labelHistoryGUID";
-            this.labelHistoryGUID.Size = new System.Drawing.Size(59, 13);
+            this.labelHistoryGUID.Size = new System.Drawing.Size(87, 20);
             this.labelHistoryGUID.TabIndex = 10;
             this.labelHistoryGUID.Text = "[History ID]";
             // 
             // labelAvailableFormats
             // 
             this.labelAvailableFormats.AutoSize = true;
-            this.labelAvailableFormats.Location = new System.Drawing.Point(337, 106);
-            this.labelAvailableFormats.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelAvailableFormats.Location = new System.Drawing.Point(506, 163);
             this.labelAvailableFormats.Name = "labelAvailableFormats";
-            this.labelAvailableFormats.Size = new System.Drawing.Size(76, 13);
+            this.labelAvailableFormats.Size = new System.Drawing.Size(115, 20);
             this.labelAvailableFormats.TabIndex = 9;
             this.labelAvailableFormats.Text = "[Data Formats]";
             // 
             // labelHistoryStatus
             // 
             this.labelHistoryStatus.AutoSize = true;
-            this.labelHistoryStatus.Location = new System.Drawing.Point(557, 15);
-            this.labelHistoryStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHistoryStatus.Location = new System.Drawing.Point(836, 65);
             this.labelHistoryStatus.Name = "labelHistoryStatus";
-            this.labelHistoryStatus.Size = new System.Drawing.Size(119, 13);
+            this.labelHistoryStatus.Size = new System.Drawing.Size(180, 20);
             this.labelHistoryStatus.TabIndex = 12;
             this.labelHistoryStatus.Text = "Clipboard History Status";
             // 
             // HistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 399);
+            this.ClientSize = new System.Drawing.Size(1047, 614);
             this.Controls.Add(this.labelHistoryStatus);
             this.Controls.Add(this.labelIndex);
             this.Controls.Add(this.labelHistoryGUID);
@@ -200,7 +187,6 @@ partial class HistoryForm
             this.Controls.Add(this.buttonDeleteHistoryItem);
             this.Controls.Add(this.dataGridViewHistory);
             this.Controls.Add(this.buttonRefreshHistory);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "HistoryForm";
             this.Text = "HistoryForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).EndInit();
