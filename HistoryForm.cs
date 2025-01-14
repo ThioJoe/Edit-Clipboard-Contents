@@ -41,6 +41,7 @@ public partial class HistoryForm : Form
         InitializeDataGridView();
 
         Windows.ApplicationModel.DataTransfer.Clipboard.HistoryEnabledChanged += OnHistoryEnabledChanged;
+        dataGridViewHistory.MouseWheel += new MouseEventHandler(dataGridViewClipboard_MouseWheel);
 
         // Get initial status
         OnHistoryEnabledChanged(null, null);
@@ -587,5 +588,61 @@ public partial class HistoryForm : Form
         }
 
         dataGridViewHistory.ResumeLayout();
+    }
+
+    private void dataGridViewClipboard_MouseWheel(object sender, MouseEventArgs e)
+    {
+        dataGridMouseScrollSelector(sender, e, dataGridViewHistory);
+    }
+
+    private void dataGridMouseScrollSelector(object sender, MouseEventArgs e, DataGridView currentDataGridView)
+    {
+        if ( ((HandledMouseEventArgs)e).Handled == true )
+        {
+            return;
+        }
+
+        // Determine direction: -1 for up, 1 for down
+        int direction = e.Delta > 0 ? -1 : 1;
+
+        // Get current selected row index
+        int currentIndex = dataGridViewHistory.CurrentCell?.RowIndex ?? -1;
+
+        if ( currentIndex != -1 )
+        {
+            // Calculate new index
+            int newIndex = currentIndex + direction;
+
+            // Ensure new index is within bounds
+            int rowCount = dataGridViewHistory.Rows.Count;
+            if ( newIndex < 0 )
+            {
+                newIndex = 0;
+            }
+            else if ( newIndex >= rowCount )
+            {
+                newIndex = rowCount - 1;
+            }
+
+            // If the index has changed, update selection
+            if ( newIndex != currentIndex || newIndex <= dataGridViewHistory.Rows.Count )
+            {
+                int focusedCellIndex = dataGridViewHistory.CurrentCell?.ColumnIndex ?? 0;
+
+                dataGridViewHistory.ClearSelection();
+                dataGridViewHistory.Rows[newIndex].Selected = true;
+                dataGridViewHistory.CurrentCell = dataGridViewHistory.Rows[newIndex].Cells[focusedCellIndex];
+
+                // Scroll to the new index, but only if it's not already visible
+                if ( newIndex < dataGridViewHistory.FirstDisplayedScrollingRowIndex
+                    || newIndex >= dataGridViewHistory.FirstDisplayedScrollingRowIndex + dataGridViewHistory.DisplayedRowCount(false) )
+                {
+                    dataGridViewHistory.FirstDisplayedScrollingRowIndex = newIndex;
+                }
+            }
+        }
+
+        // Mark as handled because the event might get fired multiple times per scroll
+        ((HandledMouseEventArgs)e).Handled = true;
     }
 }
