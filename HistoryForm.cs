@@ -24,6 +24,7 @@ public partial class HistoryForm : Form
     public static bool IsHistoryEnabled => Windows.ApplicationModel.DataTransfer.Clipboard.IsHistoryEnabled();
     public static int HistoryItemCount = 0;
     public static string CurrentActiveHistoryItemGUID = "";
+    public HistoryItemInfo? CurrentlyShownHistoryItem = null;
 
     private static Color defaultCellForeColor;
 
@@ -38,6 +39,7 @@ public partial class HistoryForm : Form
         InitializeDataGridView();
 
         Windows.ApplicationModel.DataTransfer.Clipboard.HistoryEnabledChanged += OnHistoryEnabledChanged;
+        listViewAvailableFormats.SelectedIndexChanged += OnFormatsListViewSelectionChanged;
 
         // Get initial status
         OnHistoryEnabledChanged(null, null);
@@ -180,6 +182,8 @@ public partial class HistoryForm : Form
             labelHistoryGUID.Text = item.Id;
             textBoxHistoryContents.Text = item.TextContent;
 
+            CurrentlyShownHistoryItem = item;
+
             // Populate the list view with available formats
             listViewAvailableFormats.Items.Clear();
             foreach ( string format in item.AvailableFormats )
@@ -197,6 +201,8 @@ public partial class HistoryForm : Form
             labelHistoryGUID.Text = "";
             textBoxHistoryContents.Text = "";
             listViewAvailableFormats.Items.Clear();
+
+            CurrentlyShownHistoryItem = null;
 
             buttonDeleteHistoryItem.Enabled = false;
             buttonSetActiveHistoryItem.Enabled = false;
@@ -326,6 +332,30 @@ public partial class HistoryForm : Form
         {
             labelHistoryStatus.Text = "Clipboard History Disabled";
             labelHistoryStatus.ForeColor = Color.Red;
+        }
+    }
+
+    private void OnFormatsListViewSelectionChanged(object? sender, EventArgs e)
+    {
+        if ( listViewAvailableFormats.SelectedItems.Count > 0 )
+        {
+            string selectedFormat = listViewAvailableFormats.SelectedItems[0].Text;
+            if ( selectedFormat != null && CurrentlyShownHistoryItem != null)
+            {
+                ClipboardHistoryItem? historyObj = CurrentlyShownHistoryItem.OriginalObject;
+                if ( historyObj != null )
+                {
+                    DataPackageView content = historyObj.Content;
+                    if ( content.Contains(selectedFormat) )
+                    {
+                        object data = ConvertToTask(content.GetDataAsync(selectedFormat)).GetAwaiter().GetResult();
+                        if ( data != null )
+                        {
+                            textBoxHistoryContents.Text = data.ToString();
+                        }
+                    }
+                }
+            }
         }
     }
 
