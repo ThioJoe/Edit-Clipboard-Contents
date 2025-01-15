@@ -18,8 +18,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewClipboard = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip_dataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -82,6 +82,7 @@
             this.toolStripButtonAddFormat = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSaveEdited = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonExportSelected = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.labelLoading = new System.Windows.Forms.Label();
             this.buttonResetOrder = new System.Windows.Forms.Button();
@@ -105,7 +106,6 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
-            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -125,24 +125,24 @@
             this.dataGridViewClipboard.AllowUserToDeleteRows = false;
             this.dataGridViewClipboard.AllowUserToResizeRows = false;
             this.dataGridViewClipboard.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClipboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClipboard.ContextMenuStrip = this.contextMenuStrip_dataGridView;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
@@ -647,6 +647,17 @@
             this.toolStripButtonExportSelected.ToolTipText = "Export selected item data as file";
             this.toolStripButtonExportSelected.Click += new System.EventHandler(this.toolStripButtonExportSelected_Click);
             // 
+            // toolStripButtonShowHistoryForm
+            // 
+            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonShowHistoryForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonShowHistoryForm.Image")));
+            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
+            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
+            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
+            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.Location = new System.Drawing.Point(12, 51);
@@ -831,7 +842,7 @@
             // 
             this.checkBoxPlainTextEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(50, 384);
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(-58, 384);
             this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
             this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
@@ -854,7 +865,7 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(306, 376);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(198, 376);
             this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
@@ -865,7 +876,7 @@
             // 
             this.labelHexToPlaintextEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(220, 382);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(112, 382);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
             this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
@@ -982,17 +993,6 @@
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
             // 
-            // toolStripButtonShowHistoryForm
-            // 
-            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonShowHistoryForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonShowHistoryForm.Image")));
-            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
-            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
-            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
-            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -1006,7 +1006,6 @@
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Text = "Edit Clipboard Contents";
             this.Load += new System.EventHandler(this.MainForm_Load);

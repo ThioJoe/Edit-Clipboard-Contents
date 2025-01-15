@@ -47,6 +47,7 @@ namespace EditClipboardContents
         private readonly List<ClipboardItem> clipboardItems = new List<ClipboardItem>();
         //private List<ClipboardItem> editedClipboardItems = new List<ClipboardItem>();
         private SortableBindingList<ClipboardItem> editedClipboardItems = new SortableBindingList<ClipboardItem>();
+        private RichTextBoxContextMenuManager contextMenuManager;
 
         // Other globals
         private readonly bool _debugMode;
@@ -114,6 +115,12 @@ namespace EditClipboardContents
             isResizing = true; // Set to true so our window resize logic in MainForm_Resize event doesn't trigger until the form is fully initialized
             InitializeComponent();
             editedClipboardItems.ListChanged += EditedClipboardItems_ListChanged;
+
+            // Initialize context menu manager for rich text boxes
+            contextMenuManager = new RichTextBoxContextMenuManager();
+            contextMenuManager.SetSuppressionVariableForParentForm += (sender, suppress) => suppressTextBoxSelectionChange = suppress;
+            contextMenuManager.AttachToRichTextBox(richTextBoxContents);
+            contextMenuManager.AttachToRichTextBox(richTextBox_HexPlaintext);
 
             // ----------------- Debugging mode stuff -----------------
             // Always show these in DEBUG builds

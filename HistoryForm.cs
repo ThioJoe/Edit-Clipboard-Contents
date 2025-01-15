@@ -33,12 +33,19 @@ public partial class HistoryForm : Form
     // Alias for DPI scaling compensation
     int dpi(int value) => MainForm.CompensateDPIStatic(value);
 
+    // Utility Variables
+    private RichTextBoxContextMenuManager contextMenuManager;
+
     public HistoryForm()
     {
         InitializeComponent();
         defaultCellForeColor = dataGridViewHistory.DefaultCellStyle.ForeColor;
         InitializeDataGridView();
         InitializeListView();
+
+        // Initialize context menu manager for rich text boxes
+        contextMenuManager = new RichTextBoxContextMenuManager();
+        contextMenuManager.AttachToRichTextBox(textBoxHistoryContents);
 
         // Event Handlers
         Windows.ApplicationModel.DataTransfer.Clipboard.HistoryEnabledChanged += OnHistoryEnabledChanged;

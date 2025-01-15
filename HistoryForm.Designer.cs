@@ -127,6 +127,7 @@ partial class HistoryForm
             this.textBoxHistoryContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxHistoryContents.DetectUrls = false;
             this.textBoxHistoryContents.Location = new System.Drawing.Point(586, 306);
             this.textBoxHistoryContents.Name = "textBoxHistoryContents";
             this.textBoxHistoryContents.Size = new System.Drawing.Size(790, 535);
