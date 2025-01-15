@@ -18,8 +18,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewClipboard = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip_dataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -94,8 +94,9 @@
             this.checkBoxAutoViewMode = new System.Windows.Forms.CheckBox();
             this.splitterContainer_InnerTextBoxes = new EditClipboardContents.MySplitContainer();
             this.richTextBoxContents = new System.Windows.Forms.RichTextBox();
-            this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dropdownHexToTextEncoding = new System.Windows.Forms.ComboBox();
+            this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
             this.labelHexToPlaintextEncoding = new System.Windows.Forms.Label();
             this.richTextBox_HexPlaintext = new System.Windows.Forms.RichTextBox();
             this.labelSynthesizedTypeWarn = new System.Windows.Forms.Label();
@@ -117,6 +118,7 @@
             this.splitterContainer_InnerTextBoxes.Panel1.SuspendLayout();
             this.splitterContainer_InnerTextBoxes.Panel2.SuspendLayout();
             this.splitterContainer_InnerTextBoxes.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewClipboard
@@ -125,30 +127,31 @@
             this.dataGridViewClipboard.AllowUserToDeleteRows = false;
             this.dataGridViewClipboard.AllowUserToResizeRows = false;
             this.dataGridViewClipboard.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewClipboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClipboard.ContextMenuStrip = this.contextMenuStrip_dataGridView;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewClipboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
-            this.dataGridViewClipboard.Size = new System.Drawing.Size(1548, 408);
+            this.dataGridViewClipboard.Size = new System.Drawing.Size(1554, 337);
             this.dataGridViewClipboard.TabIndex = 0;
             this.dataGridViewClipboard.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewClipboard_CellBeginEdit);
             this.dataGridViewClipboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClipboard_CellClick);
@@ -549,10 +552,10 @@
             this.toolStripButtonSaveEdited,
             this.toolStripButtonExportSelected,
             this.toolStripButtonShowHistoryForm});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(10, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(12, 0, 20, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1574, 51);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1554, 51);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -660,8 +663,9 @@
             // 
             // splitContainerMain
             // 
-            this.splitContainerMain.Location = new System.Drawing.Point(12, 51);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4);
+            this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMain.Location = new System.Drawing.Point(10, 51);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -683,8 +687,9 @@
             this.splitContainerMain.Panel2.Controls.Add(this.labelSynthesizedTypeWarn);
             this.splitContainerMain.Panel2.Controls.Add(this.labelViewMode);
             this.splitContainerMain.Panel2.Controls.Add(this.dropdownContentsViewMode);
-            this.splitContainerMain.Size = new System.Drawing.Size(1548, 879);
-            this.splitContainerMain.SplitterDistance = 403;
+            this.splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(0, 45, 0, 0);
+            this.splitContainerMain.Size = new System.Drawing.Size(1554, 875);
+            this.splitContainerMain.SplitterDistance = 337;
             this.splitContainerMain.SplitterWidth = 9;
             this.splitContainerMain.TabIndex = 6;
             this.splitContainerMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainerMain_SplitterMoved);
@@ -698,7 +703,7 @@
             this.labelLoading.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelLoading.Location = new System.Drawing.Point(412, 165);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Padding = new System.Windows.Forms.Padding(15);
+            this.labelLoading.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
             this.labelLoading.Size = new System.Drawing.Size(721, 88);
             this.labelLoading.TabIndex = 14;
             this.labelLoading.Text = "Loading Data From Clipboard\r\nSometimes this can take a while (See \"Help\" dropdown" +
@@ -708,7 +713,7 @@
             // buttonResetOrder
             // 
             this.buttonResetOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetOrder.Location = new System.Drawing.Point(1515, 2);
+            this.buttonResetOrder.Location = new System.Drawing.Point(1517, 2);
             this.buttonResetOrder.Name = "buttonResetOrder";
             this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
             this.buttonResetOrder.TabIndex = 17;
@@ -722,8 +727,8 @@
             // 
             this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApplyEdit.Enabled = false;
-            this.buttonApplyEdit.Location = new System.Drawing.Point(1150, 2);
-            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonApplyEdit.Location = new System.Drawing.Point(1152, 2);
+            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
             this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
             this.buttonApplyEdit.TabIndex = 10;
@@ -736,8 +741,8 @@
             // 
             this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetEdit.Enabled = false;
-            this.buttonResetEdit.Location = new System.Drawing.Point(1270, 2);
-            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonResetEdit.Location = new System.Drawing.Point(1272, 2);
+            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonResetEdit.Name = "buttonResetEdit";
             this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
             this.buttonResetEdit.TabIndex = 11;
@@ -748,7 +753,7 @@
             // buttonIncreaseIndexNumber
             // 
             this.buttonIncreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1467, 2);
+            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1469, 2);
             this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
             this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonIncreaseIndexNumber.TabIndex = 16;
@@ -761,7 +766,7 @@
             // buttonDecreaseIndexNumber
             // 
             this.buttonDecreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1420, 2);
+            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1422, 2);
             this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
             this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonDecreaseIndexNumber.TabIndex = 16;
@@ -800,9 +805,9 @@
             // 
             // splitterContainer_InnerTextBoxes
             // 
-            this.splitterContainer_InnerTextBoxes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 47);
-            this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(4);
+            this.splitterContainer_InnerTextBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 45);
+            this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(0);
             this.splitterContainer_InnerTextBoxes.Name = "splitterContainer_InnerTextBoxes";
             // 
             // splitterContainer_InnerTextBoxes.Panel1
@@ -811,12 +816,10 @@
             // 
             // splitterContainer_InnerTextBoxes.Panel2
             // 
-            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.checkBoxPlainTextEditing);
-            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.dropdownHexToTextEncoding);
-            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.labelHexToPlaintextEncoding);
+            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.panel1);
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.richTextBox_HexPlaintext);
-            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1548, 420);
-            this.splitterContainer_InnerTextBoxes.SplitterDistance = 966;
+            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 484);
+            this.splitterContainer_InnerTextBoxes.SplitterDistance = 957;
             this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
             this.splitterContainer_InnerTextBoxes.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitterContainer_InnerTextBoxes_SplitterMoved);
@@ -825,36 +828,36 @@
             // 
             this.richTextBoxContents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBoxContents.DetectUrls = false;
+            this.richTextBoxContents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxContents.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxContents.HideSelection = false;
             this.richTextBoxContents.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(968, 418);
+            this.richTextBoxContents.Size = new System.Drawing.Size(957, 484);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
             this.richTextBoxContents.SelectionChanged += new System.EventHandler(this.richTextBoxContents_SelectionChanged);
             this.richTextBoxContents.TextChanged += new System.EventHandler(this.richTextBoxContents_TextChanged);
             // 
-            // checkBoxPlainTextEditing
+            // panel1
             // 
-            this.checkBoxPlainTextEditing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(-58, 384);
-            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
-            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
-            this.checkBoxPlainTextEditing.TabIndex = 3;
-            this.checkBoxPlainTextEditing.Text = "Plaintext Editing";
-            this.toolTip1.SetToolTip(this.checkBoxPlainTextEditing, resources.GetString("checkBoxPlainTextEditing.ToolTip"));
-            this.checkBoxPlainTextEditing.UseVisualStyleBackColor = true;
-            this.checkBoxPlainTextEditing.CheckedChanged += new System.EventHandler(this.checkBoxPlainTextEditing_CheckedChanged);
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.dropdownHexToTextEncoding);
+            this.panel1.Controls.Add(this.checkBoxPlainTextEditing);
+            this.panel1.Controls.Add(this.labelHexToPlaintextEncoding);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 436);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(587, 48);
+            this.panel1.TabIndex = 5;
             // 
             // dropdownHexToTextEncoding
             // 
-            this.dropdownHexToTextEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dropdownHexToTextEncoding.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dropdownHexToTextEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropdownHexToTextEncoding.FormattingEnabled = true;
             this.dropdownHexToTextEncoding.Items.AddRange(new object[] {
@@ -865,18 +868,32 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(198, 376);
-            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(332, 10);
+            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
             this.dropdownHexToTextEncoding.TabIndex = 2;
             this.dropdownHexToTextEncoding.SelectedIndexChanged += new System.EventHandler(this.dropdownHexToTextEncoding_SelectedIndexChanged);
             // 
+            // checkBoxPlainTextEditing
+            // 
+            this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.checkBoxPlainTextEditing.AutoSize = true;
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(84, 15);
+            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
+            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
+            this.checkBoxPlainTextEditing.TabIndex = 3;
+            this.checkBoxPlainTextEditing.Text = "Plaintext Editing";
+            this.toolTip1.SetToolTip(this.checkBoxPlainTextEditing, resources.GetString("checkBoxPlainTextEditing.ToolTip"));
+            this.checkBoxPlainTextEditing.UseVisualStyleBackColor = true;
+            this.checkBoxPlainTextEditing.CheckedChanged += new System.EventHandler(this.checkBoxPlainTextEditing_CheckedChanged);
+            // 
             // labelHexToPlaintextEncoding
             // 
-            this.labelHexToPlaintextEncoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHexToPlaintextEncoding.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(112, 382);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(252, 15);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
             this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
@@ -885,14 +902,17 @@
             // 
             // richTextBox_HexPlaintext
             // 
+            this.richTextBox_HexPlaintext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_HexPlaintext.DetectUrls = false;
             this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_HexPlaintext.HideSelection = false;
             this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(570, 367);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 436);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -903,7 +923,7 @@
             this.labelSynthesizedTypeWarn.AutoSize = true;
             this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(452, 9);
+            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(452, 54);
             this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
             this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
@@ -936,7 +956,7 @@
             "Hex (Editable)",
             "Object / Struct Details"});
             this.dropdownContentsViewMode.Location = new System.Drawing.Point(124, 2);
-            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
+            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
             this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
             this.dropdownContentsViewMode.TabIndex = 7;
@@ -950,7 +970,7 @@
             this.labelPendingChanges.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelPendingChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPendingChanges.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelPendingChanges.Location = new System.Drawing.Point(872, 15);
+            this.labelPendingChanges.Location = new System.Drawing.Point(861, 14);
             this.labelPendingChanges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPendingChanges.Name = "labelPendingChanges";
             this.labelPendingChanges.Size = new System.Drawing.Size(465, 22);
@@ -966,7 +986,7 @@
             this.labelVersion.AutoSize = true;
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.labelVersion.Location = new System.Drawing.Point(1372, 17);
+            this.labelVersion.Location = new System.Drawing.Point(1362, 16);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(67, 20);
             this.labelVersion.TabIndex = 13;
@@ -975,7 +995,7 @@
             // labelTestCount
             // 
             this.labelTestCount.AutoSize = true;
-            this.labelTestCount.Location = new System.Drawing.Point(573, 0);
+            this.labelTestCount.Location = new System.Drawing.Point(584, 0);
             this.labelTestCount.Name = "labelTestCount";
             this.labelTestCount.Size = new System.Drawing.Size(87, 20);
             this.labelTestCount.TabIndex = 16;
@@ -985,7 +1005,7 @@
             // labelTestMiscellaneous
             // 
             this.labelTestMiscellaneous.AutoSize = true;
-            this.labelTestMiscellaneous.Location = new System.Drawing.Point(578, 26);
+            this.labelTestMiscellaneous.Location = new System.Drawing.Point(588, 25);
             this.labelTestMiscellaneous.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTestMiscellaneous.Name = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Size = new System.Drawing.Size(173, 20);
@@ -1005,8 +1025,9 @@
             this.Controls.Add(this.labelPendingChanges);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.Text = "Edit Clipboard Contents";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
@@ -1023,9 +1044,10 @@
             this.splitContainerMain.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel1.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel2.ResumeLayout(false);
-            this.splitterContainer_InnerTextBoxes.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).EndInit();
             this.splitterContainer_InnerTextBoxes.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1043,7 +1065,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
-        private System.Windows.Forms.RichTextBox richTextBoxContents;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.ComboBox dropdownContentsViewMode;
         private System.Windows.Forms.Label labelViewMode;
@@ -1118,5 +1139,7 @@
         private System.Windows.Forms.MenuItem menuTools;
         private System.Windows.Forms.MenuItem menuTools_HistoryInfo;
         private System.Windows.Forms.ToolStripButton toolStripButtonShowHistoryForm;
+        private System.Windows.Forms.RichTextBox richTextBoxContents;
+        private System.Windows.Forms.Panel panel1;
     }
 }

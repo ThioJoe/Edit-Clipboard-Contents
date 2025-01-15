@@ -114,6 +114,7 @@ namespace EditClipboardContents
 
             isResizing = true; // Set to true so our window resize logic in MainForm_Resize event doesn't trigger until the form is fully initialized
             InitializeComponent();
+            this.Menu = this.mainMenu1; // Stupid designer keeps removing this for some reason
             editedClipboardItems.ListChanged += EditedClipboardItems_ListChanged;
 
             // Initialize context menu manager for rich text boxes
@@ -153,7 +154,7 @@ namespace EditClipboardContents
             splitContainerInnerTextBoxesDefaultLocation = splitterContainer_InnerTextBoxes.Location;
 
             // Manually set certain button locations because they don't get placed properly on different scalings
-            splitterContainer_InnerTextBoxes.SplitterDistance = CompensateDPI(splitterContainer_InnerTextBoxes.SplitterDistance);
+            //splitterContainer_InnerTextBoxes.SplitterDistance = CompensateDPI(splitterContainer_InnerTextBoxes.SplitterDistance);
             //ManuallyPositionCertainControls();
 
             // Early initializations
@@ -199,31 +200,6 @@ namespace EditClipboardContents
             return this.DeviceDpi / 96m;
         }
 
-        private void ManuallyPositionCertainControls()
-        {
-            this.SuspendLayout(); // Might not be necessary but just in case
-
-            Point RelativeToRight(int rightOffset) => new Point(this.Width - rightOffset, 2);
-
-            void SetAnchors(List<Control> controls, AnchorStyles anchor)
-            {
-                foreach (Control control in controls)
-                    control.Anchor = anchor;
-            }
-            List<Control> buttonsToAdjust = new List<Control> { buttonApplyEdit, buttonResetEdit, buttonDecreaseIndexNumber, buttonIncreaseIndexNumber, buttonResetOrder };
-
-            
-            SetAnchors(buttonsToAdjust, AnchorStyles.None); // Set anchor points to none temporarily or else it seems to mess up the position of buttonResetOrder especially
-            buttonApplyEdit.Location = RelativeToRight(CompensateDPI(298));
-            buttonResetEdit.Location = RelativeToRight(CompensateDPI(218));
-            buttonDecreaseIndexNumber.Location = RelativeToRight(CompensateDPI(118));
-            buttonIncreaseIndexNumber.Location = RelativeToRight(CompensateDPI(87));
-            buttonResetOrder.Location = RelativeToRight(CompensateDPI(55));
-            SetAnchors(buttonsToAdjust, AnchorStyles.Top | AnchorStyles.Right);
-
-            this.ResumeLayout();
-        }
-
         private void ScaleToolstripButtons()
         {
             // Calculate the relation between default splitter panel location and default toolstrip height
@@ -258,26 +234,10 @@ namespace EditClipboardContents
 
             // Finally set the location of the data grid view to be below the toolstrip. All other tools will adjust accordingly
             toolStrip1.Height = buttonSize.Height + CompensateDPI(3);
-            splitContainerMain.Location = new Point(containerLocation.X, toolStrip1.Height + splitContainerPositionOffset);
+            //splitContainerMain.Location = new Point(containerLocation.X, toolStrip1.Height + splitContainerPositionOffset);
 
             labelTestMiscellaneous.Text = $"Toolstrip size: {toolStrip1.Height.ToString()} | Scaling: {ScaleFactor()} | ImageScale: {toolStrip1.ImageScalingSize}";
         }
-
-        private Image ResizeSquareImage(Image original, Size newSize)
-        {
-            //Test
-            //newSize.Width = newSize.Width / 2;
-            //newSize.Height = newSize.Height / 2;
-
-            var bitmap = new Bitmap(newSize.Width, newSize.Height);
-            using (var graphics = Graphics.FromImage(bitmap))
-            {
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.DrawImage(original, 0, 0, newSize.Width, newSize.Height);
-            }
-            return bitmap;
-        }
-
 
         public static int CompensateDPIStatic(int originalValue)
         {
@@ -600,28 +560,11 @@ namespace EditClipboardContents
         //Function to fit processedData grid view to the form window
         private void UpdateToolLocations(WhichPanelResize splitAnchor = WhichPanelResize.None)
         {
-            splitContainerMain.SplitterMoved -= new SplitterEventHandler(splitContainerMain_SplitterMoved);
-            splitContainerMain.SuspendLayout();
-            splitterContainer_InnerTextBoxes.SuspendLayout();
-            richTextBoxContents.SuspendLayout();
-            richTextBox_HexPlaintext.SuspendLayout();
-            dataGridViewClipboard.SuspendLayout();
-
-            int titlebarAccomodate = CompensateDPI(SystemInformation.MenuHeight);
-            int bottomBuffer = CompensateDPI(30); // Adjust this value to set the desired buffer size
-            int middlespacerSize = CompensateDPI(30);
-            int splitterPanelsBottomPosition = this.Height - toolStrip1.Height - inverseDPI(titlebarAccomodate) - inverseDPI(middlespacerSize);
-            
-
             //int splitDistancebeforeToolAdjust = splitContainerMain.SplitterDistance;
             int splitDistancebeforeToolAdjust = previousSplitterDistance;
 
             // Calculate difference between form height and splitter distance
             int splitDistanceBottomBeforeToolAdjust = splitContainerMain.Height - splitDistancebeforeToolAdjust;
-
-            // Resize splitContainerMain to fit the form
-            splitContainerMain.Width = this.Width - CompensateDPI(32);
-            splitContainerMain.Height = splitterPanelsBottomPosition - titlebarAccomodate;
 
             // "Anchors" the splitter to prevent either top or bottom panel from resizing based on visibility of data grid view cells
             // This only applies if the window is being resized, not if the splitter is being moved manually
@@ -632,22 +575,18 @@ namespace EditClipboardContents
                 int minSplitterDistance = splitContainerMain.Panel1MinSize + CompensateDPI(150);
 
                 // Position splitter based on anchoring
-                if (splitAnchor == WhichPanelResize.Bottom)
+                if ( splitAnchor == WhichPanelResize.Bottom )
                 {
                     int desiredSplitterDistance = splitDistancebeforeToolAdjust;
                     splitContainerMain.SplitterDistance = Math.Max(minSplitterDistance, Math.Min(desiredSplitterDistance, maxSplitterDistance));
                 }
-                else if (splitAnchor == WhichPanelResize.Top)
+                else if ( splitAnchor == WhichPanelResize.Top )
                 {
                     int desiredSplitterDistance = splitContainerMain.Height - splitDistanceBottomBeforeToolAdjust;
                     desiredSplitterDistance = Math.Max(minSplitterDistance, Math.Min(desiredSplitterDistance, maxSplitterDistance));
                     splitContainerMain.SplitterDistance = desiredSplitterDistance;
                 }
             } // End of anchoring
-
-            // Resize splitterContainer_InnerTextBoxes to fit the form
-            splitterContainer_InnerTextBoxes.Width = splitContainerMain.Width;
-            splitterContainer_InnerTextBoxes.Height = splitContainerMain.Panel2.Height - middlespacerSize;
 
             // If the hex view is disabled, force the hex panel to zero width
             if (!enableSplitHexView)
@@ -656,25 +595,7 @@ namespace EditClipboardContents
             }
 
             splitterContainer_InnerTextBoxes.SplitterWidth = 10;
-
-            // Auto-resize the text boxes to match the panels
-            richTextBoxContents.Height = splitterContainer_InnerTextBoxes.Height;
-            richTextBox_HexPlaintext.Height = splitterContainer_InnerTextBoxes.Height - hexTextBoxTopBuffer; // Adds some space for encoding selection dropdown. Based on initial GUI settings.
-            richTextBoxContents.Width = splitterContainer_InnerTextBoxes.Panel1.Width;
-            richTextBox_HexPlaintext.Width = splitterContainer_InnerTextBoxes.Panel2.Width;
-
-            // Resize processedData grid within panel to match panel size
-            dataGridViewClipboard.Width = splitContainerMain.Panel1.Width;
-            dataGridViewClipboard.Height = splitContainerMain.Panel1.Height;// - CompensateDPI(3);
-
             previousSplitterDistance = splitContainerMain.SplitterDistance;
-
-            splitContainerMain.ResumeLayout();
-            splitterContainer_InnerTextBoxes.ResumeLayout();
-            richTextBoxContents.ResumeLayout();
-            richTextBox_HexPlaintext.ResumeLayout();
-            dataGridViewClipboard.ResumeLayout();
-            splitContainerMain.SplitterMoved += new SplitterEventHandler(splitContainerMain_SplitterMoved);
         }
 
         private void RefreshClipboardItems()
@@ -3348,7 +3269,120 @@ namespace EditClipboardContents
             //UpdateEditControlsVisibility_AndPendingGridAppearance();
         }
 
-        
+        private void splitterContainer_InnerTextBoxes_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            UpdateToolLocations();
+        }
+
+        private void dropdownHexToTextEncoding_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdatePlaintextFromHexView();
+        }
+
+        private void richTextBoxContents_TextChanged(object sender, EventArgs e)
+        {
+            // Only update if in edit mode
+            if ( dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit )
+            {
+                UpdatePlaintextFromHexView();
+            }
+
+        }
+
+        private void richTextBox_HexPlaintext_TextChanged(object sender, EventArgs e)
+        {
+            // Only bother if in edit mode
+            if ( dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit )
+            {
+                UpdateHexViewChanges();
+
+            }
+        }
+
+        private void checkBoxPlainTextEditing_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateEditControlsVisibility_AndPendingGridAppearance();
+            UpdatePlaintextFromHexView();
+        }
+
+        private void richTextBoxContents_SelectionChanged(object sender, EventArgs e)
+        {
+            if ( suppressTextBoxSelectionChange )
+            {
+                return;
+            }
+
+            // Get the length of the selection
+            int selectionLength = richTextBoxContents.SelectionLength;
+            if ( selectionLength == 0 ) // Probably just a click, not even a selection
+            {
+                // If there was a selection in the hex view, clear it
+                if ( richTextBox_HexPlaintext.SelectionLength > 0 )
+                {
+                    suppressTextBoxSelectionChange = true;
+                    richTextBox_HexPlaintext.SelectionLength = 0;
+                    suppressTextBoxSelectionChange = false;
+                }
+                return;
+            }
+
+            if ( dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit || dropdownContentsViewMode.SelectedIndex == (int)ViewMode.Hex )
+            {
+                //RoundSelection();
+                SyncHexToPlaintext();
+            }
+        }
+
+
+        private void richTextBox_HexPlaintext_SelectionChanged(object sender, EventArgs e)
+        {
+            if ( suppressTextBoxSelectionChange )
+            {
+                return;
+            }
+
+            // Get the length of the selection
+            int selectionLength = richTextBox_HexPlaintext.SelectionLength;
+            if ( selectionLength == 0 ) // Probably just a click, not even a selection
+            {
+                // If there was a selection in the plain view, clear it
+                if ( richTextBoxContents.SelectionLength > 0 )
+                {
+                    suppressTextBoxSelectionChange = true;
+                    richTextBoxContents.SelectionLength = 0;
+                    suppressTextBoxSelectionChange = false;
+                }
+                return;
+            }
+
+            if ( dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit || dropdownContentsViewMode.SelectedIndex == (int)ViewMode.Hex )
+            {
+                SyncPlaintextToHex();
+            }
+        }
+
+        private void richTextBoxContents_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+
+            if ( ModifierKeys.HasFlag(Keys.Control) )
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(e.LinkText);
+                }
+                catch ( Exception ex )
+                {
+                    MessageBox.Show($"Error opening link: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // Show tooltip near the cursor when clicked without Ctrl
+                Point cursorPos = richTextBoxContents.PointToClient(Cursor.Position);
+                toolTip1.Show("Ctrl + Click To Open Link", richTextBoxContents, cursorPos.X + 10, cursorPos.Y + 10, 2000);
+            }
+        }
+
     } // ---------------------------------------------------------------------------------------------------
     // --------------------------------------- End of MainForm Class ---------------------------------------
     // -----------------------------------------------------------------------------------------------------

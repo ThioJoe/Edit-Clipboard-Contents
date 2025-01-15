@@ -316,97 +316,7 @@ namespace EditClipboardContents
 
         }
 
-        private void splitterContainer_InnerTextBoxes_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            UpdateToolLocations();
-        }
-
-        private void dropdownHexToTextEncoding_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdatePlaintextFromHexView();
-        }
-
-        private void richTextBoxContents_TextChanged(object sender, EventArgs e)
-        {
-            // Only update if in edit mode
-            if (dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit)
-            {
-                UpdatePlaintextFromHexView();
-            }
-
-        }
-
-        private void richTextBox_HexPlaintext_TextChanged(object sender, EventArgs e)
-        {
-            // Only bother if in edit mode
-            if (dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit)
-            {
-                UpdateHexViewChanges();
-
-            }
-        }
-
-        private void checkBoxPlainTextEditing_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateEditControlsVisibility_AndPendingGridAppearance();
-            UpdatePlaintextFromHexView();
-        }
-
-        private void richTextBoxContents_SelectionChanged(object sender, EventArgs e)
-        {
-            if ( suppressTextBoxSelectionChange )
-            {
-                return;
-            }
-
-            // Get the length of the selection
-            int selectionLength = richTextBoxContents.SelectionLength;
-            if (selectionLength == 0) // Probably just a click, not even a selection
-            {
-                // If there was a selection in the hex view, clear it
-                if ( richTextBox_HexPlaintext.SelectionLength > 0 )
-                {
-                    suppressTextBoxSelectionChange = true;
-                    richTextBox_HexPlaintext.SelectionLength = 0;
-                    suppressTextBoxSelectionChange = false;
-                }
-                return;
-            }
-
-            if (dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit || dropdownContentsViewMode.SelectedIndex == (int)ViewMode.Hex)
-            {
-                //RoundSelection();
-                SyncHexToPlaintext();
-            }
-        }
-
-
-        private void richTextBox_HexPlaintext_SelectionChanged(object sender, EventArgs e)
-        {
-            if ( suppressTextBoxSelectionChange )
-            {
-                return;
-            }
-
-            // Get the length of the selection
-            int selectionLength = richTextBox_HexPlaintext.SelectionLength;
-            if (selectionLength == 0) // Probably just a click, not even a selection
-            {
-                // If there was a selection in the plain view, clear it
-                if ( richTextBoxContents.SelectionLength > 0 )
-                {
-                    suppressTextBoxSelectionChange = true;
-                    richTextBoxContents.SelectionLength = 0;
-                    suppressTextBoxSelectionChange = false;
-                }
-                return;
-            }
-
-            if (dropdownContentsViewMode.SelectedIndex == (int)ViewMode.HexEdit || dropdownContentsViewMode.SelectedIndex == (int)ViewMode.Hex)
-            {
-                SyncPlaintextToHex();
-            }
-        }
+        
 
         private void menuOptions_IncludeRowHeaders_Click(object sender, EventArgs e)
         {
@@ -1414,27 +1324,7 @@ namespace EditClipboardContents
         }
 
         // Handle clicking a hyperlink in the rich text box
-        private void richTextBoxContents_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-
-            if ( ModifierKeys.HasFlag(Keys.Control) )
-            {
-                try
-                {
-                    System.Diagnostics.Process.Start(e.LinkText);
-                }
-                catch ( Exception ex )
-                {
-                    MessageBox.Show($"Error opening link: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                // Show tooltip near the cursor when clicked without Ctrl
-                Point cursorPos = richTextBoxContents.PointToClient(Cursor.Position);
-                toolTip1.Show("Ctrl + Click To Open Link", richTextBoxContents, cursorPos.X + 10, cursorPos.Y + 10, 2000);
-            }
-        }
+        
 
 
         // --------------------------------------------- DEBUG CONTROLS AND BUTTONS --------------------------------------------------------
