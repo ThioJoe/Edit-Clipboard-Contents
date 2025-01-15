@@ -13,7 +13,7 @@
 
 ## Screenshot:
 <p align="center">
-<img alt="Main application Window Screenshot" width=750 src="https://github.com/user-attachments/assets/0b7bb7b7-d9db-4be0-818f-f9bf2a61264f">
+<img alt="Main application Window Screenshot" width=750 src="https://github.com/user-attachments/assets/e03d3934-a270-4709-a62c-1444d3d0ad5b">
 </p>
 
 ## 🔍 Main Features
@@ -73,6 +73,11 @@
 - Native file export for certain formats
   - Example: The three native bitmap formats (CF_BITMAP, CF_DIB, CF_DIBV5) don't directly contain the same data that would be found by opening a `.bmp` file, but rather the image data as well as other struct metadata. But the app will use the Native Windows API to output each format to a BMP file, and each may be slightly different despite supposedly containing the same image data.
 - Export a list of all registered clipboard format names on the system
+
+### 7. View Clipboard History Info
+- See the info stored by Windows in the clipboard history (if enabled)
+- For each item in the history, see which formats are available, and preview each
+- Ability to delete items from the clipboard history, and make any as the active item
 
 -----
 
