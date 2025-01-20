@@ -27,7 +27,8 @@ namespace EditClipboardContents
                     {
                         tooltipOriginalState[control] = toolTip.GetToolTip(control);
                     }
-                    string dimensions = $"Button: {control.Width}x{control.Height}\nLocation: {control.Location.X} , {control.Location.Y}";
+                    string controlTypeName = control.GetType().Name;
+                    string dimensions = $"{controlTypeName}: {control.Width}x{control.Height}\nLocation: {control.Location.X} , {control.Location.Y}";
 
                     // If there's an image on the button or control, also show the image dimensions
                     if (control is Button button && button.Image != null)
@@ -79,7 +80,8 @@ namespace EditClipboardContents
                     {
                         tooltipOriginalState[toolStrip] = item.ToolTipText;
                     }
-                    item.ToolTipText = $"Button: {item.Width}x{item.Height}";
+                    string controlTypeName = item.GetType().Name;
+                    item.ToolTipText = $"{controlTypeName}: {item.Width}x{item.Height}";
 
                     if (item is ToolStripButton toolStripButton && toolStripButton.Image != null)
                     {

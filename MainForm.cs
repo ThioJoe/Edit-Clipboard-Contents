@@ -114,7 +114,16 @@ namespace EditClipboardContents
 
             isResizing = true; // Set to true so our window resize logic in MainForm_Resize event doesn't trigger until the form is fully initialized
             InitializeComponent();
+
+            // Manually set certain properties
             this.Icon = Properties.Resources.EditClipboardMainIcon;
+            int initialPanelSize = flowLayoutPanel_HexEditOptions.Width + CompensateDPI(15);
+            splitterContainer_InnerTextBoxes.Panel2MinSize = initialPanelSize;
+            splitterContainer_InnerTextBoxes.SplitterDistance = splitterContainer_InnerTextBoxes.Width - initialPanelSize;
+
+            // Record initial values for GUI state variables
+            previousSplitterDistance = splitContainerMain.SplitterDistance;
+            previousWindowHeight = this.Height;
 
             editedClipboardItems.ListChanged += EditedClipboardItems_ListChanged;
 

@@ -83,15 +83,17 @@
             this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.labelLoading = new System.Windows.Forms.Label();
-            this.buttonResetOrder = new System.Windows.Forms.Button();
+            this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
+            this.labelViewMode = new System.Windows.Forms.Label();
+            this.dropdownContentsViewMode = new System.Windows.Forms.ComboBox();
+            this.checkBoxAutoViewMode = new System.Windows.Forms.CheckBox();
+            this.labelCustomFormatNameID = new System.Windows.Forms.Label();
             this.buttonApplyEdit = new System.Windows.Forms.Button();
             this.buttonResetEdit = new System.Windows.Forms.Button();
-            this.buttonIncreaseIndexNumber = new System.Windows.Forms.Button();
             this.buttonDecreaseIndexNumber = new System.Windows.Forms.Button();
-            this.labelCustomFormatNameID = new System.Windows.Forms.Label();
-            this.checkBoxAutoViewMode = new System.Windows.Forms.CheckBox();
+            this.buttonIncreaseIndexNumber = new System.Windows.Forms.Button();
+            this.buttonResetOrder = new System.Windows.Forms.Button();
             this.splitterContainer_InnerTextBoxes = new EditClipboardContents.MySplitContainer();
-            this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
             this.richTextBoxContents = new System.Windows.Forms.RichTextBox();
             this.splitContainerHex = new System.Windows.Forms.SplitContainer();
             this.richTextBox_HexPlaintext = new System.Windows.Forms.RichTextBox();
@@ -99,13 +101,14 @@
             this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
             this.labelHexToPlaintextEncoding = new System.Windows.Forms.Label();
             this.labelSynthesizedTypeWarn = new System.Windows.Forms.Label();
-            this.labelViewMode = new System.Windows.Forms.Label();
-            this.dropdownContentsViewMode = new System.Windows.Forms.ComboBox();
             this.labelPendingChanges = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
+            this.tableLayoutPanel_MiddleControls = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_MiddleControlsText = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel_HexEditOptions = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -113,18 +116,21 @@
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).BeginInit();
-            this.splitterContainer_InnerTextBoxes.Panel1.SuspendLayout();
-            this.splitterContainer_InnerTextBoxes.Panel2.SuspendLayout();
-            this.splitterContainer_InnerTextBoxes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).BeginInit();
             this.splitContainerBottom.Panel1.SuspendLayout();
             this.splitContainerBottom.Panel2.SuspendLayout();
             this.splitContainerBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).BeginInit();
+            this.splitterContainer_InnerTextBoxes.Panel1.SuspendLayout();
+            this.splitterContainer_InnerTextBoxes.Panel2.SuspendLayout();
+            this.splitterContainer_InnerTextBoxes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHex)).BeginInit();
             this.splitContainerHex.Panel1.SuspendLayout();
             this.splitContainerHex.Panel2.SuspendLayout();
             this.splitContainerHex.SuspendLayout();
+            this.tableLayoutPanel_MiddleControls.SuspendLayout();
+            this.panel_MiddleControlsText.SuspendLayout();
+            this.flowLayoutPanel_HexEditOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewClipboard
@@ -694,24 +700,94 @@
     " for why)";
             this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonResetOrder
+            // splitContainerBottom
             // 
-            this.buttonResetOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetOrder.Location = new System.Drawing.Point(1519, 5);
-            this.buttonResetOrder.Name = "buttonResetOrder";
-            this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
-            this.buttonResetOrder.TabIndex = 17;
-            this.buttonResetOrder.Text = "R";
-            this.toolTip1.SetToolTip(this.buttonResetOrder, "Reset ordering");
-            this.buttonResetOrder.UseCompatibleTextRendering = true;
-            this.buttonResetOrder.UseVisualStyleBackColor = true;
-            this.buttonResetOrder.Click += new System.EventHandler(this.buttonResetOrder_Click);
+            this.splitContainerBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerBottom.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerBottom.IsSplitterFixed = true;
+            this.splitContainerBottom.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerBottom.Name = "splitContainerBottom";
+            this.splitContainerBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerBottom.Panel1
+            // 
+            this.splitContainerBottom.Panel1.Controls.Add(this.tableLayoutPanel_MiddleControls);
+            // 
+            // splitContainerBottom.Panel2
+            // 
+            this.splitContainerBottom.Panel2.Controls.Add(this.splitterContainer_InnerTextBoxes);
+            this.splitContainerBottom.Size = new System.Drawing.Size(1554, 491);
+            this.splitContainerBottom.SplitterDistance = 45;
+            this.splitContainerBottom.SplitterWidth = 1;
+            this.splitContainerBottom.TabIndex = 18;
+            // 
+            // labelViewMode
+            // 
+            this.labelViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelViewMode.AutoSize = true;
+            this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelViewMode.Location = new System.Drawing.Point(0, 10);
+            this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
+            this.labelViewMode.Name = "labelViewMode";
+            this.labelViewMode.Size = new System.Drawing.Size(116, 25);
+            this.labelViewMode.TabIndex = 8;
+            this.labelViewMode.Text = "View Mode:";
+            // 
+            // dropdownContentsViewMode
+            // 
+            this.dropdownContentsViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dropdownContentsViewMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdownContentsViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dropdownContentsViewMode.FormattingEnabled = true;
+            this.dropdownContentsViewMode.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+            this.dropdownContentsViewMode.Items.AddRange(new object[] {
+            "Text",
+            "Hex",
+            "Hex (Editable)",
+            "Object / Struct Details"});
+            this.dropdownContentsViewMode.Location = new System.Drawing.Point(120, 7);
+            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
+            this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
+            this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
+            this.dropdownContentsViewMode.TabIndex = 7;
+            this.dropdownContentsViewMode.SelectedIndexChanged += new System.EventHandler(this.dropdownContentsViewMode_SelectedIndexChanged);
+            // 
+            // checkBoxAutoViewMode
+            // 
+            this.checkBoxAutoViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxAutoViewMode.AutoSize = true;
+            this.checkBoxAutoViewMode.Checked = true;
+            this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(374, 10);
+            this.checkBoxAutoViewMode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
+            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(69, 24);
+            this.checkBoxAutoViewMode.TabIndex = 14;
+            this.checkBoxAutoViewMode.Text = "Auto";
+            this.checkBoxAutoViewMode.UseVisualStyleBackColor = true;
+            // 
+            // labelCustomFormatNameID
+            // 
+            this.labelCustomFormatNameID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelCustomFormatNameID.AutoSize = true;
+            this.labelCustomFormatNameID.Cursor = System.Windows.Forms.Cursors.Help;
+            this.labelCustomFormatNameID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomFormatNameID.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelCustomFormatNameID.Location = new System.Drawing.Point(14, 9);
+            this.labelCustomFormatNameID.Name = "labelCustomFormatNameID";
+            this.labelCustomFormatNameID.Size = new System.Drawing.Size(593, 25);
+            this.labelCustomFormatNameID.TabIndex = 15;
+            this.labelCustomFormatNameID.Text = "⚠️ Note: You can specify a custom Format Name or ID, but not both";
+            this.labelCustomFormatNameID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.labelCustomFormatNameID, resources.GetString("labelCustomFormatNameID.ToolTip"));
+            this.labelCustomFormatNameID.Visible = false;
+            this.labelCustomFormatNameID.Click += new System.EventHandler(this.labelCustomFormatNameID_Click);
             // 
             // buttonApplyEdit
             // 
-            this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonApplyEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonApplyEdit.Enabled = false;
-            this.buttonApplyEdit.Location = new System.Drawing.Point(1154, 5);
+            this.buttonApplyEdit.Location = new System.Drawing.Point(1167, 5);
             this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
             this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
@@ -723,9 +799,9 @@
             // 
             // buttonResetEdit
             // 
-            this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonResetEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.buttonResetEdit.Enabled = false;
-            this.buttonResetEdit.Location = new System.Drawing.Point(1274, 5);
+            this.buttonResetEdit.Location = new System.Drawing.Point(1287, 5);
             this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonResetEdit.Name = "buttonResetEdit";
             this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
@@ -734,23 +810,10 @@
             this.buttonResetEdit.UseVisualStyleBackColor = true;
             this.buttonResetEdit.Click += new System.EventHandler(this.buttonResetEdit_Click);
             // 
-            // buttonIncreaseIndexNumber
-            // 
-            this.buttonIncreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1471, 5);
-            this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
-            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
-            this.buttonIncreaseIndexNumber.TabIndex = 16;
-            this.buttonIncreaseIndexNumber.Text = "▼";
-            this.toolTip1.SetToolTip(this.buttonIncreaseIndexNumber, "Increase order index (decrease priority)");
-            this.buttonIncreaseIndexNumber.UseCompatibleTextRendering = true;
-            this.buttonIncreaseIndexNumber.UseVisualStyleBackColor = true;
-            this.buttonIncreaseIndexNumber.Click += new System.EventHandler(this.buttonIncreaseIndexNumber_Click);
-            // 
             // buttonDecreaseIndexNumber
             // 
-            this.buttonDecreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1424, 5);
+            this.buttonDecreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1418, 5);
             this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
             this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonDecreaseIndexNumber.TabIndex = 16;
@@ -760,32 +823,31 @@
             this.buttonDecreaseIndexNumber.UseVisualStyleBackColor = true;
             this.buttonDecreaseIndexNumber.Click += new System.EventHandler(this.buttonDecreaseIndexNumber_Click);
             // 
-            // labelCustomFormatNameID
+            // buttonIncreaseIndexNumber
             // 
-            this.labelCustomFormatNameID.AutoSize = true;
-            this.labelCustomFormatNameID.Cursor = System.Windows.Forms.Cursors.Help;
-            this.labelCustomFormatNameID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomFormatNameID.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelCustomFormatNameID.Location = new System.Drawing.Point(475, 7);
-            this.labelCustomFormatNameID.Name = "labelCustomFormatNameID";
-            this.labelCustomFormatNameID.Size = new System.Drawing.Size(593, 25);
-            this.labelCustomFormatNameID.TabIndex = 15;
-            this.labelCustomFormatNameID.Text = "⚠️ Note: You can specify a custom Format Name or ID, but not both";
-            this.toolTip1.SetToolTip(this.labelCustomFormatNameID, resources.GetString("labelCustomFormatNameID.ToolTip"));
-            this.labelCustomFormatNameID.Visible = false;
-            this.labelCustomFormatNameID.Click += new System.EventHandler(this.labelCustomFormatNameID_Click);
+            this.buttonIncreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1466, 5);
+            this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
+            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
+            this.buttonIncreaseIndexNumber.TabIndex = 16;
+            this.buttonIncreaseIndexNumber.Text = "▼";
+            this.toolTip1.SetToolTip(this.buttonIncreaseIndexNumber, "Increase order index (decrease priority)");
+            this.buttonIncreaseIndexNumber.UseCompatibleTextRendering = true;
+            this.buttonIncreaseIndexNumber.UseVisualStyleBackColor = true;
+            this.buttonIncreaseIndexNumber.Click += new System.EventHandler(this.buttonIncreaseIndexNumber_Click);
             // 
-            // checkBoxAutoViewMode
+            // buttonResetOrder
             // 
-            this.checkBoxAutoViewMode.AutoSize = true;
-            this.checkBoxAutoViewMode.Checked = true;
-            this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(374, 11);
-            this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
-            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(69, 24);
-            this.checkBoxAutoViewMode.TabIndex = 14;
-            this.checkBoxAutoViewMode.Text = "Auto";
-            this.checkBoxAutoViewMode.UseVisualStyleBackColor = true;
+            this.buttonResetOrder.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonResetOrder.Location = new System.Drawing.Point(1514, 5);
+            this.buttonResetOrder.Name = "buttonResetOrder";
+            this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
+            this.buttonResetOrder.TabIndex = 17;
+            this.buttonResetOrder.Text = "R";
+            this.toolTip1.SetToolTip(this.buttonResetOrder, "Reset ordering");
+            this.buttonResetOrder.UseCompatibleTextRendering = true;
+            this.buttonResetOrder.UseVisualStyleBackColor = true;
+            this.buttonResetOrder.Click += new System.EventHandler(this.buttonResetOrder_Click);
             // 
             // splitterContainer_InnerTextBoxes
             // 
@@ -802,40 +864,10 @@
             // 
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.splitContainerHex);
             this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 445);
-            this.splitterContainer_InnerTextBoxes.SplitterDistance = 957;
+            this.splitterContainer_InnerTextBoxes.SplitterDistance = 1023;
             this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
             this.splitterContainer_InnerTextBoxes.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitterContainer_InnerTextBoxes_SplitterMoved);
-            // 
-            // splitContainerBottom
-            // 
-            this.splitContainerBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerBottom.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerBottom.IsSplitterFixed = true;
-            this.splitContainerBottom.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerBottom.Name = "splitContainerBottom";
-            this.splitContainerBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerBottom.Panel1
-            // 
-            this.splitContainerBottom.Panel1.Controls.Add(this.labelViewMode);
-            this.splitContainerBottom.Panel1.Controls.Add(this.buttonResetOrder);
-            this.splitContainerBottom.Panel1.Controls.Add(this.dropdownContentsViewMode);
-            this.splitContainerBottom.Panel1.Controls.Add(this.buttonApplyEdit);
-            this.splitContainerBottom.Panel1.Controls.Add(this.labelSynthesizedTypeWarn);
-            this.splitContainerBottom.Panel1.Controls.Add(this.buttonResetEdit);
-            this.splitContainerBottom.Panel1.Controls.Add(this.checkBoxAutoViewMode);
-            this.splitContainerBottom.Panel1.Controls.Add(this.buttonIncreaseIndexNumber);
-            this.splitContainerBottom.Panel1.Controls.Add(this.labelCustomFormatNameID);
-            this.splitContainerBottom.Panel1.Controls.Add(this.buttonDecreaseIndexNumber);
-            // 
-            // splitContainerBottom.Panel2
-            // 
-            this.splitContainerBottom.Panel2.Controls.Add(this.splitterContainer_InnerTextBoxes);
-            this.splitContainerBottom.Size = new System.Drawing.Size(1554, 491);
-            this.splitContainerBottom.SplitterDistance = 45;
-            this.splitContainerBottom.SplitterWidth = 1;
-            this.splitContainerBottom.TabIndex = 18;
             // 
             // richTextBoxContents
             // 
@@ -848,7 +880,7 @@
             this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(957, 445);
+            this.richTextBoxContents.Size = new System.Drawing.Size(1023, 445);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
@@ -870,11 +902,9 @@
             // 
             // splitContainerHex.Panel2
             // 
-            this.splitContainerHex.Panel2.Controls.Add(this.dropdownHexToTextEncoding);
-            this.splitContainerHex.Panel2.Controls.Add(this.checkBoxPlainTextEditing);
-            this.splitContainerHex.Panel2.Controls.Add(this.labelHexToPlaintextEncoding);
-            this.splitContainerHex.Size = new System.Drawing.Size(587, 445);
-            this.splitContainerHex.SplitterDistance = 403;
+            this.splitContainerHex.Panel2.Controls.Add(this.flowLayoutPanel_HexEditOptions);
+            this.splitContainerHex.Size = new System.Drawing.Size(521, 445);
+            this.splitContainerHex.SplitterDistance = 409;
             this.splitContainerHex.SplitterWidth = 1;
             this.splitContainerHex.TabIndex = 6;
             // 
@@ -888,7 +918,7 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 403);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(521, 409);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -907,8 +937,8 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(348, 7);
-            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(248, 4);
+            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 30, 4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
             this.dropdownHexToTextEncoding.TabIndex = 2;
@@ -918,7 +948,7 @@
             // 
             this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(100, 12);
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(4, 6);
             this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
             this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
@@ -932,7 +962,7 @@
             // 
             this.labelHexToPlaintextEncoding.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(268, 12);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(160, 8);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
             this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
@@ -941,47 +971,20 @@
             // 
             // labelSynthesizedTypeWarn
             // 
+            this.labelSynthesizedTypeWarn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelSynthesizedTypeWarn.AutoSize = true;
             this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(476, 12);
+            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(15, 12);
             this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
             this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
             this.labelSynthesizedTypeWarn.TabIndex = 9;
             this.labelSynthesizedTypeWarn.Text = "⚠️ Synthesized Format";
+            this.labelSynthesizedTypeWarn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.labelSynthesizedTypeWarn, resources.GetString("labelSynthesizedTypeWarn.ToolTip"));
             this.labelSynthesizedTypeWarn.Visible = false;
             this.labelSynthesizedTypeWarn.Click += new System.EventHandler(this.labelSynthesizedTypeWarn_Click);
-            // 
-            // labelViewMode
-            // 
-            this.labelViewMode.AutoSize = true;
-            this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelViewMode.Location = new System.Drawing.Point(3, 7);
-            this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
-            this.labelViewMode.Name = "labelViewMode";
-            this.labelViewMode.Size = new System.Drawing.Size(116, 25);
-            this.labelViewMode.TabIndex = 8;
-            this.labelViewMode.Text = "View Mode:";
-            // 
-            // dropdownContentsViewMode
-            // 
-            this.dropdownContentsViewMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dropdownContentsViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dropdownContentsViewMode.FormattingEnabled = true;
-            this.dropdownContentsViewMode.ImeMode = System.Windows.Forms.ImeMode.Katakana;
-            this.dropdownContentsViewMode.Items.AddRange(new object[] {
-            "Text",
-            "Hex",
-            "Hex (Editable)",
-            "Object / Struct Details"});
-            this.dropdownContentsViewMode.Location = new System.Drawing.Point(123, 5);
-            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
-            this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
-            this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
-            this.dropdownContentsViewMode.TabIndex = 7;
-            this.dropdownContentsViewMode.SelectedIndexChanged += new System.EventHandler(this.dropdownContentsViewMode_SelectedIndexChanged);
             // 
             // labelPendingChanges
             // 
@@ -1034,6 +1037,65 @@
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
             // 
+            // tableLayoutPanel_MiddleControls
+            // 
+            this.tableLayoutPanel_MiddleControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel_MiddleControls.ColumnCount = 10;
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.checkBoxAutoViewMode, 2, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonApplyEdit, 4, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.dropdownContentsViewMode, 1, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonIncreaseIndexNumber, 7, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonDecreaseIndexNumber, 6, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetEdit, 5, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetOrder, 8, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.panel_MiddleControlsText, 3, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.labelViewMode, 0, 0);
+            this.tableLayoutPanel_MiddleControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_MiddleControls.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_MiddleControls.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel_MiddleControls.Name = "tableLayoutPanel_MiddleControls";
+            this.tableLayoutPanel_MiddleControls.RowCount = 1;
+            this.tableLayoutPanel_MiddleControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_MiddleControls.Size = new System.Drawing.Size(1554, 45);
+            this.tableLayoutPanel_MiddleControls.TabIndex = 18;
+            // 
+            // panel_MiddleControlsText
+            // 
+            this.panel_MiddleControlsText.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_MiddleControlsText.Controls.Add(this.labelSynthesizedTypeWarn);
+            this.panel_MiddleControlsText.Controls.Add(this.labelCustomFormatNameID);
+            this.panel_MiddleControlsText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_MiddleControlsText.Location = new System.Drawing.Point(446, 0);
+            this.panel_MiddleControlsText.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_MiddleControlsText.Name = "panel_MiddleControlsText";
+            this.panel_MiddleControlsText.Size = new System.Drawing.Size(717, 45);
+            this.panel_MiddleControlsText.TabIndex = 18;
+            // 
+            // flowLayoutPanel_HexEditOptions
+            // 
+            this.flowLayoutPanel_HexEditOptions.AutoSize = true;
+            this.flowLayoutPanel_HexEditOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.dropdownHexToTextEncoding);
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.labelHexToPlaintextEncoding);
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.checkBoxPlainTextEditing);
+            this.flowLayoutPanel_HexEditOptions.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel_HexEditOptions.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel_HexEditOptions.Location = new System.Drawing.Point(26, 0);
+            this.flowLayoutPanel_HexEditOptions.Name = "flowLayoutPanel_HexEditOptions";
+            this.flowLayoutPanel_HexEditOptions.Size = new System.Drawing.Size(495, 35);
+            this.flowLayoutPanel_HexEditOptions.TabIndex = 0;
+            this.flowLayoutPanel_HexEditOptions.WrapContents = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -1062,20 +1124,25 @@
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
+            this.splitContainerBottom.Panel1.ResumeLayout(false);
+            this.splitContainerBottom.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).EndInit();
+            this.splitContainerBottom.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel1.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).EndInit();
             this.splitterContainer_InnerTextBoxes.ResumeLayout(false);
-            this.splitContainerBottom.Panel1.ResumeLayout(false);
-            this.splitContainerBottom.Panel1.PerformLayout();
-            this.splitContainerBottom.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).EndInit();
-            this.splitContainerBottom.ResumeLayout(false);
             this.splitContainerHex.Panel1.ResumeLayout(false);
             this.splitContainerHex.Panel2.ResumeLayout(false);
             this.splitContainerHex.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHex)).EndInit();
             this.splitContainerHex.ResumeLayout(false);
+            this.tableLayoutPanel_MiddleControls.ResumeLayout(false);
+            this.tableLayoutPanel_MiddleControls.PerformLayout();
+            this.panel_MiddleControlsText.ResumeLayout(false);
+            this.panel_MiddleControlsText.PerformLayout();
+            this.flowLayoutPanel_HexEditOptions.ResumeLayout(false);
+            this.flowLayoutPanel_HexEditOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1168,5 +1235,8 @@
         private System.Windows.Forms.MenuItem menuOptions_ShowStructFormatting;
         private System.Windows.Forms.SplitContainer splitContainerHex;
         private System.Windows.Forms.SplitContainer splitContainerBottom;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_MiddleControls;
+        private System.Windows.Forms.Panel panel_MiddleControlsText;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_HexEditOptions;
     }
 }
