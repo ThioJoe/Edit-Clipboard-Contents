@@ -2180,7 +2180,7 @@ namespace EditClipboardContents
         }
 
         // Function to display save dialog and save the clipboard data to a file
-        private SaveFileDialog SaveFileDialog(string extension = "dat", string defaultFileNameStem = "clipboard_data")
+        private SaveFileDialog SaveFileDialog(string extension = "dat", string defaultFileNameStem = "clipboard_data", string prependFilter = "")
         {
             if (string.IsNullOrEmpty(extension))
             {
@@ -2191,14 +2191,14 @@ namespace EditClipboardContents
 
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "All files (*.*)|*.*",
+                Filter = prependFilter + "All files (*.*)|*.*",
                 FilterIndex = 1,
                 RestoreDirectory = true,
                 FileName = defaultFileName,
                 DefaultExt = extension,
                 SupportMultiDottedExtensions = true,
                 ValidateNames = true,
-
+                AddExtension = true,
             };
 
             return saveFileDialog;

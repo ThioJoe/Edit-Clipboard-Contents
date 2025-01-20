@@ -1019,7 +1019,7 @@ namespace EditClipboardContents
                 sb.AppendLine($"{pair.Key}\t{pair.Value}");
             }
 
-            SaveFileDialog saveFileDialogResult = SaveFileDialog(extension: "txt", defaultFileNameStem: "RegisteredFormats");
+            SaveFileDialog saveFileDialogResult = SaveFileDialog(extension: "txt", defaultFileNameStem: "RegisteredFormats", prependFilter: "Text files (*.txt)|*.txt|");
             if (saveFileDialogResult.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(saveFileDialogResult.FileName, sb.ToString());
