@@ -1384,7 +1384,6 @@ namespace EditClipboardContents
                         return;
                     }
 
-                    richTextBoxContents.Text = "";
                     DisplayClipboardDataInTextBoxes(item);
 
                     // Check if it's a synthesized name in SynthesizedFormatNames and show a warning
