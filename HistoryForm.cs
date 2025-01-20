@@ -94,7 +94,7 @@ public partial class HistoryForm : Form
             // Reselect the last selected item
             if ( IdsToSelectAfter.Count > 0 )
             {
-                dataGridViewHistory.ClearSelection();
+                dataGridViewHistory.ClearSelectionNoEvent();
                 foreach ( DataGridViewRow row in dataGridViewHistory.Rows )
                 {
                     HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
@@ -607,7 +607,7 @@ public partial class HistoryForm : Form
             HistoryItemInfo item = (HistoryItemInfo)row.DataBoundItem;
             if ( item.Id == IdToSelectAfter )
             {
-                dataGridViewHistory.ClearSelection();
+                dataGridViewHistory.ClearSelectionNoEvent();
                 row.Selected = true;
                 break;
             }
@@ -655,7 +655,7 @@ public partial class HistoryForm : Form
             {
                 int focusedCellIndex = dataGridViewHistory.CurrentCell?.ColumnIndex ?? 0;
 
-                dataGridViewHistory.ClearSelection();
+                dataGridViewHistory.ClearSelectionNoEvent();
                 dataGridViewHistory.Rows[newIndex].Selected = true;
                 dataGridViewHistory.CurrentCell = dataGridViewHistory.Rows[newIndex].Cells[focusedCellIndex];
 

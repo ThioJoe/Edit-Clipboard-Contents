@@ -1432,19 +1432,21 @@ namespace EditClipboardContents
         {
             if (item == null || item.RawData == null)
             {
+                string textToDisplay = "Data not available";
                 richTextBoxContents.TextChanged -= richTextBoxContents_TextChanged;
-                richTextBoxContents.Text = "Data not available";
                 richTextBoxContents.ForeColor = Color.Red;
                 if (item?.LoadErrorDiagnosisReport != null && item.LoadErrorDiagnosisReport.ReportString != null)
                 {
-                    richTextBoxContents.Text += "\n\n" + "   Info about error retrieving clipboard item:" + "\n" + item.LoadErrorDiagnosisReport.ReportString;
+                    textToDisplay += "\n\n" + "   Info about error retrieving clipboard item:" + "\n" + item.LoadErrorDiagnosisReport.ReportString;
                     richTextBoxContents.ForeColor = Color.DarkRed;
                 }
                 if (item?.ProcessErrorReason != null)
                 {
-                    richTextBoxContents.Text += "\n\n" + "   Error processing data: " + item.ProcessErrorReason;
+                    textToDisplay += "\n\n" + "   Error processing data: " + item.ProcessErrorReason;
                     richTextBoxContents.ForeColor = Color.DarkRed;
                 }
+
+                richTextBoxContents.Text = textToDisplay;
                 richTextBoxContents.TextChanged += richTextBoxContents_TextChanged;
 
                 richTextBox_HexPlaintext.TextChanged -= richTextBox_HexPlaintext_TextChanged;
@@ -3268,7 +3270,7 @@ namespace EditClipboardContents
                 int rowIndex = dataGridViewClipboard.Rows.Cast<DataGridViewRow>().ToList().FindIndex(r => r.Cells[colName.FormatId].Value.ToString() == selectedFormatId.ToString());
                 if (rowIndex >= 0)
                 {
-                    dataGridViewClipboard.ClearSelection();
+                    dataGridViewClipboard.ClearSelectionNoEvent();
                     dataGridViewClipboard.Rows[rowIndex].Selected = true;
                     dataGridViewClipboard.FirstDisplayedScrollingRowIndex = rowIndex;
                     // Also update the view mode to the previously selected view mode

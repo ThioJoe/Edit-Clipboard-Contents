@@ -160,7 +160,8 @@ namespace EditClipboardContents
                 focusedCellIndex = dataGridViewClipboard.CurrentCell?.ColumnIndex ?? 0;
             }
 
-            dataGridViewClipboard.ClearSelection();
+            dataGridViewClipboard.ClearSelectionNoEvent();
+
             dataGridViewClipboard.Rows[newIndex].Selected = true;
             dataGridViewClipboard.CurrentCell = dataGridViewClipboard.Rows[newIndex].Cells[focusedCellIndex];
 
@@ -171,7 +172,7 @@ namespace EditClipboardContents
                 dataGridViewClipboard.FirstDisplayedScrollingRowIndex = newIndex;
             }
 
-            ChangeCellFocusAndDisplayCorrespondingData(newIndex, focusedCellIndex);
+            // No need to call ChangeCellFocusAndDisplayCorrespondingData here because it's called in the selection changed event
         }
 
         private void menuHelp_About_Click(object sender, EventArgs e)
@@ -278,7 +279,7 @@ namespace EditClipboardContents
                     // If the clicked row is not part of the current selection, clear the selection and re-set the clicked row as the only selected row
                     if (!isClickedRowSelected)
                     {
-                        dataGridViewClipboard.ClearSelection();
+                        dataGridViewClipboard.ClearSelectionNoEvent();
                         dataGridViewClipboard.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
                         // Change the cell focus
                         ChangeCellFocusAndDisplayCorrespondingData(rowIndex: e.RowIndex, cellIndex: e.ColumnIndex);
@@ -428,18 +429,17 @@ namespace EditClipboardContents
                 return;
             }
 
+            // Assume focus of the first selected row if multiple are selected
+            ChangeCellFocusAndDisplayCorrespondingData(dataGridViewClipboard.SelectedRows[0].Index);
+
             // If it's a custom format, disable the buttons and always go to the edit view
             if (GetSelectedDataFromDataGridView(colName.FormatType) == FormatTypeNames.Custom)
             {
-                ChangeCellFocusAndDisplayCorrespondingData(dataGridViewClipboard.SelectedRows[0].Index);
                 buttonStatus_RequireSelection(enabledChoice: false, onlyCustomIncompatible: true);
                 dropdownContentsViewMode.SelectedIndex = (int)ViewMode.HexEdit; // Hex (Editable)
                 checkBoxPlainTextEditing.Checked = true;
                 return;
             }
-
-            // Assume focus of the first selected row if multiple are selected
-            ChangeCellFocusAndDisplayCorrespondingData(dataGridViewClipboard.SelectedRows[0].Index);
 
             // Enable menu buttons that require a selectedItem
             buttonStatus_RequireSelection(enabledChoice: true);
@@ -469,13 +469,14 @@ namespace EditClipboardContents
                 }
                 // If there is data object info, show object view mode. Also show if there are multiple data info entries or the first one isn't empty
                 else if (item != null && (
-                        (item.ClipDataObject != null)
+                        item.ClipDataObject != null
                         || (item.RawData != null && item.RawData.Length > 5000) // If data is enough to cause performance issues in hex view, show object view
-                        || (item.DataInfoList != null && (
-                            item.DataInfoList.Count > 1
-                            || (item.DataInfoList.Count > 0 && !string.IsNullOrEmpty(item.DataInfoList[0]))
+                        || (item.DataInfoList != null
+                            && (item.DataInfoList.Count > 1
+                                || (item.DataInfoList.Count > 0 && !string.IsNullOrEmpty(item.DataInfoList[0]))
+                                )
+                           )
                         ))
-                    ))
                 { 
                     dropdownContentsViewMode.SelectedIndex = (int)ViewMode.Object; // Object View
                 }
@@ -896,9 +897,7 @@ namespace EditClipboardContents
             //UpdateEditControlsVisibility_AndPendingGridAppearance(); // Occurs in RefreshDataGridViewContents
 
             // Set selected rows to just the new row
-            dataGridViewClipboard.SelectionChanged -= dataGridViewClipboard_SelectionChanged;
-            dataGridViewClipboard.ClearSelection();
-            dataGridViewClipboard.SelectionChanged += dataGridViewClipboard_SelectionChanged;
+            dataGridViewClipboard.ClearSelectionNoEvent();
             dataGridViewClipboard.Rows[itemIndex].Selected = true;
 
             // if the row isn't visible, scroll to it
