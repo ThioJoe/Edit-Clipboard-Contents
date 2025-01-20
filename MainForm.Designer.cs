@@ -18,8 +18,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewClipboard = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip_dataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -127,27 +127,27 @@
             this.dataGridViewClipboard.AllowUserToDeleteRows = false;
             this.dataGridViewClipboard.AllowUserToResizeRows = false;
             this.dataGridViewClipboard.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClipboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClipboard.ContextMenuStrip = this.contextMenuStrip_dataGridView;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewClipboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
@@ -665,7 +665,7 @@
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMain.Location = new System.Drawing.Point(10, 51);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainerMain.Name = "splitContainerMain";
             this.splitContainerMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -703,7 +703,7 @@
             this.labelLoading.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelLoading.Location = new System.Drawing.Point(412, 165);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.labelLoading.Padding = new System.Windows.Forms.Padding(15);
             this.labelLoading.Size = new System.Drawing.Size(721, 88);
             this.labelLoading.TabIndex = 14;
             this.labelLoading.Text = "Loading Data From Clipboard\r\nSometimes this can take a while (See \"Help\" dropdown" +
@@ -728,7 +728,7 @@
             this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApplyEdit.Enabled = false;
             this.buttonApplyEdit.Location = new System.Drawing.Point(1152, 2);
-            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
             this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
             this.buttonApplyEdit.TabIndex = 10;
@@ -742,7 +742,7 @@
             this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetEdit.Enabled = false;
             this.buttonResetEdit.Location = new System.Drawing.Point(1272, 2);
-            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonResetEdit.Name = "buttonResetEdit";
             this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
             this.buttonResetEdit.TabIndex = 11;
@@ -832,7 +832,7 @@
             this.richTextBoxContents.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxContents.HideSelection = false;
             this.richTextBoxContents.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.richTextBoxContents.Size = new System.Drawing.Size(957, 484);
@@ -850,7 +850,7 @@
             this.panel1.Controls.Add(this.labelHexToPlaintextEncoding);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 436);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 48);
             this.panel1.TabIndex = 5;
@@ -869,7 +869,7 @@
             "Codepage 1252",
             "System Default"});
             this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(332, 10);
-            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
             this.dropdownHexToTextEncoding.TabIndex = 2;
@@ -880,7 +880,7 @@
             this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxPlainTextEditing.AutoSize = true;
             this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(84, 15);
-            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
             this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
             this.checkBoxPlainTextEditing.TabIndex = 3;
@@ -909,10 +909,10 @@
             this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_HexPlaintext.HideSelection = false;
             this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 436);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(581, 436);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -956,7 +956,7 @@
             "Hex (Editable)",
             "Object / Struct Details"});
             this.dropdownContentsViewMode.Location = new System.Drawing.Point(124, 2);
-            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
             this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
             this.dropdownContentsViewMode.TabIndex = 7;
@@ -1025,7 +1025,8 @@
             this.Controls.Add(this.labelPendingChanges);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
             this.Text = "Edit Clipboard Contents";
