@@ -411,7 +411,7 @@ namespace EditClipboardContents
                 if (!onlyCustomIncompatible)
                 {
                     // Able to be used with custom formats
-                    menuFile_LoadBinaryDataToSelected.Enabled = enabledChoice;
+                    menuTools_LoadBinaryDataToSelected.Enabled = enabledChoice;
                 }
             }
             // -------------------------------------------------------------
@@ -1002,7 +1002,7 @@ namespace EditClipboardContents
             }
 
         }
-        private void menuItemFile_ExportRegisteredFormats_Click(object sender, EventArgs e)
+        private void menuTools_ExportRegisteredFormats_Click(object sender, EventArgs e)
         {
             Dictionary<uint,string>? formatPairs = Utils.GetAllPossibleRegisteredFormatNames();
 
@@ -1092,7 +1092,7 @@ namespace EditClipboardContents
             menuOptions_RetryMode.Checked = !menuOptions_RetryMode.Checked; // Toggle check
         }
 
-        private void menuFile_LoadBinaryDataToSelected_Click(object sender, EventArgs e)
+        private void menuTools_LoadBinaryDataToSelected_Click(object sender, EventArgs e)
         {
             // Open a file chooser dialog for any file type
             OpenFileDialog openFileDialogResult = new OpenFileDialog();

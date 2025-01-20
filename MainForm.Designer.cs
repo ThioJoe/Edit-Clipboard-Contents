@@ -41,10 +41,6 @@
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuFile_ExportAllFolder = new System.Windows.Forms.MenuItem();
             this.menuFile_ExportAllZip = new System.Windows.Forms.MenuItem();
-            this.menuItem4 = new System.Windows.Forms.MenuItem();
-            this.menuFile_LoadBinaryDataToSelected = new System.Windows.Forms.MenuItem();
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItemFile_ExportRegisteredFormats = new System.Windows.Forms.MenuItem();
             this.menuMainEdit = new System.Windows.Forms.MenuItem();
             this.menuEdit_CopyObjectInfoAsText = new System.Windows.Forms.MenuItem();
             this.menuEdit_CopyHexAsText = new System.Windows.Forms.MenuItem();
@@ -64,7 +60,8 @@
             this.menuOptions_CommaSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_RetryMode = new System.Windows.Forms.MenuItem();
             this.menuTools = new System.Windows.Forms.MenuItem();
-            this.menuTools_HistoryInfo = new System.Windows.Forms.MenuItem();
+            this.menuTools_LoadBinaryDataToSelected = new System.Windows.Forms.MenuItem();
+            this.menuTools_ExportRegisteredFormats = new System.Windows.Forms.MenuItem();
             this.menuItemHelp = new System.Windows.Forms.MenuItem();
             this.menuHelp_About = new System.Windows.Forms.MenuItem();
             this.menuHelp_WhyTakingLong = new System.Windows.Forms.MenuItem();
@@ -245,11 +242,7 @@
             this.menuFile_ExportSelectedStruct,
             this.menuItem6,
             this.menuItem7,
-            this.menuItem5,
-            this.menuItem4,
-            this.menuFile_LoadBinaryDataToSelected,
-            this.menuItem1,
-            this.menuItemFile_ExportRegisteredFormats});
+            this.menuItem5});
             this.menuMainFile.Text = "File";
             // 
             // menuFile_ExportSelectedAsRawHex
@@ -314,28 +307,6 @@
             this.menuFile_ExportAllZip.Index = 1;
             this.menuFile_ExportAllZip.Text = "As Zip";
             this.menuFile_ExportAllZip.Click += new System.EventHandler(this.menuFile_ExportAllZip_Click);
-            // 
-            // menuItem4
-            // 
-            this.menuItem4.Index = 6;
-            this.menuItem4.Text = "-";
-            // 
-            // menuFile_LoadBinaryDataToSelected
-            // 
-            this.menuFile_LoadBinaryDataToSelected.Index = 7;
-            this.menuFile_LoadBinaryDataToSelected.Text = "Import File As Binary Data For Selected";
-            this.menuFile_LoadBinaryDataToSelected.Click += new System.EventHandler(this.menuFile_LoadBinaryDataToSelected_Click);
-            // 
-            // menuItem1
-            // 
-            this.menuItem1.Index = 8;
-            this.menuItem1.Text = "-";
-            // 
-            // menuItemFile_ExportRegisteredFormats
-            // 
-            this.menuItemFile_ExportRegisteredFormats.Index = 9;
-            this.menuItemFile_ExportRegisteredFormats.Text = "Export List Of All Registered Formats";
-            this.menuItemFile_ExportRegisteredFormats.Click += new System.EventHandler(this.menuItemFile_ExportRegisteredFormats_Click);
             // 
             // menuMainEdit
             // 
@@ -467,14 +438,21 @@
             // 
             this.menuTools.Index = 3;
             this.menuTools.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuTools_HistoryInfo});
+            this.menuTools_LoadBinaryDataToSelected,
+            this.menuTools_ExportRegisteredFormats});
             this.menuTools.Text = "Tools";
             // 
-            // menuTools_HistoryInfo
+            // menuTools_LoadBinaryDataToSelected
             // 
-            this.menuTools_HistoryInfo.Index = 0;
-            this.menuTools_HistoryInfo.Text = "Clipboard History Info";
-            this.menuTools_HistoryInfo.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            this.menuTools_LoadBinaryDataToSelected.Index = 0;
+            this.menuTools_LoadBinaryDataToSelected.Text = "Import File As Binary Data For Selected Format";
+            this.menuTools_LoadBinaryDataToSelected.Click += new System.EventHandler(this.menuTools_LoadBinaryDataToSelected_Click);
+            // 
+            // menuTools_ExportRegisteredFormats
+            // 
+            this.menuTools_ExportRegisteredFormats.Index = 1;
+            this.menuTools_ExportRegisteredFormats.Text = "Export List Of All Registered Formats";
+            this.menuTools_ExportRegisteredFormats.Click += new System.EventHandler(this.menuTools_ExportRegisteredFormats_Click);
             // 
             // menuItemHelp
             // 
@@ -912,7 +890,7 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(581, 436);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(569, 436);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -1106,12 +1084,10 @@
         private System.Windows.Forms.MenuItem menuHelp_WhyTakingLong;
         private System.Windows.Forms.ToolStripButton toolStripButtonAddFormat;
         private System.Windows.Forms.Label labelCustomFormatNameID;
-        private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItemFile_ExportRegisteredFormats;
+        private System.Windows.Forms.MenuItem menuTools_ExportRegisteredFormats;
         private System.Windows.Forms.ToolStripButton toolStripButtonFetchManualFormat;
         private System.Windows.Forms.MenuItem menuOptions_RetryMode;
-        private System.Windows.Forms.MenuItem menuItem4;
-        private System.Windows.Forms.MenuItem menuFile_LoadBinaryDataToSelected;
+        private System.Windows.Forms.MenuItem menuTools_LoadBinaryDataToSelected;
         private System.Windows.Forms.Button buttonDecreaseIndexNumber;
         private System.Windows.Forms.Button buttonIncreaseIndexNumber;
         private System.Windows.Forms.MenuItem menuItem2;
@@ -1138,7 +1114,6 @@
         private System.Windows.Forms.MenuItem menuDebug_TooltipDimensionsMode;
         private System.Windows.Forms.MenuItem menuDebug_CopyRTFStructInfo;
         private System.Windows.Forms.MenuItem menuTools;
-        private System.Windows.Forms.MenuItem menuTools_HistoryInfo;
         private System.Windows.Forms.ToolStripButton toolStripButtonShowHistoryForm;
         private System.Windows.Forms.RichTextBox richTextBoxContents;
         private System.Windows.Forms.Panel panel1;
