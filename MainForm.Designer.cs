@@ -91,12 +91,13 @@
             this.labelCustomFormatNameID = new System.Windows.Forms.Label();
             this.checkBoxAutoViewMode = new System.Windows.Forms.CheckBox();
             this.splitterContainer_InnerTextBoxes = new EditClipboardContents.MySplitContainer();
+            this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
             this.richTextBoxContents = new System.Windows.Forms.RichTextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainerHex = new System.Windows.Forms.SplitContainer();
+            this.richTextBox_HexPlaintext = new System.Windows.Forms.RichTextBox();
             this.dropdownHexToTextEncoding = new System.Windows.Forms.ComboBox();
             this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
             this.labelHexToPlaintextEncoding = new System.Windows.Forms.Label();
-            this.richTextBox_HexPlaintext = new System.Windows.Forms.RichTextBox();
             this.labelSynthesizedTypeWarn = new System.Windows.Forms.Label();
             this.labelViewMode = new System.Windows.Forms.Label();
             this.dropdownContentsViewMode = new System.Windows.Forms.ComboBox();
@@ -116,7 +117,14 @@
             this.splitterContainer_InnerTextBoxes.Panel1.SuspendLayout();
             this.splitterContainer_InnerTextBoxes.Panel2.SuspendLayout();
             this.splitterContainer_InnerTextBoxes.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).BeginInit();
+            this.splitContainerBottom.Panel1.SuspendLayout();
+            this.splitContainerBottom.Panel2.SuspendLayout();
+            this.splitContainerBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHex)).BeginInit();
+            this.splitContainerHex.Panel1.SuspendLayout();
+            this.splitContainerHex.Panel2.SuspendLayout();
+            this.splitContainerHex.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewClipboard
@@ -663,18 +671,7 @@
             // 
             // splitContainerMain.Panel2
             // 
-            this.splitContainerMain.Panel2.Controls.Add(this.buttonResetOrder);
-            this.splitContainerMain.Panel2.Controls.Add(this.buttonApplyEdit);
-            this.splitContainerMain.Panel2.Controls.Add(this.buttonResetEdit);
-            this.splitContainerMain.Panel2.Controls.Add(this.buttonIncreaseIndexNumber);
-            this.splitContainerMain.Panel2.Controls.Add(this.buttonDecreaseIndexNumber);
-            this.splitContainerMain.Panel2.Controls.Add(this.labelCustomFormatNameID);
-            this.splitContainerMain.Panel2.Controls.Add(this.checkBoxAutoViewMode);
-            this.splitContainerMain.Panel2.Controls.Add(this.splitterContainer_InnerTextBoxes);
-            this.splitContainerMain.Panel2.Controls.Add(this.labelSynthesizedTypeWarn);
-            this.splitContainerMain.Panel2.Controls.Add(this.labelViewMode);
-            this.splitContainerMain.Panel2.Controls.Add(this.dropdownContentsViewMode);
-            this.splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(0, 45, 0, 0);
+            this.splitContainerMain.Panel2.Controls.Add(this.splitContainerBottom);
             this.splitContainerMain.Size = new System.Drawing.Size(1554, 813);
             this.splitContainerMain.SplitterDistance = 313;
             this.splitContainerMain.SplitterWidth = 9;
@@ -700,7 +697,7 @@
             // buttonResetOrder
             // 
             this.buttonResetOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetOrder.Location = new System.Drawing.Point(1517, 2);
+            this.buttonResetOrder.Location = new System.Drawing.Point(1519, 5);
             this.buttonResetOrder.Name = "buttonResetOrder";
             this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
             this.buttonResetOrder.TabIndex = 17;
@@ -714,7 +711,7 @@
             // 
             this.buttonApplyEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonApplyEdit.Enabled = false;
-            this.buttonApplyEdit.Location = new System.Drawing.Point(1152, 2);
+            this.buttonApplyEdit.Location = new System.Drawing.Point(1154, 5);
             this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonApplyEdit.Name = "buttonApplyEdit";
             this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
@@ -728,7 +725,7 @@
             // 
             this.buttonResetEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetEdit.Enabled = false;
-            this.buttonResetEdit.Location = new System.Drawing.Point(1272, 2);
+            this.buttonResetEdit.Location = new System.Drawing.Point(1274, 5);
             this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonResetEdit.Name = "buttonResetEdit";
             this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
@@ -740,7 +737,7 @@
             // buttonIncreaseIndexNumber
             // 
             this.buttonIncreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1469, 2);
+            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1471, 5);
             this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
             this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonIncreaseIndexNumber.TabIndex = 16;
@@ -753,7 +750,7 @@
             // buttonDecreaseIndexNumber
             // 
             this.buttonDecreaseIndexNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1422, 2);
+            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1424, 5);
             this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
             this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
             this.buttonDecreaseIndexNumber.TabIndex = 16;
@@ -769,7 +766,7 @@
             this.labelCustomFormatNameID.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelCustomFormatNameID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomFormatNameID.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelCustomFormatNameID.Location = new System.Drawing.Point(476, 4);
+            this.labelCustomFormatNameID.Location = new System.Drawing.Point(475, 7);
             this.labelCustomFormatNameID.Name = "labelCustomFormatNameID";
             this.labelCustomFormatNameID.Size = new System.Drawing.Size(593, 25);
             this.labelCustomFormatNameID.TabIndex = 15;
@@ -783,7 +780,7 @@
             this.checkBoxAutoViewMode.AutoSize = true;
             this.checkBoxAutoViewMode.Checked = true;
             this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(375, 8);
+            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(374, 11);
             this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
             this.checkBoxAutoViewMode.Size = new System.Drawing.Size(69, 24);
             this.checkBoxAutoViewMode.TabIndex = 14;
@@ -793,7 +790,7 @@
             // splitterContainer_InnerTextBoxes
             // 
             this.splitterContainer_InnerTextBoxes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 45);
+            this.splitterContainer_InnerTextBoxes.Location = new System.Drawing.Point(0, 0);
             this.splitterContainer_InnerTextBoxes.Margin = new System.Windows.Forms.Padding(0);
             this.splitterContainer_InnerTextBoxes.Name = "splitterContainer_InnerTextBoxes";
             // 
@@ -803,13 +800,42 @@
             // 
             // splitterContainer_InnerTextBoxes.Panel2
             // 
-            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.panel1);
-            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.richTextBox_HexPlaintext);
-            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 446);
+            this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.splitContainerHex);
+            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 445);
             this.splitterContainer_InnerTextBoxes.SplitterDistance = 957;
             this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
             this.splitterContainer_InnerTextBoxes.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitterContainer_InnerTextBoxes_SplitterMoved);
+            // 
+            // splitContainerBottom
+            // 
+            this.splitContainerBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerBottom.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerBottom.IsSplitterFixed = true;
+            this.splitContainerBottom.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerBottom.Name = "splitContainerBottom";
+            this.splitContainerBottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerBottom.Panel1
+            // 
+            this.splitContainerBottom.Panel1.Controls.Add(this.labelViewMode);
+            this.splitContainerBottom.Panel1.Controls.Add(this.buttonResetOrder);
+            this.splitContainerBottom.Panel1.Controls.Add(this.dropdownContentsViewMode);
+            this.splitContainerBottom.Panel1.Controls.Add(this.buttonApplyEdit);
+            this.splitContainerBottom.Panel1.Controls.Add(this.labelSynthesizedTypeWarn);
+            this.splitContainerBottom.Panel1.Controls.Add(this.buttonResetEdit);
+            this.splitContainerBottom.Panel1.Controls.Add(this.checkBoxAutoViewMode);
+            this.splitContainerBottom.Panel1.Controls.Add(this.buttonIncreaseIndexNumber);
+            this.splitContainerBottom.Panel1.Controls.Add(this.labelCustomFormatNameID);
+            this.splitContainerBottom.Panel1.Controls.Add(this.buttonDecreaseIndexNumber);
+            // 
+            // splitContainerBottom.Panel2
+            // 
+            this.splitContainerBottom.Panel2.Controls.Add(this.splitterContainer_InnerTextBoxes);
+            this.splitContainerBottom.Size = new System.Drawing.Size(1554, 491);
+            this.splitContainerBottom.SplitterDistance = 45;
+            this.splitContainerBottom.SplitterWidth = 1;
+            this.splitContainerBottom.TabIndex = 18;
             // 
             // richTextBoxContents
             // 
@@ -822,25 +848,51 @@
             this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(957, 446);
+            this.richTextBoxContents.Size = new System.Drawing.Size(957, 445);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
             this.richTextBoxContents.SelectionChanged += new System.EventHandler(this.richTextBoxContents_SelectionChanged);
             this.richTextBoxContents.TextChanged += new System.EventHandler(this.richTextBoxContents_TextChanged);
             // 
-            // panel1
+            // splitContainerHex
             // 
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.dropdownHexToTextEncoding);
-            this.panel1.Controls.Add(this.checkBoxPlainTextEditing);
-            this.panel1.Controls.Add(this.labelHexToPlaintextEncoding);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 398);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(587, 48);
-            this.panel1.TabIndex = 5;
+            this.splitContainerHex.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerHex.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerHex.IsSplitterFixed = true;
+            this.splitContainerHex.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerHex.Name = "splitContainerHex";
+            this.splitContainerHex.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerHex.Panel1
+            // 
+            this.splitContainerHex.Panel1.Controls.Add(this.richTextBox_HexPlaintext);
+            // 
+            // splitContainerHex.Panel2
+            // 
+            this.splitContainerHex.Panel2.Controls.Add(this.dropdownHexToTextEncoding);
+            this.splitContainerHex.Panel2.Controls.Add(this.checkBoxPlainTextEditing);
+            this.splitContainerHex.Panel2.Controls.Add(this.labelHexToPlaintextEncoding);
+            this.splitContainerHex.Size = new System.Drawing.Size(587, 445);
+            this.splitContainerHex.SplitterDistance = 403;
+            this.splitContainerHex.SplitterWidth = 1;
+            this.splitContainerHex.TabIndex = 6;
+            // 
+            // richTextBox_HexPlaintext
+            // 
+            this.richTextBox_HexPlaintext.DetectUrls = false;
+            this.richTextBox_HexPlaintext.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_HexPlaintext.HideSelection = false;
+            this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
+            this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 403);
+            this.richTextBox_HexPlaintext.TabIndex = 0;
+            this.richTextBox_HexPlaintext.Text = "";
+            this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
+            this.richTextBox_HexPlaintext.TextChanged += new System.EventHandler(this.richTextBox_HexPlaintext_TextChanged);
             // 
             // dropdownHexToTextEncoding
             // 
@@ -855,7 +907,7 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(332, 10);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(348, 7);
             this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
             this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
@@ -866,7 +918,7 @@
             // 
             this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(84, 15);
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(100, 12);
             this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
             this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
@@ -880,37 +932,19 @@
             // 
             this.labelHexToPlaintextEncoding.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(252, 15);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(268, 12);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
             this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
             this.labelHexToPlaintextEncoding.TabIndex = 1;
             this.labelHexToPlaintextEncoding.Text = "Encoding:";
             // 
-            // richTextBox_HexPlaintext
-            // 
-            this.richTextBox_HexPlaintext.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox_HexPlaintext.DetectUrls = false;
-            this.richTextBox_HexPlaintext.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox_HexPlaintext.HideSelection = false;
-            this.richTextBox_HexPlaintext.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
-            this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 398);
-            this.richTextBox_HexPlaintext.TabIndex = 0;
-            this.richTextBox_HexPlaintext.Text = "";
-            this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
-            this.richTextBox_HexPlaintext.TextChanged += new System.EventHandler(this.richTextBox_HexPlaintext_TextChanged);
-            // 
             // labelSynthesizedTypeWarn
             // 
             this.labelSynthesizedTypeWarn.AutoSize = true;
             this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
             this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(452, 54);
+            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(476, 12);
             this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
             this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
@@ -924,7 +958,7 @@
             // 
             this.labelViewMode.AutoSize = true;
             this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelViewMode.Location = new System.Drawing.Point(4, 4);
+            this.labelViewMode.Location = new System.Drawing.Point(3, 7);
             this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
             this.labelViewMode.Name = "labelViewMode";
             this.labelViewMode.Size = new System.Drawing.Size(116, 25);
@@ -942,7 +976,7 @@
             "Hex",
             "Hex (Editable)",
             "Object / Struct Details"});
-            this.dropdownContentsViewMode.Location = new System.Drawing.Point(124, 2);
+            this.dropdownContentsViewMode.Location = new System.Drawing.Point(123, 5);
             this.dropdownContentsViewMode.Margin = new System.Windows.Forms.Padding(4);
             this.dropdownContentsViewMode.Name = "dropdownContentsViewMode";
             this.dropdownContentsViewMode.Size = new System.Drawing.Size(240, 30);
@@ -1026,15 +1060,22 @@
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel1.PerformLayout();
             this.splitContainerMain.Panel2.ResumeLayout(false);
-            this.splitContainerMain.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel1.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).EndInit();
             this.splitterContainer_InnerTextBoxes.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.splitContainerBottom.Panel1.ResumeLayout(false);
+            this.splitContainerBottom.Panel1.PerformLayout();
+            this.splitContainerBottom.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).EndInit();
+            this.splitContainerBottom.ResumeLayout(false);
+            this.splitContainerHex.Panel1.ResumeLayout(false);
+            this.splitContainerHex.Panel2.ResumeLayout(false);
+            this.splitContainerHex.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerHex)).EndInit();
+            this.splitContainerHex.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1124,7 +1165,8 @@
         private System.Windows.Forms.MenuItem menuTools;
         private System.Windows.Forms.ToolStripButton toolStripButtonShowHistoryForm;
         private System.Windows.Forms.RichTextBox richTextBoxContents;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuItem menuOptions_ShowStructFormatting;
+        private System.Windows.Forms.SplitContainer splitContainerHex;
+        private System.Windows.Forms.SplitContainer splitContainerBottom;
     }
 }

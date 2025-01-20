@@ -129,6 +129,19 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>322, 23</value>
   </metadata>
+  <data name="labelSynthesizedTypeWarn.ToolTip" xml:space="preserve">
+    <value>The selected format type is "synthesized", meaning it will be automatically
+re-created by Windows if deleted (edits should still work).
+
+Synthesized formats are automatically created by Windows if there are certain
+corresponding formats in the clipboard. For example, if the "CF_TEXT" format
+exists, Windows will automatically convert it and also add the formats
+"CF_UNICODETEXT" and "CF_OEMTEXT" if they don't exist already.
+
+Tips:
+   - Windows won't overwrite a synthesized format if it already exists, like you edit it
+   - You can get rid of the synthesized formats by also deleting the other associated formats</value>
+  </data>
   <data name="labelCustomFormatNameID.ToolTip" xml:space="preserve">
     <value>Windows automatically assigns format ID numbers. Names can be assigned
 to ID numbers by "registering" the name, but not the other way around.
@@ -152,19 +165,6 @@ so that you can use that to signify a null character.
 
 Still, the conversion from plaintext to hex might not be perfect,
 so if accuracy is important, just edit the hex values directly!</value>
-  </data>
-  <data name="labelSynthesizedTypeWarn.ToolTip" xml:space="preserve">
-    <value>The selected format type is "synthesized", meaning it will be automatically
-re-created by Windows if deleted (edits should still work).
-
-Synthesized formats are automatically created by Windows if there are certain
-corresponding formats in the clipboard. For example, if the "CF_TEXT" format
-exists, Windows will automatically convert it and also add the formats
-"CF_UNICODETEXT" and "CF_OEMTEXT" if they don't exist already.
-
-Tips:
-   - Windows won't overwrite a synthesized format if it already exists, like you edit it
-   - You can get rid of the synthesized formats by also deleting the other associated formats</value>
   </data>
   <data name="labelPendingChanges.ToolTip" xml:space="preserve">
     <value>Changes you have "Applied" are not saved to the actual

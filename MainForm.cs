@@ -595,7 +595,7 @@ namespace EditClipboardContents
                 splitterContainer_InnerTextBoxes.Panel2Collapsed = true;
             }
 
-            splitterContainer_InnerTextBoxes.SplitterWidth = 10;
+            //splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             previousSplitterDistance = splitContainerMain.SplitterDistance;
         }
 
