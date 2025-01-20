@@ -73,6 +73,14 @@
             this.menuDebug_TooltipDimensionsMode = new System.Windows.Forms.MenuItem();
             this.menuDebug_CopyRTFStructInfo = new System.Windows.Forms.MenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonTimedRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFetchManualFormat = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddFormat = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSaveEdited = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExportSelected = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.labelLoading = new System.Windows.Forms.Label();
             this.buttonResetOrder = new System.Windows.Forms.Button();
@@ -97,14 +105,6 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
-            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonTimedRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonFetchManualFormat = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddFormat = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSaveEdited = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonExportSelected = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -546,6 +546,108 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonRefresh
+            // 
+            this.toolStripButtonRefresh.AutoSize = false;
+            this.toolStripButtonRefresh.AutoToolTip = false;
+            this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRefresh.Image = global::EditClipboardContents.Properties.Resources.fluent_refresh_48;
+            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
+            this.toolStripButtonRefresh.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonRefresh.Text = "Reload From Clipboard";
+            this.toolStripButtonRefresh.ToolTipText = "Reload From Clipboard";
+            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
+            // 
+            // toolStripButtonTimedRefresh
+            // 
+            this.toolStripButtonTimedRefresh.AutoSize = false;
+            this.toolStripButtonTimedRefresh.AutoToolTip = false;
+            this.toolStripButtonTimedRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonTimedRefresh.Image = global::EditClipboardContents.Properties.Resources.timed_refresh_48;
+            this.toolStripButtonTimedRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonTimedRefresh.Name = "toolStripButtonTimedRefresh";
+            this.toolStripButtonTimedRefresh.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonTimedRefresh.Text = "Reload from clipboard after a specified number of seconds";
+            this.toolStripButtonTimedRefresh.ToolTipText = "Reload from clipboard after a specified number of seconds";
+            this.toolStripButtonTimedRefresh.Click += new System.EventHandler(this.toolStripButtonTimedRefresh_Click);
+            // 
+            // toolStripButtonFetchManualFormat
+            // 
+            this.toolStripButtonFetchManualFormat.AutoSize = false;
+            this.toolStripButtonFetchManualFormat.AutoToolTip = false;
+            this.toolStripButtonFetchManualFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFetchManualFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_magnifying_48;
+            this.toolStripButtonFetchManualFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFetchManualFormat.Name = "toolStripButtonFetchManualFormat";
+            this.toolStripButtonFetchManualFormat.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonFetchManualFormat.Text = "Manually fetch or re-fetch a specific format by name or ID";
+            this.toolStripButtonFetchManualFormat.ToolTipText = "Manually fetch or re-fetch a specific format by name or ID";
+            this.toolStripButtonFetchManualFormat.Click += new System.EventHandler(this.toolStripButtonFetchManualFormat_Click);
+            // 
+            // toolStripButtonDelete
+            // 
+            this.toolStripButtonDelete.AutoSize = false;
+            this.toolStripButtonDelete.AutoToolTip = false;
+            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDelete.Image = global::EditClipboardContents.Properties.Resources.fluent_X_48;
+            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonDelete.Text = "Delete Selected Item From Clipboard";
+            this.toolStripButtonDelete.ToolTipText = "Delete Selected Item From Clipboard";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
+            // 
+            // toolStripButtonAddFormat
+            // 
+            this.toolStripButtonAddFormat.AutoSize = false;
+            this.toolStripButtonAddFormat.AutoToolTip = false;
+            this.toolStripButtonAddFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_plus_48;
+            this.toolStripButtonAddFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddFormat.Name = "toolStripButtonAddFormat";
+            this.toolStripButtonAddFormat.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonAddFormat.Text = "Add a custom format";
+            this.toolStripButtonAddFormat.ToolTipText = "Add a custom format";
+            this.toolStripButtonAddFormat.Click += new System.EventHandler(this.toolStripButtonAddFormat_Click);
+            // 
+            // toolStripButtonSaveEdited
+            // 
+            this.toolStripButtonSaveEdited.AutoSize = false;
+            this.toolStripButtonSaveEdited.AutoToolTip = false;
+            this.toolStripButtonSaveEdited.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSaveEdited.Image = global::EditClipboardContents.Properties.Resources.fluent_floppy_48;
+            this.toolStripButtonSaveEdited.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSaveEdited.Name = "toolStripButtonSaveEdited";
+            this.toolStripButtonSaveEdited.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonSaveEdited.Text = "Re-Write clipboard with edited data";
+            this.toolStripButtonSaveEdited.ToolTipText = "Re-Write clipboard with edited data";
+            this.toolStripButtonSaveEdited.Click += new System.EventHandler(this.toolStripButtonSaveEdited_Click);
+            // 
+            // toolStripButtonExportSelected
+            // 
+            this.toolStripButtonExportSelected.AutoSize = false;
+            this.toolStripButtonExportSelected.AutoToolTip = false;
+            this.toolStripButtonExportSelected.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonExportSelected.Image = global::EditClipboardContents.Properties.Resources.export_48;
+            this.toolStripButtonExportSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExportSelected.Name = "toolStripButtonExportSelected";
+            this.toolStripButtonExportSelected.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonExportSelected.Text = "Export selected item data as file";
+            this.toolStripButtonExportSelected.ToolTipText = "Export selected item data as file";
+            this.toolStripButtonExportSelected.Click += new System.EventHandler(this.toolStripButtonExportSelected_Click);
+            // 
+            // toolStripButtonShowHistoryForm
+            // 
+            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonShowHistoryForm.Image = global::EditClipboardContents.Properties.Resources.fluent_spiral_calendar_48;
+            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
+            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
+            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
+            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            // 
             // splitContainerMain
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -797,7 +899,7 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(539, 398);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(587, 398);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -897,108 +999,6 @@
             this.labelTestMiscellaneous.TabIndex = 17;
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
-            // 
-            // toolStripButtonRefresh
-            // 
-            this.toolStripButtonRefresh.AutoSize = false;
-            this.toolStripButtonRefresh.AutoToolTip = false;
-            this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRefresh.Image = global::EditClipboardContents.Properties.Resources.fluent_refresh_48;
-            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            this.toolStripButtonRefresh.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonRefresh.Text = "Reload From Clipboard";
-            this.toolStripButtonRefresh.ToolTipText = "Reload From Clipboard";
-            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
-            // 
-            // toolStripButtonTimedRefresh
-            // 
-            this.toolStripButtonTimedRefresh.AutoSize = false;
-            this.toolStripButtonTimedRefresh.AutoToolTip = false;
-            this.toolStripButtonTimedRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonTimedRefresh.Image = global::EditClipboardContents.Properties.Resources.timed_refresh_48;
-            this.toolStripButtonTimedRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonTimedRefresh.Name = "toolStripButtonTimedRefresh";
-            this.toolStripButtonTimedRefresh.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonTimedRefresh.Text = "Reload from clipboard after a specified number of seconds";
-            this.toolStripButtonTimedRefresh.ToolTipText = "Reload from clipboard after a specified number of seconds";
-            this.toolStripButtonTimedRefresh.Click += new System.EventHandler(this.toolStripButtonTimedRefresh_Click);
-            // 
-            // toolStripButtonFetchManualFormat
-            // 
-            this.toolStripButtonFetchManualFormat.AutoSize = false;
-            this.toolStripButtonFetchManualFormat.AutoToolTip = false;
-            this.toolStripButtonFetchManualFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFetchManualFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_magnifying_48;
-            this.toolStripButtonFetchManualFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFetchManualFormat.Name = "toolStripButtonFetchManualFormat";
-            this.toolStripButtonFetchManualFormat.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonFetchManualFormat.Text = "Manually fetch or re-fetch a specific format by name or ID";
-            this.toolStripButtonFetchManualFormat.ToolTipText = "Manually fetch or re-fetch a specific format by name or ID";
-            this.toolStripButtonFetchManualFormat.Click += new System.EventHandler(this.toolStripButtonFetchManualFormat_Click);
-            // 
-            // toolStripButtonDelete
-            // 
-            this.toolStripButtonDelete.AutoSize = false;
-            this.toolStripButtonDelete.AutoToolTip = false;
-            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDelete.Image = global::EditClipboardContents.Properties.Resources.fluent_X_48;
-            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonDelete.Text = "Delete Selected Item From Clipboard";
-            this.toolStripButtonDelete.ToolTipText = "Delete Selected Item From Clipboard";
-            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
-            // 
-            // toolStripButtonAddFormat
-            // 
-            this.toolStripButtonAddFormat.AutoSize = false;
-            this.toolStripButtonAddFormat.AutoToolTip = false;
-            this.toolStripButtonAddFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_plus_48;
-            this.toolStripButtonAddFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddFormat.Name = "toolStripButtonAddFormat";
-            this.toolStripButtonAddFormat.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonAddFormat.Text = "Add a custom format";
-            this.toolStripButtonAddFormat.ToolTipText = "Add a custom format";
-            this.toolStripButtonAddFormat.Click += new System.EventHandler(this.toolStripButtonAddFormat_Click);
-            // 
-            // toolStripButtonSaveEdited
-            // 
-            this.toolStripButtonSaveEdited.AutoSize = false;
-            this.toolStripButtonSaveEdited.AutoToolTip = false;
-            this.toolStripButtonSaveEdited.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSaveEdited.Image = global::EditClipboardContents.Properties.Resources.fluent_floppy_48;
-            this.toolStripButtonSaveEdited.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSaveEdited.Name = "toolStripButtonSaveEdited";
-            this.toolStripButtonSaveEdited.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonSaveEdited.Text = "Re-Write clipboard with edited data";
-            this.toolStripButtonSaveEdited.ToolTipText = "Re-Write clipboard with edited data";
-            this.toolStripButtonSaveEdited.Click += new System.EventHandler(this.toolStripButtonSaveEdited_Click);
-            // 
-            // toolStripButtonExportSelected
-            // 
-            this.toolStripButtonExportSelected.AutoSize = false;
-            this.toolStripButtonExportSelected.AutoToolTip = false;
-            this.toolStripButtonExportSelected.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonExportSelected.Image = global::EditClipboardContents.Properties.Resources.export_48;
-            this.toolStripButtonExportSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonExportSelected.Name = "toolStripButtonExportSelected";
-            this.toolStripButtonExportSelected.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonExportSelected.Text = "Export selected item data as file";
-            this.toolStripButtonExportSelected.ToolTipText = "Export selected item data as file";
-            this.toolStripButtonExportSelected.Click += new System.EventHandler(this.toolStripButtonExportSelected_Click);
-            // 
-            // toolStripButtonShowHistoryForm
-            // 
-            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonShowHistoryForm.Image = global::EditClipboardContents.Properties.Resources.fluent_spiral_calendar_48;
-            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
-            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
-            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
-            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
             // 
             // MainForm
             // 
