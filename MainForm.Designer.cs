@@ -18,8 +18,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewClipboard = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip_dataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -59,6 +59,7 @@
             this.menuOptions_TabSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_CommaSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_RetryMode = new System.Windows.Forms.MenuItem();
+            this.menuOptions_ShowStructFormatting = new System.Windows.Forms.MenuItem();
             this.menuTools = new System.Windows.Forms.MenuItem();
             this.menuTools_LoadBinaryDataToSelected = new System.Windows.Forms.MenuItem();
             this.menuTools_ExportRegisteredFormats = new System.Windows.Forms.MenuItem();
@@ -124,31 +125,31 @@
             this.dataGridViewClipboard.AllowUserToDeleteRows = false;
             this.dataGridViewClipboard.AllowUserToResizeRows = false;
             this.dataGridViewClipboard.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewClipboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClipboard.ContextMenuStrip = this.contextMenuStrip_dataGridView;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewClipboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
-            this.dataGridViewClipboard.Size = new System.Drawing.Size(1554, 337);
+            this.dataGridViewClipboard.Size = new System.Drawing.Size(1554, 325);
             this.dataGridViewClipboard.TabIndex = 0;
             this.dataGridViewClipboard.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewClipboard_CellBeginEdit);
             this.dataGridViewClipboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClipboard_CellClick);
@@ -381,15 +382,16 @@
             // 
             this.menuItemOptions.Index = 2;
             this.menuItemOptions.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuOptions_ShowLargeHex,
+            this.menuOptions_ShowStructFormatting,
             this.menuOptions_IncludeRowHeaders,
+            this.menuOptions_ShowLargeHex,
             this.menuOptions_TableModeMenu,
             this.menuOptions_RetryMode});
             this.menuItemOptions.Text = "Options";
             // 
             // menuOptions_ShowLargeHex
             // 
-            this.menuOptions_ShowLargeHex.Index = 0;
+            this.menuOptions_ShowLargeHex.Index = 2;
             this.menuOptions_ShowLargeHex.Text = "Show Hex For Large Files";
             this.menuOptions_ShowLargeHex.Click += new System.EventHandler(this.menuItemShowLargeHex_Click);
             // 
@@ -402,7 +404,7 @@
             // 
             // menuOptions_TableModeMenu
             // 
-            this.menuOptions_TableModeMenu.Index = 2;
+            this.menuOptions_TableModeMenu.Index = 3;
             this.menuOptions_TableModeMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuOptions_PreFormatted,
             this.menuOptions_TabSeparation,
@@ -430,9 +432,16 @@
             // 
             // menuOptions_RetryMode
             // 
-            this.menuOptions_RetryMode.Index = 3;
+            this.menuOptions_RetryMode.Index = 4;
             this.menuOptions_RetryMode.Text = "Enable Retrying Failed Value Fetches";
             this.menuOptions_RetryMode.Click += new System.EventHandler(this.menuOptions_RetryMode_Click);
+            // 
+            // menuOptions_ShowStructFormatting
+            // 
+            this.menuOptions_ShowStructFormatting.Checked = true;
+            this.menuOptions_ShowStructFormatting.Index = 0;
+            this.menuOptions_ShowStructFormatting.Text = "Show Text Formatting For Object Info";
+            this.menuOptions_ShowStructFormatting.Click += new System.EventHandler(this.menuOptions_ShowStructFormatting_Click);
             // 
             // menuTools
             // 
@@ -666,8 +675,8 @@
             this.splitContainerMain.Panel2.Controls.Add(this.labelViewMode);
             this.splitContainerMain.Panel2.Controls.Add(this.dropdownContentsViewMode);
             this.splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(0, 45, 0, 0);
-            this.splitContainerMain.Size = new System.Drawing.Size(1554, 875);
-            this.splitContainerMain.SplitterDistance = 337;
+            this.splitContainerMain.Size = new System.Drawing.Size(1554, 844);
+            this.splitContainerMain.SplitterDistance = 325;
             this.splitContainerMain.SplitterWidth = 9;
             this.splitContainerMain.TabIndex = 6;
             this.splitContainerMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainerMain_SplitterMoved);
@@ -796,7 +805,7 @@
             // 
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.panel1);
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.richTextBox_HexPlaintext);
-            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 484);
+            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 465);
             this.splitterContainer_InnerTextBoxes.SplitterDistance = 957;
             this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
@@ -813,7 +822,7 @@
             this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(957, 484);
+            this.richTextBoxContents.Size = new System.Drawing.Size(957, 465);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
@@ -827,7 +836,7 @@
             this.panel1.Controls.Add(this.checkBoxPlainTextEditing);
             this.panel1.Controls.Add(this.labelHexToPlaintextEncoding);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 436);
+            this.panel1.Location = new System.Drawing.Point(0, 417);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 48);
@@ -890,7 +899,7 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(563, 436);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(551, 417);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -995,7 +1004,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1574, 936);
+            this.ClientSize = new System.Drawing.Size(1574, 905);
             this.Controls.Add(this.labelTestMiscellaneous);
             this.Controls.Add(this.labelTestCount);
             this.Controls.Add(this.labelVersion);
@@ -1117,5 +1126,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonShowHistoryForm;
         private System.Windows.Forms.RichTextBox richTextBoxContents;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.MenuItem menuOptions_ShowStructFormatting;
     }
 }

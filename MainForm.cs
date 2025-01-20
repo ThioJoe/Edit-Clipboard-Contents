@@ -1520,7 +1520,7 @@ namespace EditClipboardContents
                     break;
                 case 3: // Object / Struct View
                     richTextBoxContents.TextChanged -= richTextBoxContents_TextChanged;
-                    string textString = FormatStructurePrinter.GetDataStringForTextbox(formatName: Utils.GetClipboardFormatNameFromId(item.FormatId), fullItem: item);
+                    string textString = FormatStructurePrinter.GetDataStringForTextbox(formatName: Utils.GetClipboardFormatNameFromId(item.FormatId), fullItem: item, plaintext:!menuOptions_ShowStructFormatting.Checked);
                     if (textString.StartsWith(@"{\rtf1\"))
                         richTextBoxContents.Rtf = textString;
                     else
@@ -3380,6 +3380,18 @@ namespace EditClipboardContents
                 // Show tooltip near the cursor when clicked without Ctrl
                 Point cursorPos = richTextBoxContents.PointToClient(Cursor.Position);
                 toolTip1.Show("Ctrl + Click To Open Link", richTextBoxContents, cursorPos.X + 10, cursorPos.Y + 10, 2000);
+            }
+        }
+
+        private void menuOptions_ShowStructFormatting_Click(object sender, EventArgs e)
+        {
+            // Toggle the checked state
+            menuOptions_ShowStructFormatting.Checked = !menuOptions_ShowStructFormatting.Checked;
+
+            ClipboardItem? item = GetSelectedClipboardItemObject(returnEditedItemVersion: true);
+            if ( item != null )
+            {
+                DisplayClipboardDataInTextBoxes(item);
             }
         }
 

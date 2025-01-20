@@ -40,6 +40,10 @@ namespace EditClipboardContents
             else
             {
                 displayText = CreateDataString(formatName, fullItem);
+
+                if (plaintext == true )
+                    displayText = RemoveRtfFormatting(displayText);
+
                 return displayText;
             }
 
@@ -52,46 +56,54 @@ namespace EditClipboardContents
             
             if (plaintext == true) 
             {
-                // Check if the rtf header is even there
-                var headerMatch = System.Text.RegularExpressions.Regex.Match(displayText, Regex.Escape(rtfHeader));
+                displayText = RemoveRtfFormatting(displayText);
+            }
 
-                if (headerMatch.Success)
+            return displayText;
+        }
+
+        private static string RemoveRtfFormatting(string inputString)
+        {
+            string displayText = inputString;
+
+            // Check if the rtf header is even there
+            var headerMatch = System.Text.RegularExpressions.Regex.Match(displayText, Regex.Escape(rtfHeader));
+
+            if ( headerMatch.Success )
+            {
+                // First remove the RTF header
+                displayText = System.Text.RegularExpressions.Regex.Replace(displayText, Regex.Escape(rtfHeader), "");
+
+                // Remove RTF formatting tags
+                // First remove assuming there is a space after start tags and before end tags, then remove regardless of space
+                // Need to remove the end tags first because they have the 0, and if we remove the start tags then it will leave the 0
+                displayText = displayText
+                    // End Tags:
+                    .Replace(@" \b0", "")
+                    .Replace(@"\b0", "")
+                    .Replace(@" \ul0", "")
+                    .Replace(@"\ul0", "")
+                    .Replace(@" \i0", "")
+                    .Replace(@"\i0", "")
+                    // Start Tags:
+                    .Replace(@"\ul ", "")
+                    .Replace(@"\ul", "")
+                    .Replace(@"\i ", "")
+                    .Replace(@"\i", "")
+                    .Replace(@"\b ", "")
+                    .Replace(@"\b", "")
+                    // Other Tags:
+                    .Replace(@"\line ", "\n")
+                    .Replace(@"\line", "\n");
+
+                // Remove the last curly brace if it's there. But be sure to only remove 1
+                if ( displayText.TrimEnd().EndsWith("}") )
                 {
-                    // First remove the RTF header
-                    displayText = System.Text.RegularExpressions.Regex.Replace(displayText, Regex.Escape(rtfHeader), "");
-
-                    // Remove RTF formatting tags
-                    // First remove assuming there is a space after start tags and before end tags, then remove regardless of space
-                    // Need to remove the end tags first because they have the 0, and if we remove the start tags then it will leave the 0
-                    displayText = displayText
-                        // End Tags:
-                        .Replace(@" \b0", "")
-                        .Replace(@"\b0", "")
-                        .Replace(@" \ul0", "")
-                        .Replace(@"\ul0", "")
-                        .Replace(@" \i0", "")
-                        .Replace(@"\i0", "")
-                        // Start Tags:
-                        .Replace(@"\ul ", "")
-                        .Replace(@"\ul", "")
-                        .Replace(@"\i ", "")
-                        .Replace(@"\i", "")
-                        .Replace(@"\b ", "")
-                        .Replace(@"\b", "")
-                        // Other Tags:
-                        .Replace(@"\line ", "\n")
-                        .Replace(@"\line", "\n");
-
-                    // Remove the last curly brace if it's there. But be sure to only remove 1
-                    if (displayText.TrimEnd().EndsWith("}"))
-                    {
-                        displayText = displayText.TrimEnd().Substring(0, displayText.TrimEnd().Length - 1);
-                    }
+                    displayText = displayText.TrimEnd().Substring(0, displayText.TrimEnd().Length - 1);
                 }
             }
 
             return displayText;
-
         }
 
         public static string CreateDataString(string formatName, ClipboardItem? fullItem)
