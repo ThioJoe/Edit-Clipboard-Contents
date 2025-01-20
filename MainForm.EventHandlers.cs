@@ -1315,17 +1315,19 @@ namespace EditClipboardContents
 
         private void menuTools_HistoryInfo_click(object sender, EventArgs e)
         {
-            // Open the history window form
-            HistoryForm historyForm = new HistoryForm();
-            // Setting owner allows the form to be minimized with the main form, and stay in front of it
-            historyForm.Owner = this; // 'this' refers to MainForm. 
-            historyForm.Show();
-            historyForm.Activate();
+            // Check if there's an existing history window open already, otherwise create a new one
+            if ( Application.OpenForms.OfType<HistoryForm>().Count() > 0 )
+            {
+                Application.OpenForms.OfType<HistoryForm>().First().Activate();
+            }
+            else
+            {
+                // If there isn't, create a new one
+                HistoryForm historyForm = new HistoryForm();
+                historyForm.Show();
+                historyForm.Activate();
+            }
         }
-
-        // Handle clicking a hyperlink in the rich text box
-        
-
 
         // --------------------------------------------- DEBUG CONTROLS AND BUTTONS --------------------------------------------------------
 
