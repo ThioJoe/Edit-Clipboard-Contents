@@ -356,10 +356,14 @@ namespace EditClipboardContents
             menuOptions_ShowLargeHex.Checked = !menuOptions_ShowLargeHex.Checked;
         }
 
-        // Give focus to control when mouse enters
+        // Give focus to control when mouse enters. I don't remember why I did this
         private void dataGridViewClipboard_MouseEnter(object sender, EventArgs e)
         {
-            dataGridViewClipboard.Focus();
+            // Ensure the parent window has focus before giving focus to the control, so the control doesn't steal focus from other windows
+            if ( this.ContainsFocus ) // "this" refers to the window
+            {
+                dataGridViewClipboard.Focus();
+            }
         }
 
         private void buttonResetEdit_Click(object sender, EventArgs e)
