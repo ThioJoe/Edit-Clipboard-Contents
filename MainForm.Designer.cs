@@ -18,8 +18,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataGridViewClipboard = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip_dataGridView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -52,14 +52,14 @@
             this.menuEdit_ClearClipboard = new System.Windows.Forms.MenuItem();
             this.menuEdit_RefreshDataTable = new System.Windows.Forms.MenuItem();
             this.menuItemOptions = new System.Windows.Forms.MenuItem();
-            this.menuOptions_ShowLargeHex = new System.Windows.Forms.MenuItem();
+            this.menuOptions_ShowStructFormatting = new System.Windows.Forms.MenuItem();
             this.menuOptions_IncludeRowHeaders = new System.Windows.Forms.MenuItem();
+            this.menuOptions_ShowLargeHex = new System.Windows.Forms.MenuItem();
             this.menuOptions_TableModeMenu = new System.Windows.Forms.MenuItem();
             this.menuOptions_PreFormatted = new System.Windows.Forms.MenuItem();
             this.menuOptions_TabSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_CommaSeparation = new System.Windows.Forms.MenuItem();
             this.menuOptions_RetryMode = new System.Windows.Forms.MenuItem();
-            this.menuOptions_ShowStructFormatting = new System.Windows.Forms.MenuItem();
             this.menuTools = new System.Windows.Forms.MenuItem();
             this.menuTools_LoadBinaryDataToSelected = new System.Windows.Forms.MenuItem();
             this.menuTools_ExportRegisteredFormats = new System.Windows.Forms.MenuItem();
@@ -73,14 +73,6 @@
             this.menuDebug_TooltipDimensionsMode = new System.Windows.Forms.MenuItem();
             this.menuDebug_CopyRTFStructInfo = new System.Windows.Forms.MenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonTimedRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonFetchManualFormat = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAddFormat = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSaveEdited = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonExportSelected = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.labelLoading = new System.Windows.Forms.Label();
             this.buttonResetOrder = new System.Windows.Forms.Button();
@@ -105,6 +97,14 @@
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
+            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonTimedRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFetchManualFormat = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddFormat = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSaveEdited = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExportSelected = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonShowHistoryForm = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -125,31 +125,31 @@
             this.dataGridViewClipboard.AllowUserToDeleteRows = false;
             this.dataGridViewClipboard.AllowUserToResizeRows = false;
             this.dataGridViewClipboard.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClipboard.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClipboard.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClipboard.ContextMenuStrip = this.contextMenuStrip_dataGridView;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClipboard.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewClipboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewClipboard.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewClipboard.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewClipboard.Name = "dataGridViewClipboard";
             this.dataGridViewClipboard.ReadOnly = true;
             this.dataGridViewClipboard.RowHeadersWidth = 62;
-            this.dataGridViewClipboard.Size = new System.Drawing.Size(1554, 325);
+            this.dataGridViewClipboard.Size = new System.Drawing.Size(1554, 313);
             this.dataGridViewClipboard.TabIndex = 0;
             this.dataGridViewClipboard.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewClipboard_CellBeginEdit);
             this.dataGridViewClipboard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClipboard_CellClick);
@@ -389,11 +389,12 @@
             this.menuOptions_RetryMode});
             this.menuItemOptions.Text = "Options";
             // 
-            // menuOptions_ShowLargeHex
+            // menuOptions_ShowStructFormatting
             // 
-            this.menuOptions_ShowLargeHex.Index = 2;
-            this.menuOptions_ShowLargeHex.Text = "Show Hex For Large Files";
-            this.menuOptions_ShowLargeHex.Click += new System.EventHandler(this.menuItemShowLargeHex_Click);
+            this.menuOptions_ShowStructFormatting.Checked = true;
+            this.menuOptions_ShowStructFormatting.Index = 0;
+            this.menuOptions_ShowStructFormatting.Text = "Show Text Formatting For Object Info";
+            this.menuOptions_ShowStructFormatting.Click += new System.EventHandler(this.menuOptions_ShowStructFormatting_Click);
             // 
             // menuOptions_IncludeRowHeaders
             // 
@@ -401,6 +402,12 @@
             this.menuOptions_IncludeRowHeaders.Index = 1;
             this.menuOptions_IncludeRowHeaders.Text = "Include Headers When Copying Table";
             this.menuOptions_IncludeRowHeaders.Click += new System.EventHandler(this.menuOptions_IncludeRowHeaders_Click);
+            // 
+            // menuOptions_ShowLargeHex
+            // 
+            this.menuOptions_ShowLargeHex.Index = 2;
+            this.menuOptions_ShowLargeHex.Text = "Show Hex For Large Files";
+            this.menuOptions_ShowLargeHex.Click += new System.EventHandler(this.menuItemShowLargeHex_Click);
             // 
             // menuOptions_TableModeMenu
             // 
@@ -435,13 +442,6 @@
             this.menuOptions_RetryMode.Index = 4;
             this.menuOptions_RetryMode.Text = "Enable Retrying Failed Value Fetches";
             this.menuOptions_RetryMode.Click += new System.EventHandler(this.menuOptions_RetryMode_Click);
-            // 
-            // menuOptions_ShowStructFormatting
-            // 
-            this.menuOptions_ShowStructFormatting.Checked = true;
-            this.menuOptions_ShowStructFormatting.Index = 0;
-            this.menuOptions_ShowStructFormatting.Text = "Show Text Formatting For Object Info";
-            this.menuOptions_ShowStructFormatting.Click += new System.EventHandler(this.menuOptions_ShowStructFormatting_Click);
             // 
             // menuTools
             // 
@@ -546,108 +546,6 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButtonRefresh
-            // 
-            this.toolStripButtonRefresh.AutoSize = false;
-            this.toolStripButtonRefresh.AutoToolTip = false;
-            this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRefresh.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRefresh.Image")));
-            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            this.toolStripButtonRefresh.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonRefresh.Text = "Reload From Clipboard";
-            this.toolStripButtonRefresh.ToolTipText = "Reload From Clipboard";
-            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
-            // 
-            // toolStripButtonTimedRefresh
-            // 
-            this.toolStripButtonTimedRefresh.AutoSize = false;
-            this.toolStripButtonTimedRefresh.AutoToolTip = false;
-            this.toolStripButtonTimedRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonTimedRefresh.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTimedRefresh.Image")));
-            this.toolStripButtonTimedRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonTimedRefresh.Name = "toolStripButtonTimedRefresh";
-            this.toolStripButtonTimedRefresh.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonTimedRefresh.Text = "Reload from clipboard after a specified number of seconds";
-            this.toolStripButtonTimedRefresh.ToolTipText = "Reload from clipboard after a specified number of seconds";
-            this.toolStripButtonTimedRefresh.Click += new System.EventHandler(this.toolStripButtonTimedRefresh_Click);
-            // 
-            // toolStripButtonFetchManualFormat
-            // 
-            this.toolStripButtonFetchManualFormat.AutoSize = false;
-            this.toolStripButtonFetchManualFormat.AutoToolTip = false;
-            this.toolStripButtonFetchManualFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFetchManualFormat.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFetchManualFormat.Image")));
-            this.toolStripButtonFetchManualFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFetchManualFormat.Name = "toolStripButtonFetchManualFormat";
-            this.toolStripButtonFetchManualFormat.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonFetchManualFormat.Text = "Manually fetch or re-fetch a specific format by name or ID";
-            this.toolStripButtonFetchManualFormat.ToolTipText = "Manually fetch or re-fetch a specific format by name or ID";
-            this.toolStripButtonFetchManualFormat.Click += new System.EventHandler(this.toolStripButtonFetchManualFormat_Click);
-            // 
-            // toolStripButtonDelete
-            // 
-            this.toolStripButtonDelete.AutoSize = false;
-            this.toolStripButtonDelete.AutoToolTip = false;
-            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDelete.Image")));
-            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonDelete.Text = "Delete Selected Item From Clipboard";
-            this.toolStripButtonDelete.ToolTipText = "Delete Selected Item From Clipboard";
-            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
-            // 
-            // toolStripButtonAddFormat
-            // 
-            this.toolStripButtonAddFormat.AutoSize = false;
-            this.toolStripButtonAddFormat.AutoToolTip = false;
-            this.toolStripButtonAddFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddFormat.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddFormat.Image")));
-            this.toolStripButtonAddFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddFormat.Name = "toolStripButtonAddFormat";
-            this.toolStripButtonAddFormat.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonAddFormat.Text = "Add a custom format";
-            this.toolStripButtonAddFormat.ToolTipText = "Add a custom format";
-            this.toolStripButtonAddFormat.Click += new System.EventHandler(this.toolStripButtonAddFormat_Click);
-            // 
-            // toolStripButtonSaveEdited
-            // 
-            this.toolStripButtonSaveEdited.AutoSize = false;
-            this.toolStripButtonSaveEdited.AutoToolTip = false;
-            this.toolStripButtonSaveEdited.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSaveEdited.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSaveEdited.Image")));
-            this.toolStripButtonSaveEdited.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSaveEdited.Name = "toolStripButtonSaveEdited";
-            this.toolStripButtonSaveEdited.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonSaveEdited.Text = "Re-Write clipboard with edited data";
-            this.toolStripButtonSaveEdited.ToolTipText = "Re-Write clipboard with edited data";
-            this.toolStripButtonSaveEdited.Click += new System.EventHandler(this.toolStripButtonSaveEdited_Click);
-            // 
-            // toolStripButtonExportSelected
-            // 
-            this.toolStripButtonExportSelected.AutoSize = false;
-            this.toolStripButtonExportSelected.AutoToolTip = false;
-            this.toolStripButtonExportSelected.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonExportSelected.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExportSelected.Image")));
-            this.toolStripButtonExportSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonExportSelected.Name = "toolStripButtonExportSelected";
-            this.toolStripButtonExportSelected.Size = new System.Drawing.Size(48, 48);
-            this.toolStripButtonExportSelected.Text = "Export selected item data as file";
-            this.toolStripButtonExportSelected.ToolTipText = "Export selected item data as file";
-            this.toolStripButtonExportSelected.Click += new System.EventHandler(this.toolStripButtonExportSelected_Click);
-            // 
-            // toolStripButtonShowHistoryForm
-            // 
-            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonShowHistoryForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonShowHistoryForm.Image")));
-            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
-            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
-            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
-            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
-            // 
             // splitContainerMain
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -675,8 +573,8 @@
             this.splitContainerMain.Panel2.Controls.Add(this.labelViewMode);
             this.splitContainerMain.Panel2.Controls.Add(this.dropdownContentsViewMode);
             this.splitContainerMain.Panel2.Padding = new System.Windows.Forms.Padding(0, 45, 0, 0);
-            this.splitContainerMain.Size = new System.Drawing.Size(1554, 844);
-            this.splitContainerMain.SplitterDistance = 325;
+            this.splitContainerMain.Size = new System.Drawing.Size(1554, 813);
+            this.splitContainerMain.SplitterDistance = 313;
             this.splitContainerMain.SplitterWidth = 9;
             this.splitContainerMain.TabIndex = 6;
             this.splitContainerMain.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainerMain_SplitterMoved);
@@ -805,7 +703,7 @@
             // 
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.panel1);
             this.splitterContainer_InnerTextBoxes.Panel2.Controls.Add(this.richTextBox_HexPlaintext);
-            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 465);
+            this.splitterContainer_InnerTextBoxes.Size = new System.Drawing.Size(1554, 446);
             this.splitterContainer_InnerTextBoxes.SplitterDistance = 957;
             this.splitterContainer_InnerTextBoxes.SplitterWidth = 10;
             this.splitterContainer_InnerTextBoxes.TabIndex = 13;
@@ -822,7 +720,7 @@
             this.richTextBoxContents.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBoxContents.Name = "richTextBoxContents";
             this.richTextBoxContents.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBoxContents.Size = new System.Drawing.Size(957, 465);
+            this.richTextBoxContents.Size = new System.Drawing.Size(957, 446);
             this.richTextBoxContents.TabIndex = 4;
             this.richTextBoxContents.Text = "";
             this.richTextBoxContents.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBoxContents_LinkClicked);
@@ -836,7 +734,7 @@
             this.panel1.Controls.Add(this.checkBoxPlainTextEditing);
             this.panel1.Controls.Add(this.labelHexToPlaintextEncoding);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 417);
+            this.panel1.Location = new System.Drawing.Point(0, 398);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 48);
@@ -899,7 +797,7 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(551, 417);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(539, 398);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
@@ -1000,18 +898,119 @@
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
             // 
+            // toolStripButtonRefresh
+            // 
+            this.toolStripButtonRefresh.AutoSize = false;
+            this.toolStripButtonRefresh.AutoToolTip = false;
+            this.toolStripButtonRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRefresh.Image = global::EditClipboardContents.Properties.Resources.fluent_refresh_48;
+            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
+            this.toolStripButtonRefresh.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonRefresh.Text = "Reload From Clipboard";
+            this.toolStripButtonRefresh.ToolTipText = "Reload From Clipboard";
+            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
+            // 
+            // toolStripButtonTimedRefresh
+            // 
+            this.toolStripButtonTimedRefresh.AutoSize = false;
+            this.toolStripButtonTimedRefresh.AutoToolTip = false;
+            this.toolStripButtonTimedRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonTimedRefresh.Image = global::EditClipboardContents.Properties.Resources.timed_refresh_48;
+            this.toolStripButtonTimedRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonTimedRefresh.Name = "toolStripButtonTimedRefresh";
+            this.toolStripButtonTimedRefresh.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonTimedRefresh.Text = "Reload from clipboard after a specified number of seconds";
+            this.toolStripButtonTimedRefresh.ToolTipText = "Reload from clipboard after a specified number of seconds";
+            this.toolStripButtonTimedRefresh.Click += new System.EventHandler(this.toolStripButtonTimedRefresh_Click);
+            // 
+            // toolStripButtonFetchManualFormat
+            // 
+            this.toolStripButtonFetchManualFormat.AutoSize = false;
+            this.toolStripButtonFetchManualFormat.AutoToolTip = false;
+            this.toolStripButtonFetchManualFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonFetchManualFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_magnifying_48;
+            this.toolStripButtonFetchManualFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFetchManualFormat.Name = "toolStripButtonFetchManualFormat";
+            this.toolStripButtonFetchManualFormat.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonFetchManualFormat.Text = "Manually fetch or re-fetch a specific format by name or ID";
+            this.toolStripButtonFetchManualFormat.ToolTipText = "Manually fetch or re-fetch a specific format by name or ID";
+            this.toolStripButtonFetchManualFormat.Click += new System.EventHandler(this.toolStripButtonFetchManualFormat_Click);
+            // 
+            // toolStripButtonDelete
+            // 
+            this.toolStripButtonDelete.AutoSize = false;
+            this.toolStripButtonDelete.AutoToolTip = false;
+            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDelete.Image = global::EditClipboardContents.Properties.Resources.fluent_X_48;
+            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonDelete.Text = "Delete Selected Item From Clipboard";
+            this.toolStripButtonDelete.ToolTipText = "Delete Selected Item From Clipboard";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
+            // 
+            // toolStripButtonAddFormat
+            // 
+            this.toolStripButtonAddFormat.AutoSize = false;
+            this.toolStripButtonAddFormat.AutoToolTip = false;
+            this.toolStripButtonAddFormat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddFormat.Image = global::EditClipboardContents.Properties.Resources.fluent_plus_48;
+            this.toolStripButtonAddFormat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddFormat.Name = "toolStripButtonAddFormat";
+            this.toolStripButtonAddFormat.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonAddFormat.Text = "Add a custom format";
+            this.toolStripButtonAddFormat.ToolTipText = "Add a custom format";
+            this.toolStripButtonAddFormat.Click += new System.EventHandler(this.toolStripButtonAddFormat_Click);
+            // 
+            // toolStripButtonSaveEdited
+            // 
+            this.toolStripButtonSaveEdited.AutoSize = false;
+            this.toolStripButtonSaveEdited.AutoToolTip = false;
+            this.toolStripButtonSaveEdited.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSaveEdited.Image = global::EditClipboardContents.Properties.Resources.fluent_floppy_48;
+            this.toolStripButtonSaveEdited.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSaveEdited.Name = "toolStripButtonSaveEdited";
+            this.toolStripButtonSaveEdited.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonSaveEdited.Text = "Re-Write clipboard with edited data";
+            this.toolStripButtonSaveEdited.ToolTipText = "Re-Write clipboard with edited data";
+            this.toolStripButtonSaveEdited.Click += new System.EventHandler(this.toolStripButtonSaveEdited_Click);
+            // 
+            // toolStripButtonExportSelected
+            // 
+            this.toolStripButtonExportSelected.AutoSize = false;
+            this.toolStripButtonExportSelected.AutoToolTip = false;
+            this.toolStripButtonExportSelected.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonExportSelected.Image = global::EditClipboardContents.Properties.Resources.export_48;
+            this.toolStripButtonExportSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExportSelected.Name = "toolStripButtonExportSelected";
+            this.toolStripButtonExportSelected.Size = new System.Drawing.Size(48, 48);
+            this.toolStripButtonExportSelected.Text = "Export selected item data as file";
+            this.toolStripButtonExportSelected.ToolTipText = "Export selected item data as file";
+            this.toolStripButtonExportSelected.Click += new System.EventHandler(this.toolStripButtonExportSelected_Click);
+            // 
+            // toolStripButtonShowHistoryForm
+            // 
+            this.toolStripButtonShowHistoryForm.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonShowHistoryForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonShowHistoryForm.Image = global::EditClipboardContents.Properties.Resources.fluent_spiral_calendar_48;
+            this.toolStripButtonShowHistoryForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonShowHistoryForm.Name = "toolStripButtonShowHistoryForm";
+            this.toolStripButtonShowHistoryForm.Size = new System.Drawing.Size(46, 46);
+            this.toolStripButtonShowHistoryForm.Text = "Show Clipboard History Info";
+            this.toolStripButtonShowHistoryForm.Click += new System.EventHandler(this.menuTools_HistoryInfo_click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1574, 905);
+            this.ClientSize = new System.Drawing.Size(1574, 874);
             this.Controls.Add(this.labelTestMiscellaneous);
             this.Controls.Add(this.labelTestCount);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.labelPendingChanges);
             this.Controls.Add(this.toolStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Menu = this.mainMenu1;
             this.Name = "MainForm";

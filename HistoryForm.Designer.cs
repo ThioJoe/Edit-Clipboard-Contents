@@ -28,7 +28,6 @@ partial class HistoryForm
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryForm));
             this.buttonRefreshHistory = new System.Windows.Forms.Button();
             this.dataGridViewHistory = new System.Windows.Forms.DataGridView();
             this.buttonDeleteHistoryItem = new System.Windows.Forms.Button();
@@ -220,7 +219,6 @@ partial class HistoryForm
             this.Controls.Add(this.buttonDeleteHistoryItem);
             this.Controls.Add(this.dataGridViewHistory);
             this.Controls.Add(this.buttonRefreshHistory);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HistoryForm";
             this.Text = "Clipboard History Info";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory)).EndInit();

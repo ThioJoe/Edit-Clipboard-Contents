@@ -114,7 +114,8 @@ namespace EditClipboardContents
 
             isResizing = true; // Set to true so our window resize logic in MainForm_Resize event doesn't trigger until the form is fully initialized
             InitializeComponent();
-            
+            this.Icon = Properties.Resources.EditClipboardMainIcon;
+
             editedClipboardItems.ListChanged += EditedClipboardItems_ListChanged;
 
             // Initialize context menu manager for rich text boxes

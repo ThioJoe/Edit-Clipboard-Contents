@@ -39,6 +39,8 @@ public partial class HistoryForm : Form
     public HistoryForm()
     {
         InitializeComponent();
+        this.Icon = Properties.Resources.EditClipboardMainIcon;
+
         defaultCellForeColor = dataGridViewHistory.DefaultCellStyle.ForeColor;
         InitializeDataGridView();
         InitializeListView();
