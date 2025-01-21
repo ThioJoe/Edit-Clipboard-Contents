@@ -522,6 +522,36 @@ namespace EditClipboardContents
             }
         }
 
+        public static void CopyIfValid(string text, bool useTooltip = true, bool noError=false, Form? relativeForm = null)
+        {
+            
+            if ( !string.IsNullOrEmpty(text) )
+            {
+                Clipboard.SetText(text);
+            }
+            else if ( noError )
+            {
+                return;
+            }
+            else if ( useTooltip )
+            {
+                if ( relativeForm == null )
+                    relativeForm = Form.ActiveForm;
+
+                // Show a tooltip if the user tries to copy an empty string
+                ToolTip tt = new ToolTip();
+                Point cursorPosition = Form.ActiveForm.PointToClient(Cursor.Position);
+                cursorPosition.Y += 25; // Offset the Y coordinate by 20 pixels downward
+                tt.Show("Nothing to copy", Form.ActiveForm, cursorPosition, 1500);
+            }
+            else
+            {
+                string boxTitle = "Copied Contents Empty";
+                string boxMessage = "Can't copy empty data.";
+
+                MessageBox.Show(boxMessage, boxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     } // ----------------- End of class -----------------
 } // ----------------- End of namespace -----------------

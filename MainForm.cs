@@ -2331,7 +2331,7 @@ namespace EditClipboardContents
         }
 
         // Copies the selected rows to the clipboard, or the entire table if chosen. Null automatically determines entire table if no rows are selected, otherwise just selected
-        private void copyTableRows(bool? copyAllRows = false, bool forceNoHeader = false, int onlyColumnIndex=-1)
+        private void copyTableRows(bool? copyAllRows = false, bool forceNoHeader = false, int onlyColumnIndex=-1, bool noError=true)
         {
             // Get the selected rows and put them in a list, each row a list of strings for the cell values
             List<List<string>> selectedRowsContents = new List<List<string>>();
@@ -2500,7 +2500,7 @@ namespace EditClipboardContents
             }
 
             // Copy the list to the clipboard
-            Clipboard.SetText(finalCombinedString);
+            Utils.CopyIfValid(finalCombinedString, useTooltip: true, noError: noError, relativeForm: this);
         }
 
         private void setCopyModeChecks(MenuItem newlyCheckedOption)

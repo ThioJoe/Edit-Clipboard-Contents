@@ -84,31 +84,31 @@
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.labelLoading = new System.Windows.Forms.Label();
             this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
-            this.labelViewMode = new System.Windows.Forms.Label();
-            this.dropdownContentsViewMode = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel_MiddleControls = new System.Windows.Forms.TableLayoutPanel();
             this.checkBoxAutoViewMode = new System.Windows.Forms.CheckBox();
-            this.labelCustomFormatNameID = new System.Windows.Forms.Label();
             this.buttonApplyEdit = new System.Windows.Forms.Button();
-            this.buttonResetEdit = new System.Windows.Forms.Button();
-            this.buttonDecreaseIndexNumber = new System.Windows.Forms.Button();
+            this.dropdownContentsViewMode = new System.Windows.Forms.ComboBox();
             this.buttonIncreaseIndexNumber = new System.Windows.Forms.Button();
+            this.buttonDecreaseIndexNumber = new System.Windows.Forms.Button();
+            this.buttonResetEdit = new System.Windows.Forms.Button();
             this.buttonResetOrder = new System.Windows.Forms.Button();
+            this.panel_MiddleControlsText = new System.Windows.Forms.Panel();
+            this.labelSynthesizedTypeWarn = new System.Windows.Forms.Label();
+            this.labelCustomFormatNameID = new System.Windows.Forms.Label();
+            this.labelViewMode = new System.Windows.Forms.Label();
             this.splitterContainer_InnerTextBoxes = new EditClipboardContents.MySplitContainer();
             this.richTextBoxContents = new System.Windows.Forms.RichTextBox();
             this.splitContainerHex = new System.Windows.Forms.SplitContainer();
             this.richTextBox_HexPlaintext = new System.Windows.Forms.RichTextBox();
+            this.flowLayoutPanel_HexEditOptions = new System.Windows.Forms.FlowLayoutPanel();
             this.dropdownHexToTextEncoding = new System.Windows.Forms.ComboBox();
-            this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
             this.labelHexToPlaintextEncoding = new System.Windows.Forms.Label();
-            this.labelSynthesizedTypeWarn = new System.Windows.Forms.Label();
+            this.checkBoxPlainTextEditing = new System.Windows.Forms.CheckBox();
             this.labelPendingChanges = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelTestCount = new System.Windows.Forms.Label();
             this.labelTestMiscellaneous = new System.Windows.Forms.Label();
-            this.tableLayoutPanel_MiddleControls = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_MiddleControlsText = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel_HexEditOptions = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClipboard)).BeginInit();
             this.contextMenuStrip_dataGridView.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -120,6 +120,8 @@
             this.splitContainerBottom.Panel1.SuspendLayout();
             this.splitContainerBottom.Panel2.SuspendLayout();
             this.splitContainerBottom.SuspendLayout();
+            this.tableLayoutPanel_MiddleControls.SuspendLayout();
+            this.panel_MiddleControlsText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).BeginInit();
             this.splitterContainer_InnerTextBoxes.Panel1.SuspendLayout();
             this.splitterContainer_InnerTextBoxes.Panel2.SuspendLayout();
@@ -128,8 +130,6 @@
             this.splitContainerHex.Panel1.SuspendLayout();
             this.splitContainerHex.Panel2.SuspendLayout();
             this.splitContainerHex.SuspendLayout();
-            this.tableLayoutPanel_MiddleControls.SuspendLayout();
-            this.panel_MiddleControlsText.SuspendLayout();
             this.flowLayoutPanel_HexEditOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,7 +196,7 @@
             this.contextMenu_copySingleCell.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySingleCell.Text = "Copy Single Cell";
             this.contextMenu_copySingleCell.Visible = false;
-            this.contextMenu_copySingleCell.Click += new System.EventHandler(this.copyCellToolStripMenuItem_Click);
+            this.contextMenu_copySingleCell.Click += new System.EventHandler(this.contextMenu_copyCell_Click);
             // 
             // contextMenu_copySelectedCurrentColumnOnly
             // 
@@ -212,7 +212,7 @@
             this.contextMenu_copySelectedRows.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySelectedRows.Text = "Copy Selected Rows";
             this.contextMenu_copySelectedRows.Visible = false;
-            this.contextMenu_copySelectedRows.Click += new System.EventHandler(this.copyRowDataToolStripMenuItem_Click);
+            this.contextMenu_copySelectedRows.Click += new System.EventHandler(this.contextMenu_copyRowData_Click);
             // 
             // contextMenu_copySelectedRowsNoHeader
             // 
@@ -220,7 +220,7 @@
             this.contextMenu_copySelectedRowsNoHeader.Size = new System.Drawing.Size(345, 32);
             this.contextMenu_copySelectedRowsNoHeader.Text = "Copy Selected Rows (No Header)";
             this.contextMenu_copySelectedRowsNoHeader.Visible = false;
-            this.contextMenu_copySelectedRowsNoHeader.Click += new System.EventHandler(this.copySelectedRowsNoHeaderToolStripMenuItem_Click);
+            this.contextMenu_copySelectedRowsNoHeader.Click += new System.EventHandler(this.contextMenu_copySelectedRowsNoHeader_Click);
             // 
             // contextMenu_copyColumn
             // 
@@ -721,17 +721,65 @@
             this.splitContainerBottom.SplitterWidth = 1;
             this.splitContainerBottom.TabIndex = 18;
             // 
-            // labelViewMode
+            // tableLayoutPanel_MiddleControls
             // 
-            this.labelViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelViewMode.AutoSize = true;
-            this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelViewMode.Location = new System.Drawing.Point(0, 10);
-            this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
-            this.labelViewMode.Name = "labelViewMode";
-            this.labelViewMode.Size = new System.Drawing.Size(116, 25);
-            this.labelViewMode.TabIndex = 8;
-            this.labelViewMode.Text = "View Mode:";
+            this.tableLayoutPanel_MiddleControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel_MiddleControls.ColumnCount = 10;
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.checkBoxAutoViewMode, 2, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonApplyEdit, 4, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.dropdownContentsViewMode, 1, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonIncreaseIndexNumber, 7, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonDecreaseIndexNumber, 6, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetEdit, 5, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetOrder, 8, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.panel_MiddleControlsText, 3, 0);
+            this.tableLayoutPanel_MiddleControls.Controls.Add(this.labelViewMode, 0, 0);
+            this.tableLayoutPanel_MiddleControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_MiddleControls.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_MiddleControls.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel_MiddleControls.Name = "tableLayoutPanel_MiddleControls";
+            this.tableLayoutPanel_MiddleControls.RowCount = 1;
+            this.tableLayoutPanel_MiddleControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_MiddleControls.Size = new System.Drawing.Size(1554, 45);
+            this.tableLayoutPanel_MiddleControls.TabIndex = 18;
+            // 
+            // checkBoxAutoViewMode
+            // 
+            this.checkBoxAutoViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxAutoViewMode.AutoSize = true;
+            this.checkBoxAutoViewMode.Checked = true;
+            this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(374, 12);
+            this.checkBoxAutoViewMode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
+            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(55, 21);
+            this.checkBoxAutoViewMode.TabIndex = 14;
+            this.checkBoxAutoViewMode.Text = "Auto";
+            this.checkBoxAutoViewMode.UseVisualStyleBackColor = true;
+            // 
+            // buttonApplyEdit
+            // 
+            this.buttonApplyEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonApplyEdit.Enabled = false;
+            this.buttonApplyEdit.Location = new System.Drawing.Point(1167, 5);
+            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonApplyEdit.Name = "buttonApplyEdit";
+            this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
+            this.buttonApplyEdit.TabIndex = 10;
+            this.buttonApplyEdit.Text = "Apply Edit";
+            this.buttonApplyEdit.UseVisualStyleBackColor = true;
+            this.buttonApplyEdit.Visible = false;
+            this.buttonApplyEdit.Click += new System.EventHandler(this.buttonApplyEdit_Click);
             // 
             // dropdownContentsViewMode
             // 
@@ -752,19 +800,86 @@
             this.dropdownContentsViewMode.TabIndex = 7;
             this.dropdownContentsViewMode.SelectedIndexChanged += new System.EventHandler(this.dropdownContentsViewMode_SelectedIndexChanged);
             // 
-            // checkBoxAutoViewMode
+            // buttonIncreaseIndexNumber
             // 
-            this.checkBoxAutoViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxAutoViewMode.AutoSize = true;
-            this.checkBoxAutoViewMode.Checked = true;
-            this.checkBoxAutoViewMode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutoViewMode.Location = new System.Drawing.Point(374, 10);
-            this.checkBoxAutoViewMode.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.checkBoxAutoViewMode.Name = "checkBoxAutoViewMode";
-            this.checkBoxAutoViewMode.Size = new System.Drawing.Size(69, 24);
-            this.checkBoxAutoViewMode.TabIndex = 14;
-            this.checkBoxAutoViewMode.Text = "Auto";
-            this.checkBoxAutoViewMode.UseVisualStyleBackColor = true;
+            this.buttonIncreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1466, 5);
+            this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
+            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
+            this.buttonIncreaseIndexNumber.TabIndex = 16;
+            this.buttonIncreaseIndexNumber.Text = "▼";
+            this.toolTip1.SetToolTip(this.buttonIncreaseIndexNumber, "Increase order index (decrease priority)");
+            this.buttonIncreaseIndexNumber.UseCompatibleTextRendering = true;
+            this.buttonIncreaseIndexNumber.UseVisualStyleBackColor = true;
+            this.buttonIncreaseIndexNumber.Click += new System.EventHandler(this.buttonIncreaseIndexNumber_Click);
+            // 
+            // buttonDecreaseIndexNumber
+            // 
+            this.buttonDecreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1418, 5);
+            this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
+            this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
+            this.buttonDecreaseIndexNumber.TabIndex = 16;
+            this.buttonDecreaseIndexNumber.Text = "▲";
+            this.toolTip1.SetToolTip(this.buttonDecreaseIndexNumber, "Decrease order index (increase priority)");
+            this.buttonDecreaseIndexNumber.UseCompatibleTextRendering = true;
+            this.buttonDecreaseIndexNumber.UseVisualStyleBackColor = true;
+            this.buttonDecreaseIndexNumber.Click += new System.EventHandler(this.buttonDecreaseIndexNumber_Click);
+            // 
+            // buttonResetEdit
+            // 
+            this.buttonResetEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonResetEdit.Enabled = false;
+            this.buttonResetEdit.Location = new System.Drawing.Point(1287, 5);
+            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonResetEdit.Name = "buttonResetEdit";
+            this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
+            this.buttonResetEdit.TabIndex = 11;
+            this.buttonResetEdit.Text = "Reset Edit";
+            this.buttonResetEdit.UseVisualStyleBackColor = true;
+            this.buttonResetEdit.Click += new System.EventHandler(this.buttonResetEdit_Click);
+            // 
+            // buttonResetOrder
+            // 
+            this.buttonResetOrder.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonResetOrder.Location = new System.Drawing.Point(1514, 5);
+            this.buttonResetOrder.Name = "buttonResetOrder";
+            this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
+            this.buttonResetOrder.TabIndex = 17;
+            this.buttonResetOrder.Text = "R";
+            this.toolTip1.SetToolTip(this.buttonResetOrder, "Reset ordering");
+            this.buttonResetOrder.UseCompatibleTextRendering = true;
+            this.buttonResetOrder.UseVisualStyleBackColor = true;
+            this.buttonResetOrder.Click += new System.EventHandler(this.buttonResetOrder_Click);
+            // 
+            // panel_MiddleControlsText
+            // 
+            this.panel_MiddleControlsText.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel_MiddleControlsText.Controls.Add(this.labelSynthesizedTypeWarn);
+            this.panel_MiddleControlsText.Controls.Add(this.labelCustomFormatNameID);
+            this.panel_MiddleControlsText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_MiddleControlsText.Location = new System.Drawing.Point(432, 0);
+            this.panel_MiddleControlsText.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_MiddleControlsText.Name = "panel_MiddleControlsText";
+            this.panel_MiddleControlsText.Size = new System.Drawing.Size(731, 45);
+            this.panel_MiddleControlsText.TabIndex = 18;
+            // 
+            // labelSynthesizedTypeWarn
+            // 
+            this.labelSynthesizedTypeWarn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSynthesizedTypeWarn.AutoSize = true;
+            this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
+            this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(15, 12);
+            this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
+            this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
+            this.labelSynthesizedTypeWarn.TabIndex = 9;
+            this.labelSynthesizedTypeWarn.Text = "⚠️ Synthesized Format";
+            this.labelSynthesizedTypeWarn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.labelSynthesizedTypeWarn, resources.GetString("labelSynthesizedTypeWarn.ToolTip"));
+            this.labelSynthesizedTypeWarn.Visible = false;
+            this.labelSynthesizedTypeWarn.Click += new System.EventHandler(this.labelSynthesizedTypeWarn_Click);
             // 
             // labelCustomFormatNameID
             // 
@@ -783,71 +898,17 @@
             this.labelCustomFormatNameID.Visible = false;
             this.labelCustomFormatNameID.Click += new System.EventHandler(this.labelCustomFormatNameID_Click);
             // 
-            // buttonApplyEdit
+            // labelViewMode
             // 
-            this.buttonApplyEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonApplyEdit.Enabled = false;
-            this.buttonApplyEdit.Location = new System.Drawing.Point(1167, 5);
-            this.buttonApplyEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonApplyEdit.Name = "buttonApplyEdit";
-            this.buttonApplyEdit.Size = new System.Drawing.Size(112, 34);
-            this.buttonApplyEdit.TabIndex = 10;
-            this.buttonApplyEdit.Text = "Apply Edit";
-            this.buttonApplyEdit.UseVisualStyleBackColor = true;
-            this.buttonApplyEdit.Visible = false;
-            this.buttonApplyEdit.Click += new System.EventHandler(this.buttonApplyEdit_Click);
-            // 
-            // buttonResetEdit
-            // 
-            this.buttonResetEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonResetEdit.Enabled = false;
-            this.buttonResetEdit.Location = new System.Drawing.Point(1287, 5);
-            this.buttonResetEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonResetEdit.Name = "buttonResetEdit";
-            this.buttonResetEdit.Size = new System.Drawing.Size(124, 34);
-            this.buttonResetEdit.TabIndex = 11;
-            this.buttonResetEdit.Text = "Reset Edit";
-            this.buttonResetEdit.UseVisualStyleBackColor = true;
-            this.buttonResetEdit.Click += new System.EventHandler(this.buttonResetEdit_Click);
-            // 
-            // buttonDecreaseIndexNumber
-            // 
-            this.buttonDecreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonDecreaseIndexNumber.Location = new System.Drawing.Point(1418, 5);
-            this.buttonDecreaseIndexNumber.Name = "buttonDecreaseIndexNumber";
-            this.buttonDecreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
-            this.buttonDecreaseIndexNumber.TabIndex = 16;
-            this.buttonDecreaseIndexNumber.Text = "▲";
-            this.toolTip1.SetToolTip(this.buttonDecreaseIndexNumber, "Decrease order index (increase priority)");
-            this.buttonDecreaseIndexNumber.UseCompatibleTextRendering = true;
-            this.buttonDecreaseIndexNumber.UseVisualStyleBackColor = true;
-            this.buttonDecreaseIndexNumber.Click += new System.EventHandler(this.buttonDecreaseIndexNumber_Click);
-            // 
-            // buttonIncreaseIndexNumber
-            // 
-            this.buttonIncreaseIndexNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonIncreaseIndexNumber.Location = new System.Drawing.Point(1466, 5);
-            this.buttonIncreaseIndexNumber.Name = "buttonIncreaseIndexNumber";
-            this.buttonIncreaseIndexNumber.Size = new System.Drawing.Size(42, 34);
-            this.buttonIncreaseIndexNumber.TabIndex = 16;
-            this.buttonIncreaseIndexNumber.Text = "▼";
-            this.toolTip1.SetToolTip(this.buttonIncreaseIndexNumber, "Increase order index (decrease priority)");
-            this.buttonIncreaseIndexNumber.UseCompatibleTextRendering = true;
-            this.buttonIncreaseIndexNumber.UseVisualStyleBackColor = true;
-            this.buttonIncreaseIndexNumber.Click += new System.EventHandler(this.buttonIncreaseIndexNumber_Click);
-            // 
-            // buttonResetOrder
-            // 
-            this.buttonResetOrder.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonResetOrder.Location = new System.Drawing.Point(1514, 5);
-            this.buttonResetOrder.Name = "buttonResetOrder";
-            this.buttonResetOrder.Size = new System.Drawing.Size(27, 34);
-            this.buttonResetOrder.TabIndex = 17;
-            this.buttonResetOrder.Text = "R";
-            this.toolTip1.SetToolTip(this.buttonResetOrder, "Reset ordering");
-            this.buttonResetOrder.UseCompatibleTextRendering = true;
-            this.buttonResetOrder.UseVisualStyleBackColor = true;
-            this.buttonResetOrder.Click += new System.EventHandler(this.buttonResetOrder_Click);
+            this.labelViewMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelViewMode.AutoSize = true;
+            this.labelViewMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelViewMode.Location = new System.Drawing.Point(0, 10);
+            this.labelViewMode.Margin = new System.Windows.Forms.Padding(0);
+            this.labelViewMode.Name = "labelViewMode";
+            this.labelViewMode.Size = new System.Drawing.Size(116, 25);
+            this.labelViewMode.TabIndex = 8;
+            this.labelViewMode.Text = "View Mode:";
             // 
             // splitterContainer_InnerTextBoxes
             // 
@@ -904,7 +965,7 @@
             // 
             this.splitContainerHex.Panel2.Controls.Add(this.flowLayoutPanel_HexEditOptions);
             this.splitContainerHex.Size = new System.Drawing.Size(521, 445);
-            this.splitContainerHex.SplitterDistance = 409;
+            this.splitContainerHex.SplitterDistance = 412;
             this.splitContainerHex.SplitterWidth = 1;
             this.splitContainerHex.TabIndex = 6;
             // 
@@ -918,11 +979,26 @@
             this.richTextBox_HexPlaintext.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_HexPlaintext.Name = "richTextBox_HexPlaintext";
             this.richTextBox_HexPlaintext.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(521, 409);
+            this.richTextBox_HexPlaintext.Size = new System.Drawing.Size(521, 412);
             this.richTextBox_HexPlaintext.TabIndex = 0;
             this.richTextBox_HexPlaintext.Text = "";
             this.richTextBox_HexPlaintext.SelectionChanged += new System.EventHandler(this.richTextBox_HexPlaintext_SelectionChanged);
             this.richTextBox_HexPlaintext.TextChanged += new System.EventHandler(this.richTextBox_HexPlaintext_TextChanged);
+            // 
+            // flowLayoutPanel_HexEditOptions
+            // 
+            this.flowLayoutPanel_HexEditOptions.AutoSize = true;
+            this.flowLayoutPanel_HexEditOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.dropdownHexToTextEncoding);
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.labelHexToPlaintextEncoding);
+            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.checkBoxPlainTextEditing);
+            this.flowLayoutPanel_HexEditOptions.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel_HexEditOptions.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel_HexEditOptions.Location = new System.Drawing.Point(91, 0);
+            this.flowLayoutPanel_HexEditOptions.Name = "flowLayoutPanel_HexEditOptions";
+            this.flowLayoutPanel_HexEditOptions.Size = new System.Drawing.Size(430, 32);
+            this.flowLayoutPanel_HexEditOptions.TabIndex = 0;
+            this.flowLayoutPanel_HexEditOptions.WrapContents = false;
             // 
             // dropdownHexToTextEncoding
             // 
@@ -937,54 +1013,37 @@
             "UTF-32 BE",
             "Codepage 1252",
             "System Default"});
-            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(248, 4);
+            this.dropdownHexToTextEncoding.Location = new System.Drawing.Point(183, 4);
             this.dropdownHexToTextEncoding.Margin = new System.Windows.Forms.Padding(4, 4, 30, 4);
             this.dropdownHexToTextEncoding.Name = "dropdownHexToTextEncoding";
-            this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 28);
+            this.dropdownHexToTextEncoding.Size = new System.Drawing.Size(217, 21);
             this.dropdownHexToTextEncoding.TabIndex = 2;
             this.dropdownHexToTextEncoding.SelectedIndexChanged += new System.EventHandler(this.dropdownHexToTextEncoding_SelectedIndexChanged);
-            // 
-            // checkBoxPlainTextEditing
-            // 
-            this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.checkBoxPlainTextEditing.AutoSize = true;
-            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(4, 6);
-            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
-            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(148, 24);
-            this.checkBoxPlainTextEditing.TabIndex = 3;
-            this.checkBoxPlainTextEditing.Text = "Plaintext Editing";
-            this.toolTip1.SetToolTip(this.checkBoxPlainTextEditing, resources.GetString("checkBoxPlainTextEditing.ToolTip"));
-            this.checkBoxPlainTextEditing.UseVisualStyleBackColor = true;
-            this.checkBoxPlainTextEditing.CheckedChanged += new System.EventHandler(this.checkBoxPlainTextEditing_CheckedChanged);
             // 
             // labelHexToPlaintextEncoding
             // 
             this.labelHexToPlaintextEncoding.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelHexToPlaintextEncoding.AutoSize = true;
-            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(160, 8);
+            this.labelHexToPlaintextEncoding.Location = new System.Drawing.Point(120, 8);
             this.labelHexToPlaintextEncoding.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHexToPlaintextEncoding.Name = "labelHexToPlaintextEncoding";
-            this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(80, 20);
+            this.labelHexToPlaintextEncoding.Size = new System.Drawing.Size(55, 13);
             this.labelHexToPlaintextEncoding.TabIndex = 1;
             this.labelHexToPlaintextEncoding.Text = "Encoding:";
             // 
-            // labelSynthesizedTypeWarn
+            // checkBoxPlainTextEditing
             // 
-            this.labelSynthesizedTypeWarn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelSynthesizedTypeWarn.AutoSize = true;
-            this.labelSynthesizedTypeWarn.Cursor = System.Windows.Forms.Cursors.Help;
-            this.labelSynthesizedTypeWarn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSynthesizedTypeWarn.Location = new System.Drawing.Point(15, 12);
-            this.labelSynthesizedTypeWarn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSynthesizedTypeWarn.Name = "labelSynthesizedTypeWarn";
-            this.labelSynthesizedTypeWarn.Size = new System.Drawing.Size(171, 20);
-            this.labelSynthesizedTypeWarn.TabIndex = 9;
-            this.labelSynthesizedTypeWarn.Text = "⚠️ Synthesized Format";
-            this.labelSynthesizedTypeWarn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip1.SetToolTip(this.labelSynthesizedTypeWarn, resources.GetString("labelSynthesizedTypeWarn.ToolTip"));
-            this.labelSynthesizedTypeWarn.Visible = false;
-            this.labelSynthesizedTypeWarn.Click += new System.EventHandler(this.labelSynthesizedTypeWarn_Click);
+            this.checkBoxPlainTextEditing.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.checkBoxPlainTextEditing.AutoSize = true;
+            this.checkBoxPlainTextEditing.Location = new System.Drawing.Point(4, 4);
+            this.checkBoxPlainTextEditing.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxPlainTextEditing.Name = "checkBoxPlainTextEditing";
+            this.checkBoxPlainTextEditing.Size = new System.Drawing.Size(108, 21);
+            this.checkBoxPlainTextEditing.TabIndex = 3;
+            this.checkBoxPlainTextEditing.Text = "Plaintext Editing";
+            this.toolTip1.SetToolTip(this.checkBoxPlainTextEditing, resources.GetString("checkBoxPlainTextEditing.ToolTip"));
+            this.checkBoxPlainTextEditing.UseVisualStyleBackColor = true;
+            this.checkBoxPlainTextEditing.CheckedChanged += new System.EventHandler(this.checkBoxPlainTextEditing_CheckedChanged);
             // 
             // labelPendingChanges
             // 
@@ -1012,7 +1071,7 @@
             this.labelVersion.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelVersion.Location = new System.Drawing.Point(1362, 16);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(67, 20);
+            this.labelVersion.Size = new System.Drawing.Size(45, 13);
             this.labelVersion.TabIndex = 13;
             this.labelVersion.Text = "Version:";
             // 
@@ -1021,7 +1080,7 @@
             this.labelTestCount.AutoSize = true;
             this.labelTestCount.Location = new System.Drawing.Point(584, 0);
             this.labelTestCount.Name = "labelTestCount";
-            this.labelTestCount.Size = new System.Drawing.Size(87, 20);
+            this.labelTestCount.Size = new System.Drawing.Size(59, 13);
             this.labelTestCount.TabIndex = 16;
             this.labelTestCount.Text = "Test Count";
             this.labelTestCount.Visible = false;
@@ -1032,69 +1091,10 @@
             this.labelTestMiscellaneous.Location = new System.Drawing.Point(588, 25);
             this.labelTestMiscellaneous.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTestMiscellaneous.Name = "labelTestMiscellaneous";
-            this.labelTestMiscellaneous.Size = new System.Drawing.Size(173, 20);
+            this.labelTestMiscellaneous.Size = new System.Drawing.Size(117, 13);
             this.labelTestMiscellaneous.TabIndex = 17;
             this.labelTestMiscellaneous.Text = "labelTestMiscellaneous";
             this.labelTestMiscellaneous.Visible = false;
-            // 
-            // tableLayoutPanel_MiddleControls
-            // 
-            this.tableLayoutPanel_MiddleControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel_MiddleControls.ColumnCount = 10;
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel_MiddleControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.checkBoxAutoViewMode, 2, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonApplyEdit, 4, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.dropdownContentsViewMode, 1, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonIncreaseIndexNumber, 7, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonDecreaseIndexNumber, 6, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetEdit, 5, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.buttonResetOrder, 8, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.panel_MiddleControlsText, 3, 0);
-            this.tableLayoutPanel_MiddleControls.Controls.Add(this.labelViewMode, 0, 0);
-            this.tableLayoutPanel_MiddleControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel_MiddleControls.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel_MiddleControls.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel_MiddleControls.Name = "tableLayoutPanel_MiddleControls";
-            this.tableLayoutPanel_MiddleControls.RowCount = 1;
-            this.tableLayoutPanel_MiddleControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_MiddleControls.Size = new System.Drawing.Size(1554, 45);
-            this.tableLayoutPanel_MiddleControls.TabIndex = 18;
-            // 
-            // panel_MiddleControlsText
-            // 
-            this.panel_MiddleControlsText.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_MiddleControlsText.Controls.Add(this.labelSynthesizedTypeWarn);
-            this.panel_MiddleControlsText.Controls.Add(this.labelCustomFormatNameID);
-            this.panel_MiddleControlsText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_MiddleControlsText.Location = new System.Drawing.Point(446, 0);
-            this.panel_MiddleControlsText.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_MiddleControlsText.Name = "panel_MiddleControlsText";
-            this.panel_MiddleControlsText.Size = new System.Drawing.Size(717, 45);
-            this.panel_MiddleControlsText.TabIndex = 18;
-            // 
-            // flowLayoutPanel_HexEditOptions
-            // 
-            this.flowLayoutPanel_HexEditOptions.AutoSize = true;
-            this.flowLayoutPanel_HexEditOptions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.dropdownHexToTextEncoding);
-            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.labelHexToPlaintextEncoding);
-            this.flowLayoutPanel_HexEditOptions.Controls.Add(this.checkBoxPlainTextEditing);
-            this.flowLayoutPanel_HexEditOptions.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel_HexEditOptions.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel_HexEditOptions.Location = new System.Drawing.Point(26, 0);
-            this.flowLayoutPanel_HexEditOptions.Name = "flowLayoutPanel_HexEditOptions";
-            this.flowLayoutPanel_HexEditOptions.Size = new System.Drawing.Size(495, 35);
-            this.flowLayoutPanel_HexEditOptions.TabIndex = 0;
-            this.flowLayoutPanel_HexEditOptions.WrapContents = false;
             // 
             // MainForm
             // 
@@ -1128,6 +1128,10 @@
             this.splitContainerBottom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBottom)).EndInit();
             this.splitContainerBottom.ResumeLayout(false);
+            this.tableLayoutPanel_MiddleControls.ResumeLayout(false);
+            this.tableLayoutPanel_MiddleControls.PerformLayout();
+            this.panel_MiddleControlsText.ResumeLayout(false);
+            this.panel_MiddleControlsText.PerformLayout();
             this.splitterContainer_InnerTextBoxes.Panel1.ResumeLayout(false);
             this.splitterContainer_InnerTextBoxes.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitterContainer_InnerTextBoxes)).EndInit();
@@ -1137,10 +1141,6 @@
             this.splitContainerHex.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHex)).EndInit();
             this.splitContainerHex.ResumeLayout(false);
-            this.tableLayoutPanel_MiddleControls.ResumeLayout(false);
-            this.tableLayoutPanel_MiddleControls.PerformLayout();
-            this.panel_MiddleControlsText.ResumeLayout(false);
-            this.panel_MiddleControlsText.PerformLayout();
             this.flowLayoutPanel_HexEditOptions.ResumeLayout(false);
             this.flowLayoutPanel_HexEditOptions.PerformLayout();
             this.ResumeLayout(false);

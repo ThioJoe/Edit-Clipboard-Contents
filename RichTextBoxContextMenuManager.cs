@@ -101,7 +101,7 @@ namespace EditClipboardContents
                 && contextMenu.SourceControl is RichTextBox richTextBox )
             {
                 // Since we're copying everything, we can use the Text property instead of SelectedText, which gives us the contents in plaintext
-                Clipboard.SetText(richTextBox.Text);
+                CopyIfValid(richTextBox.Text);
             }
         }
 
@@ -113,7 +113,7 @@ namespace EditClipboardContents
                 && contextMenu.SourceControl is RichTextBox richTextBox )
             {
                 // Use SelectedText property to get the plaintext, instead of doing .Copy() method which would copy with formatting
-                Clipboard.SetText(richTextBox.SelectedText);
+                CopyIfValid(richTextBox.SelectedText);
             }
         }
 
@@ -145,10 +145,7 @@ namespace EditClipboardContents
 
         private void MenuItemCopyLink_Click(object sender, EventArgs e)
         {
-            if ( !String.IsNullOrEmpty(lastSelectedHyperlink) ) // Should not be null or empty here but just in case
-            {
-                Clipboard.SetText(lastSelectedHyperlink);
-            }
+            CopyIfValid(lastSelectedHyperlink);
         }
 
         private void RichTextBox_MouseDown(object sender, MouseEventArgs e)
@@ -259,6 +256,20 @@ namespace EditClipboardContents
                 {
                     richTextBox.Select(0, 0);
                 }
+            }
+        }
+
+        private static void CopyIfValid(string text)
+        {
+            if ( !string.IsNullOrEmpty(text) )
+                Clipboard.SetText(text);
+            else
+            {
+                // Show a tooltip if the user tries to copy an empty string
+                ToolTip tt = new ToolTip();
+                Point cursorPosition = Form.ActiveForm.PointToClient(Cursor.Position);
+                cursorPosition.Y += 20; // Offset the Y coordinate by 20 pixels downward
+                tt.Show("Nothing to copy", Form.ActiveForm, cursorPosition, 1500);
             }
         }
     }

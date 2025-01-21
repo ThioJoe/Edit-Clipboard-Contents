@@ -191,24 +191,24 @@ namespace EditClipboardContents
             if (e.Control && e.KeyCode == Keys.C)
             {
                 e.Handled = true;  // Prevents the default copy operation
-                copyTableRows(copyAllRows: null); // Null means entire table will be copied if no rows are selected, otherwise just selected rows
+                copyTableRows(copyAllRows: null, noError:true); // Null means entire table will be copied if no rows are selected, otherwise just selected rows
             }
         }
 
-        private void copyRowDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void contextMenu_copyRowData_Click(object sender, EventArgs e)
         {
             copyTableRows(copyAllRows: false);
         }
 
-        private void copyCellToolStripMenuItem_Click(object sender, EventArgs e)
+        private void contextMenu_copyCell_Click(object sender, EventArgs e)
         {
             // Get the contents of the selected cell
             string cellContents = dataGridViewClipboard.CurrentCell.Value.ToString();
             // Copy the cell contents to the clipboard
-            Clipboard.SetText(cellContents);
+            Utils.CopyIfValid(cellContents, useTooltip: true, relativeForm: this);
         }
 
-        private void copySelectedRowsNoHeaderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void contextMenu_copySelectedRowsNoHeader_Click(object sender, EventArgs e)
         {
             copyTableRows(copyAllRows: false, forceNoHeader: true);
         }
@@ -500,7 +500,7 @@ namespace EditClipboardContents
             string data = BitConverter.ToString(itemToCopy.RawData).Replace("-", " ");
 
             // Copy the hex information to the clipboard
-            Clipboard.SetText(data);
+            Utils.CopyIfValid(data, useTooltip: false);
         }
 
         private void menuEdit_CopyObjectInfoAsText_Click(object sender, EventArgs e)
@@ -513,7 +513,8 @@ namespace EditClipboardContents
             }
             // Get the struct / object info that would be displayed in object view of rich text box and copy it to clipboard
             string data = FormatStructurePrinter.GetDataStringForTextbox(formatName: Utils.GetClipboardFormatNameFromId(itemToCopy.FormatId), fullItem: itemToCopy, plaintext:true);
-            Clipboard.SetText(data);
+
+            Utils.CopyIfValid(data, useTooltip: false);
         }
 
         private void menuEdit_CopyEditedHexAsText_Click(object sender, EventArgs e)
@@ -527,7 +528,8 @@ namespace EditClipboardContents
 
             // Get the hex information that would be displayed in the hex view and copy it to clipboard
             string data = BitConverter.ToString(itemToCopy.RawData).Replace("-", " ");
-            Clipboard.SetText(data);
+
+            Utils.CopyIfValid(data, useTooltip: false);
         }
 
         private void menuEdit_CopySelectedRows_Click(object sender, EventArgs e)
@@ -1381,7 +1383,8 @@ namespace EditClipboardContents
             string data = FormatStructurePrinter.GetDataStringForTextbox(formatName: Utils.GetClipboardFormatNameFromId(itemToCopy.FormatId), fullItem: itemToCopy, plaintext: false);
             // Add in newlines for readability wherever there's a \line
             data = Regex.Replace(data, @"\\line ?", @"\line" + "\n"); // For both with space and not
-            Clipboard.SetText(data);
+
+            Utils.CopyIfValid(data, useTooltip: false);
         }
 
 
